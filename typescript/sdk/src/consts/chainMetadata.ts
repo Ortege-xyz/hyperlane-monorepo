@@ -165,6 +165,11 @@ export const celoToken = {
 export const etherToken = { name: 'Ether', symbol: 'ETH', decimals: 18 };
 export const maticToken = { name: 'MATIC', symbol: 'MATIC', decimals: 18 };
 export const xDaiToken = { name: 'xDai', symbol: 'xDai', decimals: 18 };
+export const coston2Token = {
+  name: 'Coston2Flare',
+  symbol: 'C2FLR',
+  decimals: 18,
+};
 
 /**
  * Chain metadata
@@ -662,6 +667,36 @@ export const gnosis: ChainMetadata = {
   },
   gasCurrencyCoinGeckoId: 'xdai',
   gnosisSafeTransactionServiceUrl: 'https://safe-transaction.xdai.gnosis.io/',
+};
+
+export const coston2: ChainMetadata = {
+  chainId: 114,
+  name: Chains.coston2,
+  displayName: 'Coston 2',
+  nativeToken: coston2Token,
+  publicRpcUrls: [
+    {
+      http: 'https://coston2-api.flare.network/ext/C/rpc',
+      pagination: {
+        maxBlockRange: 100000,
+        minBlockNumber: 6765067,
+      },
+    },
+  ],
+  blockExplorers: [
+    {
+      name: 'Coston2 Explorer',
+      url: 'https://coston2-explorer.flare.network/',
+      apiUrl: 'https://coston2-explorer.flare.network/api',
+      family: ExplorerFamily.Blockscout,
+    },
+  ],
+  blocks: {
+    confirmations: 3,
+    reorgPeriod: 3,
+    estimateBlockTime: 2,
+  },
+  isTestnet: true,
 };
 
 export const test1: ChainMetadata = {
