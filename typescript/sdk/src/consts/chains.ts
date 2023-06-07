@@ -21,6 +21,7 @@ export enum Chains {
   optimismgoerli = 'optimismgoerli',
   polygon = 'polygon',
   gnosis = 'gnosis',
+  coston2 = 'coston2',
   test1 = 'test1',
   test2 = 'test2',
   test3 = 'test3',
@@ -61,6 +62,7 @@ export const Testnets: Array<CoreChainName> = [
   Chains.mumbai,
   Chains.optimismgoerli,
   Chains.sepolia,
+  Chains.coston2,
 ];
 
 export const TestChains: Array<CoreChainName> = [
