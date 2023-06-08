@@ -1,6 +1,6 @@
 {
   "name": "@hyperlane-xyz/monorepo",
-  "description": "A yarn workspace of core Hyperlane packages",
+  "description": "A yarn workspace of core Ortege packages",
   "version": "0.0.0",
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "^3.2.0",
