@@ -1,7 +1,7 @@
 {
   "name": "@ortege/core",
   "description": "Core solidity contracts for Ortege",
-  "version": "1.3.5-beta0",
+  "version": "1.3.5-beta1",
   "dependencies": {
     "@openzeppelin/contracts": "^4.8.0",
     "@openzeppelin/contracts-upgradeable": "^4.8.0",

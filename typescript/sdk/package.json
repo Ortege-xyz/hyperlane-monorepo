@@ -1,9 +1,9 @@
 {
   "name": "@ortege/sdk",
   "description": "The official SDK for the Ortege Network",
-  "version": "1.3.5-beta0",
+  "version": "1.3.5-beta1",
   "dependencies": {
-    "@ortege/core": "1.3.5-beta0",
+    "@ortege/core": "1.3.5-beta1",
     "@ortege/utils": "1.3.5-beta0",
     "@types/coingecko-api": "^1.0.10",
     "@types/debug": "^4.1.7",
