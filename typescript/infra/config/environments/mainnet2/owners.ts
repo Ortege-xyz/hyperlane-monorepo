@@ -1,4 +1,4 @@
-import { ChainMap } from '@hyperlane-xyz/sdk';
+import { ChainMap } from '@ortege/sdk';
 
 export const owners: ChainMap<string> = {
   celo: '0x1DE69322B55AC7E0999F8e7738a1428C8b130E4d',

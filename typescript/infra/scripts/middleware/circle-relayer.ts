@@ -5,8 +5,8 @@ import {
   attachContractsMap,
   liquidityLayerFactories,
   objFilter,
-} from '@hyperlane-xyz/sdk';
-import { LiquidityLayerConfig } from '@hyperlane-xyz/sdk/dist/middleware/liquidity-layer/LiquidityLayerRouterDeployer';
+} from '@ortege/sdk';
+import { LiquidityLayerConfig } from '@ortege/sdk/dist/middleware/liquidity-layer/LiquidityLayerRouterDeployer';
 
 import { readJSON, sleep } from '../../src/utils/utils';
 import {

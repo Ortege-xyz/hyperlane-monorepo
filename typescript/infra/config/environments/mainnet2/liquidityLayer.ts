@@ -5,7 +5,7 @@ import {
   ChainMap,
   Chains,
   chainMetadata,
-} from '@hyperlane-xyz/sdk';
+} from '@ortege/sdk';
 
 import { LiquidityLayerRelayerConfig } from '../../../src/config/middleware';
 

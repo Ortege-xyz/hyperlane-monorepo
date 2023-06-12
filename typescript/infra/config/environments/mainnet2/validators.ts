@@ -1,4 +1,4 @@
-import { CoreChainName } from '@hyperlane-xyz/sdk';
+import { CoreChainName } from '@ortege/sdk';
 
 import {
   ChainValidatorConfigs,

@@ -1,7 +1,7 @@
 import { Contract, ethers } from 'ethers';
 
-import { Ownable } from '@hyperlane-xyz/core';
-import type { types } from '@hyperlane-xyz/utils';
+import { Ownable } from '@ortege/core';
+import type { types } from '@ortege/utils';
 
 import { MultiProvider } from './providers/MultiProvider';
 import { ChainMap, Connection } from './types';

@@ -1,6 +1,6 @@
 import { ethers } from 'ethers';
 
-import { debug, error } from '@hyperlane-xyz/utils';
+import { debug, error } from '@ortege/utils';
 
 import { getSecretRpcEndpoint } from '../src/agents';
 

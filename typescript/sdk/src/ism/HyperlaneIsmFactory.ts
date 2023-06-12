@@ -10,8 +10,8 @@ import {
   LegacyMultisigIsm__factory,
   StaticAggregationIsm__factory,
   StaticMOfNAddressSetFactory,
-} from '@hyperlane-xyz/core';
-import { logging, types, utils } from '@hyperlane-xyz/utils';
+} from '@ortege/core';
+import { logging, types, utils } from '@ortege/utils';
 
 import { HyperlaneApp } from '../HyperlaneApp';
 import {

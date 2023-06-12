@@ -1,11 +1,11 @@
-import { TestRecipient__factory } from '@hyperlane-xyz/core';
+import { TestRecipient__factory } from '@ortege/core';
 import {
   ChainName,
   DispatchedMessage,
   HyperlaneCore,
   MultiProvider,
-} from '@hyperlane-xyz/sdk';
-import { utils } from '@hyperlane-xyz/utils';
+} from '@ortege/sdk';
+import { utils } from '@ortege/utils';
 
 import { deployEnvToSdkEnv } from '../src/config/environment';
 import { assertChain } from '../src/utils/utils';

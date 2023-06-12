@@ -5,7 +5,7 @@ import '@ethersproject/hardware-wallets/thirdparty';
 import { SafeDelegateConfig } from '@safe-global/safe-service-client';
 import yargs from 'yargs';
 
-import { AllChains } from '@hyperlane-xyz/sdk';
+import { AllChains } from '@ortege/sdk';
 
 import { getSafeDelegates, getSafeService } from '../src/utils/safe';
 

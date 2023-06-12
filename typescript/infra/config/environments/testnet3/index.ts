@@ -1,4 +1,4 @@
-import { AgentConnectionType } from '@hyperlane-xyz/sdk';
+import { AgentConnectionType } from '@ortege/sdk';
 
 import { getMultiProviderForRole } from '../../../scripts/utils';
 import { KEY_ROLE_ENUM } from '../../../src/agents/roles';

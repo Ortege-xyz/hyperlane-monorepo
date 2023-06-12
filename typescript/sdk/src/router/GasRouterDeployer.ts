@@ -1,4 +1,4 @@
-import { GasRouter } from '@hyperlane-xyz/core';
+import { GasRouter } from '@ortege/core';
 
 import {
   HyperlaneContracts,

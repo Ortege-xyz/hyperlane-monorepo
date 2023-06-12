@@ -1,6 +1,6 @@
 import { BigNumberish } from 'ethers';
 
-import { AgentConnectionType, ChainMap, ChainName } from '@hyperlane-xyz/sdk';
+import { AgentConnectionType, ChainMap, ChainName } from '@ortege/sdk';
 
 import { Contexts } from '../../config/contexts';
 import {

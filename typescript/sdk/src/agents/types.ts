@@ -1,4 +1,4 @@
-import { types } from '@hyperlane-xyz/utils';
+import { types } from '@ortege/utils';
 
 import { MultiProvider } from '../providers/MultiProvider';
 import { ChainMap, ChainName } from '../types';

@@ -1,8 +1,8 @@
 import { BigNumber } from 'ethers';
 import { format } from 'util';
 
-import { promiseObjAll } from '@hyperlane-xyz/sdk';
-import { error } from '@hyperlane-xyz/utils';
+import { promiseObjAll } from '@ortege/sdk';
+import { error } from '@ortege/utils';
 
 import { Contexts } from '../../config/contexts';
 import { KEY_ROLE_ENUM } from '../../src/agents/roles';

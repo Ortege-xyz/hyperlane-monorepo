@@ -4,8 +4,8 @@ import {
   LiquidityLayerApp,
   attachContractsMap,
   liquidityLayerFactories,
-} from '@hyperlane-xyz/sdk';
-import { error, log } from '@hyperlane-xyz/utils';
+} from '@ortege/sdk';
+import { error, log } from '@ortege/utils';
 
 import { bridgeAdapterConfigs } from '../../config/environments/testnet3/token-bridge';
 import { readJSON, sleep } from '../../src/utils/utils';

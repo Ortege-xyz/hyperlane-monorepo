@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import { ethers } from 'ethers';
 
-import { Validator, types, utils } from '@hyperlane-xyz/utils';
+import { Validator, types, utils } from '@ortege/utils';
 
 import { LegacyMultisigIsm, TestMailbox } from '../../types';
 import { DispatchEvent } from '../../types/contracts/Mailbox';

@@ -4,7 +4,7 @@ import {
   ModuleType,
   RoutingIsmConfig,
   objMap,
-} from '@hyperlane-xyz/sdk';
+} from '@ortege/sdk';
 
 import { multisigIsm } from './multisigIsm';
 import { owners } from './owners';

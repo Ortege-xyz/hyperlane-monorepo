@@ -1,4 +1,4 @@
-import { AgentConnectionType, chainMetadata } from '@hyperlane-xyz/sdk';
+import { AgentConnectionType, chainMetadata } from '@ortege/sdk';
 
 import { ALL_KEY_ROLES, KEY_ROLE_ENUM } from '../../../src/agents/roles';
 import { AgentConfig } from '../../../src/config';

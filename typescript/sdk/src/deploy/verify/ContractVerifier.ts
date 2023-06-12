@@ -2,8 +2,8 @@ import fetch from 'cross-fetch';
 import { Debugger, debug } from 'debug';
 import { ethers } from 'ethers';
 
-import { utils } from '@hyperlane-xyz/utils';
-import { sleep } from '@hyperlane-xyz/utils/dist/src/utils';
+import { utils } from '@ortege/utils';
+import { sleep } from '@ortege/utils/dist/src/utils';
 
 import { MultiProvider } from '../../providers/MultiProvider';
 import { ChainMap, ChainName } from '../../types';

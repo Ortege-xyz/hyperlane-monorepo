@@ -1,7 +1,7 @@
 import debug from 'debug';
 
-import { Mailbox, ValidatorAnnounce } from '@hyperlane-xyz/core';
-import { types } from '@hyperlane-xyz/utils';
+import { Mailbox, ValidatorAnnounce } from '@ortege/core';
+import { types } from '@ortege/utils';
 
 import { HyperlaneContracts, filterOwnableContracts } from '../contracts';
 import { HyperlaneDeployer } from '../deploy/HyperlaneDeployer';

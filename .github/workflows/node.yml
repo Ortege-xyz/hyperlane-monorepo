@@ -108,9 +108,9 @@ jobs:
           key: ${{ github.sha }}
 
       - name: sdk
-        run: yarn workspace @hyperlane-xyz/sdk run test
+        run: yarn workspace @ortege/sdk run test
       - name: infra
-        run: yarn workspace @hyperlane-xyz/infra run test
+        run: yarn workspace @ortege/infra run test
 
   test-env:
     runs-on: ubuntu-latest
@@ -165,13 +165,13 @@ jobs:
         run: cd solidity && forge build --build-info
 
       #- name: gas
-      #  run: yarn workspace @hyperlane-xyz/core run gas-ci
+      #  run: yarn workspace @ortege/core run gas-ci
 
       - name: Unit tests
-        run: yarn workspace @hyperlane-xyz/core run test
+        run: yarn workspace @ortege/core run test
 
       - name: lint
-        run: yarn workspace @hyperlane-xyz/core run lint
+        run: yarn workspace @ortege/core run lint
 
       - name: Run Slither
         uses: crytic/slither-action@main
@@ -215,4 +215,4 @@ jobs:
         run: sudo apt-get install lcov
 
       - name: Run tests with coverage
-        run: yarn workspace @hyperlane-xyz/core run coverage
+        run: yarn workspace @ortege/core run coverage

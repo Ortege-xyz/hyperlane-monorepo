@@ -3,7 +3,7 @@ import { SignerWithAddress } from '@nomiclabs/hardhat-ethers/signers';
 import { expect } from 'chai';
 import { ethers } from 'hardhat';
 
-import { Validator, types, utils } from '@hyperlane-xyz/utils';
+import { Validator, types, utils } from '@ortege/utils';
 
 import domainHashTestCases from '../../../vectors/domainHash.json';
 import {

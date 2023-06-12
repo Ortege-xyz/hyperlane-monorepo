@@ -1,4 +1,4 @@
-import { ChainMap, ModuleType, MultisigIsmConfig } from '@hyperlane-xyz/sdk';
+import { ChainMap, ModuleType, MultisigIsmConfig } from '@ortege/sdk';
 
 // the addresses here must line up with the e2e test's validator addresses
 export const multisigIsm: ChainMap<MultisigIsmConfig> = {

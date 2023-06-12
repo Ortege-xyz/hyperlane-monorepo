@@ -2,8 +2,8 @@ import {
   IInterchainGasPaymaster__factory,
   Mailbox__factory,
   Router,
-} from '@hyperlane-xyz/core';
-import { utils } from '@hyperlane-xyz/utils';
+} from '@ortege/core';
+import { utils } from '@ortege/utils';
 
 import {
   HyperlaneContracts,

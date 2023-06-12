@@ -1,4 +1,4 @@
-import { HyperlaneCore, objMap } from '@hyperlane-xyz/sdk';
+import { HyperlaneCore, objMap } from '@ortege/sdk';
 
 import { CheckpointStatus, S3Validator } from '../src/agents/aws/validator';
 import { deployEnvToSdkEnv } from '../src/config/environment';

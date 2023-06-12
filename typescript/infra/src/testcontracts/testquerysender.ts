@@ -1,10 +1,10 @@
-import { TestQuerySender__factory } from '@hyperlane-xyz/core';
+import { TestQuerySender__factory } from '@ortege/core';
 import {
   ChainName,
   HyperlaneDeployer,
   HyperlaneIgp,
   MultiProvider,
-} from '@hyperlane-xyz/sdk';
+} from '@ortege/sdk';
 
 export const factories = {
   TestQuerySender: new TestQuerySender__factory(),
