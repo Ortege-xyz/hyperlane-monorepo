@@ -4,8 +4,8 @@ import {
   OverheadIgpConfig,
   multisigIsmVerificationCost,
   objMap,
-} from '@hyperlane-xyz/sdk';
-import { utils } from '@hyperlane-xyz/utils';
+} from '@ortege/sdk';
+import { utils } from '@ortege/utils';
 
 import { TestChains, chainNames } from './chains';
 import { multisigIsm } from './multisigIsm';

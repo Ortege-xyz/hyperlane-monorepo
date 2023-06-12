@@ -4,7 +4,7 @@ import {
   ChainName,
   CoinGeckoTokenPriceGetter,
   HyperlaneCore,
-} from '@hyperlane-xyz/sdk';
+} from '@ortege/sdk';
 
 import { StorageGasOracleConfig } from '../../src/config';
 import { deployEnvToSdkEnv } from '../../src/config/environment';

@@ -1,9 +1,5 @@
-import {
-  IAggregationIsm,
-  IMultisigIsm,
-  IRoutingIsm,
-} from '@hyperlane-xyz/core';
-import type { types } from '@hyperlane-xyz/utils';
+import { IAggregationIsm, IMultisigIsm, IRoutingIsm } from '@ortege/core';
+import type { types } from '@ortege/utils';
 
 import { ChainMap } from '../types';
 

@@ -1,4 +1,4 @@
-import { HyperlaneCore } from '@hyperlane-xyz/sdk';
+import { HyperlaneCore } from '@ortege/sdk';
 
 import { S3Validator } from '../src/agents/aws/validator';
 import { deployEnvToSdkEnv } from '../src/config/environment';

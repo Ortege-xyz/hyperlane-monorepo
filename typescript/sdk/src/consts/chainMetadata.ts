@@ -2,7 +2,7 @@ import type { Chain as WagmiChain } from '@wagmi/chains';
 import type { providers } from 'ethers';
 import { z } from 'zod';
 
-import type { types } from '@hyperlane-xyz/utils';
+import type { types } from '@ortege/utils';
 
 import type { RetryProviderOptions } from '../providers/RetryProvider';
 import { ChainName } from '../types';

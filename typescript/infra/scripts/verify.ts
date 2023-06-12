@@ -1,8 +1,4 @@
-import {
-  ChainMap,
-  CompilerOptions,
-  ContractVerifier,
-} from '@hyperlane-xyz/sdk';
+import { ChainMap, CompilerOptions, ContractVerifier } from '@ortege/sdk';
 
 import { fetchGCPSecret } from '../src/utils/gcloud';
 import { execCmd, readFileAtPath, readJSONAtPath } from '../src/utils/utils';

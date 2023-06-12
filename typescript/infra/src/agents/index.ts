@@ -1,5 +1,5 @@
-import { AgentConnectionType, ChainName } from '@hyperlane-xyz/sdk';
-import { utils } from '@hyperlane-xyz/utils';
+import { AgentConnectionType, ChainName } from '@ortege/sdk';
+import { utils } from '@ortege/utils';
 
 import { Contexts } from '../../config/contexts';
 import { AgentConfig, DeployEnvironment } from '../config';

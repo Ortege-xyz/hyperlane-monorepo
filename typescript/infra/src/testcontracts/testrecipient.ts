@@ -1,12 +1,8 @@
 import {
   TestRecipient__factory,
   TestTokenRecipient__factory,
-} from '@hyperlane-xyz/core';
-import {
-  ChainName,
-  HyperlaneDeployer,
-  MultiProvider,
-} from '@hyperlane-xyz/sdk';
+} from '@ortege/core';
+import { ChainName, HyperlaneDeployer, MultiProvider } from '@ortege/sdk';
 
 export const factories = {
   TestRecipient: new TestRecipient__factory(),

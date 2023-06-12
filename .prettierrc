@@ -15,7 +15,7 @@
       }
     }
   ],
-  "importOrder": ["^@hyperlane-xyz/(.*)$", "^../(.*)$", "^./(.*)$"],
+  "importOrder": ["^@ortege/(.*)$", "^../(.*)$", "^./(.*)$"],
   "importOrderSeparation": true,
   "importOrderSortSpecifiers": true
 }

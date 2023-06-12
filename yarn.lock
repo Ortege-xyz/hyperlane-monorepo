@@ -3923,70 +3923,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@hyperlane-xyz/core@npm:1.3.4":
-  version: 1.3.4
-  resolution: "@hyperlane-xyz/core@npm:1.3.4"
-  dependencies:
-    "@hyperlane-xyz/utils": 1.3.4
-    "@openzeppelin/contracts": ^4.8.0
-    "@openzeppelin/contracts-upgradeable": ^4.8.0
-  checksum: aaea49039a37dc093fb785ba79480be28a41b62936dd2910ac25fbe07e8275ea6a1f8f477e0872c8d5880dede24e2fb5bce5f0153626a36113de18578e4032f7
-  languageName: node
-  linkType: hard
-
-"@hyperlane-xyz/helloworld@npm:1.3.4":
-  version: 1.3.4
-  resolution: "@hyperlane-xyz/helloworld@npm:1.3.4"
-  dependencies:
-    "@hyperlane-xyz/sdk": 1.3.4
-    "@openzeppelin/contracts-upgradeable": ^4.8.0
-    ethers: ^5.7.2
-  checksum: f915dfef6d8ba9b67a0d2095463ef67af9501cc222a84ba34e36fe650a9cbd335314cf6e9322bb45c34ec905d121c3f748bb0edc51a1d7c8f68363531c308758
-  languageName: node
-  linkType: hard
-
-"@hyperlane-xyz/monorepo@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "@hyperlane-xyz/monorepo@workspace:."
-  dependencies:
-    "@trivago/prettier-plugin-sort-imports": ^3.2.0
-    "@typescript-eslint/eslint-plugin": ^5.27.0
-    "@typescript-eslint/parser": ^5.27.0
-    eslint: ^8.16.0
-    eslint-config-prettier: ^8.5.0
-    husky: ^8.0.0
-    lint-staged: ^12.4.3
-    prettier: ^2.4.1
-  languageName: unknown
-  linkType: soft
-
-"@hyperlane-xyz/sdk@npm:1.3.4":
-  version: 1.3.4
-  resolution: "@hyperlane-xyz/sdk@npm:1.3.4"
-  dependencies:
-    "@hyperlane-xyz/core": 1.3.4
-    "@hyperlane-xyz/utils": 1.3.4
-    "@types/coingecko-api": ^1.0.10
-    "@types/debug": ^4.1.7
-    "@wagmi/chains": ^0.2.6
-    coingecko-api: ^1.0.10
-    cross-fetch: ^3.1.5
-    debug: ^4.3.4
-    ethers: ^5.7.2
-    zod: ^3.21.2
-  checksum: c881b51ea1e0aada4cf12a485a0b614ee0fbb6095941c63ec0ba7bc41a59b29e7a05498ab8ac3e89a50430b2973218dece6f2cbd09fd8697bead49be99b3663a
-  languageName: node
-  linkType: hard
-
-"@hyperlane-xyz/utils@npm:1.3.4":
-  version: 1.3.4
-  resolution: "@hyperlane-xyz/utils@npm:1.3.4"
-  dependencies:
-    ethers: ^5.7.2
-  checksum: 7bed3465604dd3e20d31ebc2b4d101cfe6a934df9d0625a11e9fb5dfa39dbd009c1fc4ad269a32662d4c4a3abadacf5195f53462be021494ba15896036a53f7a
-  languageName: node
-  linkType: hard
-
 "@jridgewell/gen-mapping@npm:^0.3.0":
   version: 0.3.1
   resolution: "@jridgewell/gen-mapping@npm:0.3.1"
@@ -4562,7 +4498,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ortege/core@1.3.5-beta0, @ortege/core@workspace:solidity":
+"@ortege/core@1.3.6-beta0, @ortege/core@workspace:solidity":
   version: 0.0.0-use.local
   resolution: "@ortege/core@workspace:solidity"
   dependencies:
@@ -4570,7 +4506,7 @@ __metadata:
     "@nomiclabs/hardhat-waffle": ^2.0.3
     "@openzeppelin/contracts": ^4.8.0
     "@openzeppelin/contracts-upgradeable": ^4.8.0
-    "@ortege/utils": 1.3.5-beta0
+    "@ortege/utils": 1.3.6-beta0
     "@typechain/ethers-v5": 10.0.0
     "@typechain/hardhat": ^6.0.0
     chai: ^4.3.0
@@ -4589,6 +4525,17 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ortege/helloworld@npm:1.3.6-beta0":
+  version: 1.3.6-beta0
+  resolution: "@ortege/helloworld@npm:1.3.6-beta0"
+  dependencies:
+    "@openzeppelin/contracts-upgradeable": ^4.8.0
+    "@ortege/sdk": 1.3.6-beta0
+    ethers: ^5.7.2
+  checksum: c64164f1d0702f987eb57365540ed40b4bd7b64d1dc2d2d8597aa2ae0ae080c15f540029d656759a26bcbc87816d950446ca5f8e9c80f6946e70af3ebb280764
+  languageName: node
+  linkType: hard
+
 "@ortege/infra@workspace:typescript/infra":
   version: 0.0.0-use.local
   resolution: "@ortege/infra@workspace:typescript/infra"
@@ -4604,12 +4551,12 @@ __metadata:
     "@gnosis.pm/safe-core-sdk": ^2.3.2
     "@gnosis.pm/safe-ethers-lib": ^1.4.0
     "@gnosis.pm/safe-service-client": ^1.2.0
-    "@hyperlane-xyz/helloworld": 1.3.4
-    "@hyperlane-xyz/sdk": 1.3.4
-    "@hyperlane-xyz/utils": 1.3.4
     "@nomiclabs/hardhat-ethers": ^2.2.1
     "@nomiclabs/hardhat-etherscan": ^3.0.3
     "@nomiclabs/hardhat-waffle": ^2.0.3
+    "@ortege/helloworld": 1.3.6-beta0
+    "@ortege/sdk": 1.3.6-beta0
+    "@ortege/utils": 1.3.6-beta0
     "@safe-global/safe-core-sdk": 3.2.0
     "@safe-global/safe-ethers-lib": ^1.7.0
     "@safe-global/safe-service-client": ^1.4.0
@@ -4634,14 +4581,29 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ortege/sdk@workspace:typescript/sdk":
+"@ortege/monorepo@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "@ortege/monorepo@workspace:."
+  dependencies:
+    "@trivago/prettier-plugin-sort-imports": ^3.2.0
+    "@typescript-eslint/eslint-plugin": ^5.27.0
+    "@typescript-eslint/parser": ^5.27.0
+    eslint: ^8.16.0
+    eslint-config-prettier: ^8.5.0
+    husky: ^8.0.0
+    lint-staged: ^12.4.3
+    prettier: ^2.4.1
+  languageName: unknown
+  linkType: soft
+
+"@ortege/sdk@1.3.6-beta0, @ortege/sdk@workspace:typescript/sdk":
   version: 0.0.0-use.local
   resolution: "@ortege/sdk@workspace:typescript/sdk"
   dependencies:
     "@nomiclabs/hardhat-ethers": ^2.2.1
     "@nomiclabs/hardhat-waffle": ^2.0.3
-    "@ortege/core": 1.3.5-beta0
-    "@ortege/utils": 1.3.5-beta0
+    "@ortege/core": 1.3.6-beta0
+    "@ortege/utils": 1.3.6-beta0
     "@types/coingecko-api": ^1.0.10
     "@types/debug": ^4.1.7
     "@types/node": ^16.9.1
@@ -4664,7 +4626,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ortege/utils@1.3.5-beta0, @ortege/utils@workspace:typescript/utils":
+"@ortege/utils@1.3.6-beta0, @ortege/utils@workspace:typescript/utils":
   version: 0.0.0-use.local
   resolution: "@ortege/utils@workspace:typescript/utils"
   dependencies:
@@ -10534,7 +10496,7 @@ __metadata:
 
 "fsevents@patch:fsevents@~2.1.1#~builtin<compat/fsevents>":
   version: 2.1.3
-  resolution: "fsevents@patch:fsevents@npm%3A2.1.3#~builtin<compat/fsevents>::version=2.1.3&hash=18f3a7"
+  resolution: "fsevents@patch:fsevents@npm%3A2.1.3#~builtin<compat/fsevents>::version=2.1.3&hash=31d12a"
   dependencies:
     node-gyp: latest
   conditions: os=darwin
@@ -10543,7 +10505,7 @@ __metadata:
 
 "fsevents@patch:fsevents@~2.3.2#~builtin<compat/fsevents>":
   version: 2.3.2
-  resolution: "fsevents@patch:fsevents@npm%3A2.3.2#~builtin<compat/fsevents>::version=2.3.2&hash=18f3a7"
+  resolution: "fsevents@patch:fsevents@npm%3A2.3.2#~builtin<compat/fsevents>::version=2.3.2&hash=df0bf1"
   dependencies:
     node-gyp: latest
   conditions: os=darwin
@@ -15791,14 +15753,14 @@ __metadata:
 
 "resolve@patch:resolve@1.1.x#~builtin<compat/resolve>":
   version: 1.1.7
-  resolution: "resolve@patch:resolve@npm%3A1.1.7#~builtin<compat/resolve>::version=1.1.7&hash=07638b"
+  resolution: "resolve@patch:resolve@npm%3A1.1.7#~builtin<compat/resolve>::version=1.1.7&hash=3bafbf"
   checksum: e9dbca78600ae56835c43a09f1276876c883e4b4bbd43e2683fa140671519d2bdebeb1c1576ca87c8c508ae2987b3ec481645ac5d3054b0f23254cfc1ce49942
   languageName: node
   linkType: hard
 
 "resolve@patch:resolve@1.17.0#~builtin<compat/resolve>":
   version: 1.17.0
-  resolution: "resolve@patch:resolve@npm%3A1.17.0#~builtin<compat/resolve>::version=1.17.0&hash=07638b"
+  resolution: "resolve@patch:resolve@npm%3A1.17.0#~builtin<compat/resolve>::version=1.17.0&hash=c3c19d"
   dependencies:
     path-parse: ^1.0.6
   checksum: 6fd799f282ddf078c4bc20ce863e3af01fa8cb218f0658d9162c57161a2dbafe092b13015b9a4c58d0e1e801cf7aa7a4f13115fea9db98c3f9a0c43e429bad6f
@@ -15807,7 +15769,7 @@ __metadata:
 
 "resolve@patch:resolve@^1.1.6#~builtin<compat/resolve>, resolve@patch:resolve@^1.10.0#~builtin<compat/resolve>, resolve@patch:resolve@^1.8.1#~builtin<compat/resolve>, resolve@patch:resolve@~1.22.0#~builtin<compat/resolve>":
   version: 1.22.0
-  resolution: "resolve@patch:resolve@npm%3A1.22.0#~builtin<compat/resolve>::version=1.22.0&hash=07638b"
+  resolution: "resolve@patch:resolve@npm%3A1.22.0#~builtin<compat/resolve>::version=1.22.0&hash=c3c19d"
   dependencies:
     is-core-module: ^2.8.1
     path-parse: ^1.0.7
@@ -17783,11 +17745,11 @@ __metadata:
 
 "typescript@patch:typescript@^4.7.2#~builtin<compat/typescript>":
   version: 4.7.3
-  resolution: "typescript@patch:typescript@npm%3A4.7.3#~builtin<compat/typescript>::version=4.7.3&hash=bda367"
+  resolution: "typescript@patch:typescript@npm%3A4.7.3#~builtin<compat/typescript>::version=4.7.3&hash=65a307"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 8257ce7ecbbf9416da60045a76a99d473698ca9e973fa0ddab7137cacb1587255431176cbbcc801a650938c4dc8109ab88355774829a714fabe56a53a2fe4524
+  checksum: 137d18a77f52254a284960b16ab53d0619f57b69b5d585804b8413f798a1175ce3e774fb95e6a101868577aafe357d8fcfc9171f0dc9fc0c210e9ae59d107cc0
   languageName: node
   linkType: hard
 

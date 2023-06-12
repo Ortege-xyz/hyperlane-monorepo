@@ -3,13 +3,13 @@ import '@nomiclabs/hardhat-waffle';
 import { task } from 'hardhat/config';
 import { HardhatRuntimeEnvironment } from 'hardhat/types';
 
-import { TestSendReceiver__factory } from '@hyperlane-xyz/core';
+import { TestSendReceiver__factory } from '@ortege/core';
 import {
   ChainName,
   HyperlaneCore,
   HyperlaneIgp,
   MultiProvider,
-} from '@hyperlane-xyz/sdk';
+} from '@ortege/sdk';
 
 import { sleep } from './src/utils/utils';
 

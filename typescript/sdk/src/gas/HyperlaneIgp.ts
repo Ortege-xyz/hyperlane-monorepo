@@ -1,7 +1,7 @@
 import { BigNumber } from 'ethers';
 
-import { InterchainGasPaymaster__factory } from '@hyperlane-xyz/core';
-import { types } from '@hyperlane-xyz/utils';
+import { InterchainGasPaymaster__factory } from '@ortege/core';
+import { types } from '@ortege/utils';
 
 import { HyperlaneApp } from '../HyperlaneApp';
 import {

@@ -2,7 +2,7 @@ import {
   Mailbox__factory,
   ProxyAdmin__factory,
   ValidatorAnnounce__factory,
-} from '@hyperlane-xyz/core';
+} from '@ortege/core';
 
 export const coreFactories = {
   validatorAnnounce: new ValidatorAnnounce__factory(),

@@ -1,10 +1,10 @@
-import { HelloWorldApp, helloWorldFactories } from '@hyperlane-xyz/helloworld';
+import { HelloWorldApp, helloWorldFactories } from '@ortege/helloworld';
 import {
   AgentConnectionType,
   HyperlaneCore,
   MultiProvider,
   attachContractsMap,
-} from '@hyperlane-xyz/sdk';
+} from '@ortege/sdk';
 
 import { Contexts } from '../../config/contexts';
 import { KEY_ROLE_ENUM } from '../../src/agents/roles';

@@ -1,4 +1,4 @@
-import { ChainMap, chainMetadata } from '@hyperlane-xyz/sdk';
+import { ChainMap, chainMetadata } from '@ortege/sdk';
 
 import { HelloWorldConfig } from '../src/config';
 import { MatchingList } from '../src/config/agent';

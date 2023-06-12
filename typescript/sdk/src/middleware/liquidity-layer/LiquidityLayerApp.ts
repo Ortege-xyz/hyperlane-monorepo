@@ -6,8 +6,8 @@ import {
   ITokenMessenger__factory,
   Mailbox__factory,
   PortalAdapter__factory,
-} from '@hyperlane-xyz/core';
-import { utils } from '@hyperlane-xyz/utils';
+} from '@ortege/core';
+import { utils } from '@ortege/utils';
 
 import { HyperlaneApp } from '../../HyperlaneApp';
 import { HyperlaneContracts } from '../../contracts';

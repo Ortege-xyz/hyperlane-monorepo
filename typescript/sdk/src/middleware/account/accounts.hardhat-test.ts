@@ -2,10 +2,7 @@ import { SignerWithAddress } from '@nomiclabs/hardhat-ethers/signers';
 import { expect } from 'chai';
 import { ethers } from 'hardhat';
 
-import {
-  InterchainAccountRouter,
-  TestRecipient__factory,
-} from '@hyperlane-xyz/core';
+import { InterchainAccountRouter, TestRecipient__factory } from '@ortege/core';
 
 import { Chains } from '../../consts/chains';
 import { HyperlaneContractsMap } from '../../contracts';

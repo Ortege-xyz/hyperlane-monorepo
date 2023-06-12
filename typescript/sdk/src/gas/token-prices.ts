@@ -1,6 +1,6 @@
 import CoinGecko from 'coingecko-api';
 
-import { warn } from '@hyperlane-xyz/utils';
+import { warn } from '@ortege/utils';
 
 import {
   ChainMetadata,

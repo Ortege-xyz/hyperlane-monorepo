@@ -5,8 +5,8 @@ import {
   HyperlaneCoreChecker,
   OwnerViolation,
   ViolationType,
-} from '@hyperlane-xyz/sdk';
-import { types } from '@hyperlane-xyz/utils';
+} from '@ortege/sdk';
+import { types } from '@ortege/utils';
 
 import { HyperlaneAppGovernor } from '../govern/HyperlaneAppGovernor';
 

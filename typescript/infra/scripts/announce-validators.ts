@@ -4,7 +4,7 @@ import { readFileSync } from 'fs';
 import * as path from 'path';
 import yargs from 'yargs';
 
-import { AllChains, ChainName, HyperlaneCore } from '@hyperlane-xyz/sdk';
+import { AllChains, ChainName, HyperlaneCore } from '@ortege/sdk';
 
 import { S3Validator } from '../src/agents/aws/validator';
 import { CheckpointSyncerType } from '../src/config/agent';
