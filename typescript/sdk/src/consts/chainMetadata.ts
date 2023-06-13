@@ -170,7 +170,21 @@ export const coston2Token = {
   symbol: 'C2FLR',
   decimals: 18,
 };
-
+export const costonToken = {
+  name: 'CostonFlare',
+  symbol: 'cFLR',
+  decimals: 18,
+};
+export const songbirdToken = {
+  name: 'Songbird',
+  symbol: 'SGB',
+  decimals: 18,
+};
+export const flareToken = {
+  name: 'Flare',
+  symbol: 'FLR',
+  decimals: 18,
+};
 /**
  * Chain metadata
  */
@@ -678,8 +692,8 @@ export const coston2: ChainMetadata = {
     {
       http: 'https://coston2-api.flare.network/ext/C/rpc',
       pagination: {
-        maxBlockRange: 100000,
-        minBlockNumber: 6765067,
+        maxBlockRange: 100,
+        minBlockNumber: 4732043,
       },
     },
   ],
@@ -694,9 +708,97 @@ export const coston2: ChainMetadata = {
   blocks: {
     confirmations: 3,
     reorgPeriod: 3,
-    estimateBlockTime: 2,
+    estimateBlockTime: 7,
   },
   isTestnet: true,
+};
+
+export const coston: ChainMetadata = {
+  chainId: 16,
+  name: Chains.coston,
+  displayName: 'Coston',
+  nativeToken: costonToken,
+  publicRpcUrls: [
+    {
+      http: 'https://coston-api.flare.network/ext/bc/C/rpc',
+      pagination: {
+        maxBlockRange: 100,
+        minBlockNumber: 9271948,
+      },
+    },
+  ],
+  blockExplorers: [
+    {
+      name: 'Coston Explorer',
+      url: 'https://coston-explorer.flare.network/',
+      apiUrl: 'https://coston-explorer.flare.network/api',
+      family: ExplorerFamily.Blockscout,
+    },
+  ],
+  blocks: {
+    confirmations: 3,
+    reorgPeriod: 3,
+    estimateBlockTime: 15,
+  },
+  isTestnet: true,
+};
+
+export const songbird: ChainMetadata = {
+  chainId: 19,
+  name: Chains.songbird,
+  displayName: 'Songbird',
+  nativeToken: songbirdToken,
+  publicRpcUrls: [
+    {
+      http: 'https://sgb.ftso.com.au/ext/bc/C/rpc',
+      pagination: {
+        maxBlockRange: 100,
+        minBlockNumber: 36717988,
+      },
+    },
+  ],
+  blockExplorers: [
+    {
+      name: 'Songbird Explorer',
+      url: 'https://songbird-explorer.flare.network/',
+      apiUrl: 'https://songbird-explorer.flare.network/api',
+      family: ExplorerFamily.Blockscout,
+    },
+  ],
+  blocks: {
+    confirmations: 3,
+    reorgPeriod: 3,
+    estimateBlockTime: 3,
+  },
+};
+
+export const flare: ChainMetadata = {
+  chainId: 14,
+  name: Chains.flare,
+  displayName: 'Flare',
+  nativeToken: flareToken,
+  publicRpcUrls: [
+    {
+      http: 'https://flare-api.flare.network/ext/C/rpc',
+      pagination: {
+        maxBlockRange: 100,
+        minBlockNumber: 9647872,
+      },
+    },
+  ],
+  blockExplorers: [
+    {
+      name: 'Flare Explorer',
+      url: 'https://flare-explorer.flare.network/',
+      apiUrl: 'https://flare-explorer.flare.network/api',
+      family: ExplorerFamily.Blockscout,
+    },
+  ],
+  blocks: {
+    confirmations: 3,
+    reorgPeriod: 3,
+    estimateBlockTime: 3,
+  },
 };
 
 export const test1: ChainMetadata = {

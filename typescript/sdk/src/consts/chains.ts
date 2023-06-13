@@ -22,6 +22,9 @@ export enum Chains {
   polygon = 'polygon',
   gnosis = 'gnosis',
   coston2 = 'coston2',
+  coston = 'coston',
+  songbird = 'songbird',
+  flare = 'flare',
   test1 = 'test1',
   test2 = 'test2',
   test3 = 'test3',
@@ -50,6 +53,8 @@ export const Mainnets: Array<CoreChainName> = [
   Chains.optimism,
   Chains.polygon,
   Chains.gnosis,
+  Chains.songbird,
+  Chains.flare,
 ];
 
 export const Testnets: Array<CoreChainName> = [
@@ -63,6 +68,7 @@ export const Testnets: Array<CoreChainName> = [
   Chains.optimismgoerli,
   Chains.sepolia,
   Chains.coston2,
+  Chains.coston,
 ];
 
 export const TestChains: Array<CoreChainName> = [
