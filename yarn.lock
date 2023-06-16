@@ -4498,7 +4498,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ortege/core@1.3.6-beta0, @ortege/core@workspace:solidity":
+"@ortege/core@1.3.7, @ortege/core@workspace:solidity":
   version: 0.0.0-use.local
   resolution: "@ortege/core@workspace:solidity"
   dependencies:
@@ -4506,7 +4506,7 @@ __metadata:
     "@nomiclabs/hardhat-waffle": ^2.0.3
     "@openzeppelin/contracts": ^4.8.0
     "@openzeppelin/contracts-upgradeable": ^4.8.0
-    "@ortege/utils": 1.3.6-beta0
+    "@ortege/utils": 1.3.6
     "@typechain/ethers-v5": 10.0.0
     "@typechain/hardhat": ^6.0.0
     chai: ^4.3.0
@@ -4524,6 +4524,17 @@ __metadata:
     typescript: ^4.7.2
   languageName: unknown
   linkType: soft
+
+"@ortege/core@npm:1.3.6-beta0":
+  version: 1.3.6-beta0
+  resolution: "@ortege/core@npm:1.3.6-beta0"
+  dependencies:
+    "@openzeppelin/contracts": ^4.8.0
+    "@openzeppelin/contracts-upgradeable": ^4.8.0
+    "@ortege/utils": 1.3.6-beta0
+  checksum: 32380675387e3f1d89c8652b74fa484323afb051b1ac152f8b4e4e3c8a3b96dc3635c5e641f24d310bb5da210b5f1d8614140f96db39b814be2a57f483939661
+  languageName: node
+  linkType: hard
 
 "@ortege/helloworld@npm:1.3.6-beta0":
   version: 1.3.6-beta0
@@ -4555,8 +4566,8 @@ __metadata:
     "@nomiclabs/hardhat-etherscan": ^3.0.3
     "@nomiclabs/hardhat-waffle": ^2.0.3
     "@ortege/helloworld": 1.3.6-beta0
-    "@ortege/sdk": 1.3.6-beta0
-    "@ortege/utils": 1.3.6-beta0
+    "@ortege/sdk": 1.3.6
+    "@ortege/utils": 1.3.6
     "@safe-global/safe-core-sdk": 3.2.0
     "@safe-global/safe-ethers-lib": ^1.7.0
     "@safe-global/safe-service-client": ^1.4.0
@@ -4596,14 +4607,14 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ortege/sdk@1.3.6-beta0, @ortege/sdk@workspace:typescript/sdk":
+"@ortege/sdk@1.3.6, @ortege/sdk@workspace:typescript/sdk":
   version: 0.0.0-use.local
   resolution: "@ortege/sdk@workspace:typescript/sdk"
   dependencies:
     "@nomiclabs/hardhat-ethers": ^2.2.1
     "@nomiclabs/hardhat-waffle": ^2.0.3
-    "@ortege/core": 1.3.6-beta0
-    "@ortege/utils": 1.3.6-beta0
+    "@ortege/core": 1.3.7
+    "@ortege/utils": 1.3.6
     "@types/coingecko-api": ^1.0.10
     "@types/debug": ^4.1.7
     "@types/node": ^16.9.1
@@ -4626,7 +4637,25 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ortege/utils@1.3.6-beta0, @ortege/utils@workspace:typescript/utils":
+"@ortege/sdk@npm:1.3.6-beta0":
+  version: 1.3.6-beta0
+  resolution: "@ortege/sdk@npm:1.3.6-beta0"
+  dependencies:
+    "@ortege/core": 1.3.6-beta0
+    "@ortege/utils": 1.3.6-beta0
+    "@types/coingecko-api": ^1.0.10
+    "@types/debug": ^4.1.7
+    "@wagmi/chains": ^0.2.6
+    coingecko-api: ^1.0.10
+    cross-fetch: ^3.1.5
+    debug: ^4.3.4
+    ethers: ^5.7.2
+    zod: ^3.21.2
+  checksum: d8b5e2095162e742c453a083e9322b234ffff88cb566ba9b5fce6f7ab7ed3e2bff6bc01f4b9168867e0f6e4915094b5a72dbc243057c957ebb328fee29c7c90f
+  languageName: node
+  linkType: hard
+
+"@ortege/utils@1.3.6, @ortege/utils@workspace:typescript/utils":
   version: 0.0.0-use.local
   resolution: "@ortege/utils@workspace:typescript/utils"
   dependencies:
@@ -4636,6 +4665,15 @@ __metadata:
     typescript: ^4.7.2
   languageName: unknown
   linkType: soft
+
+"@ortege/utils@npm:1.3.6-beta0":
+  version: 1.3.6-beta0
+  resolution: "@ortege/utils@npm:1.3.6-beta0"
+  dependencies:
+    ethers: ^5.7.2
+  checksum: 390a3a9719de13faa72ddbbd2a580dcc1c968e5a4899f8288691a59594b8a9a3c9d5c5683f749cce6e2e3d2f442fd0e07327762b3ba04d03513177735a737e74
+  languageName: node
+  linkType: hard
 
 "@resolver-engine/core@npm:^0.3.3":
   version: 0.3.3
@@ -10496,7 +10534,7 @@ __metadata:
 
 "fsevents@patch:fsevents@~2.1.1#~builtin<compat/fsevents>":
   version: 2.1.3
-  resolution: "fsevents@patch:fsevents@npm%3A2.1.3#~builtin<compat/fsevents>::version=2.1.3&hash=31d12a"
+  resolution: "fsevents@patch:fsevents@npm%3A2.1.3#~builtin<compat/fsevents>::version=2.1.3&hash=18f3a7"
   dependencies:
     node-gyp: latest
   conditions: os=darwin
@@ -10505,7 +10543,7 @@ __metadata:
 
 "fsevents@patch:fsevents@~2.3.2#~builtin<compat/fsevents>":
   version: 2.3.2
-  resolution: "fsevents@patch:fsevents@npm%3A2.3.2#~builtin<compat/fsevents>::version=2.3.2&hash=df0bf1"
+  resolution: "fsevents@patch:fsevents@npm%3A2.3.2#~builtin<compat/fsevents>::version=2.3.2&hash=18f3a7"
   dependencies:
     node-gyp: latest
   conditions: os=darwin
@@ -15753,14 +15791,14 @@ __metadata:
 
 "resolve@patch:resolve@1.1.x#~builtin<compat/resolve>":
   version: 1.1.7
-  resolution: "resolve@patch:resolve@npm%3A1.1.7#~builtin<compat/resolve>::version=1.1.7&hash=3bafbf"
+  resolution: "resolve@patch:resolve@npm%3A1.1.7#~builtin<compat/resolve>::version=1.1.7&hash=07638b"
   checksum: e9dbca78600ae56835c43a09f1276876c883e4b4bbd43e2683fa140671519d2bdebeb1c1576ca87c8c508ae2987b3ec481645ac5d3054b0f23254cfc1ce49942
   languageName: node
   linkType: hard
 
 "resolve@patch:resolve@1.17.0#~builtin<compat/resolve>":
   version: 1.17.0
-  resolution: "resolve@patch:resolve@npm%3A1.17.0#~builtin<compat/resolve>::version=1.17.0&hash=c3c19d"
+  resolution: "resolve@patch:resolve@npm%3A1.17.0#~builtin<compat/resolve>::version=1.17.0&hash=07638b"
   dependencies:
     path-parse: ^1.0.6
   checksum: 6fd799f282ddf078c4bc20ce863e3af01fa8cb218f0658d9162c57161a2dbafe092b13015b9a4c58d0e1e801cf7aa7a4f13115fea9db98c3f9a0c43e429bad6f
@@ -15769,7 +15807,7 @@ __metadata:
 
 "resolve@patch:resolve@^1.1.6#~builtin<compat/resolve>, resolve@patch:resolve@^1.10.0#~builtin<compat/resolve>, resolve@patch:resolve@^1.8.1#~builtin<compat/resolve>, resolve@patch:resolve@~1.22.0#~builtin<compat/resolve>":
   version: 1.22.0
-  resolution: "resolve@patch:resolve@npm%3A1.22.0#~builtin<compat/resolve>::version=1.22.0&hash=c3c19d"
+  resolution: "resolve@patch:resolve@npm%3A1.22.0#~builtin<compat/resolve>::version=1.22.0&hash=07638b"
   dependencies:
     is-core-module: ^2.8.1
     path-parse: ^1.0.7
@@ -17745,11 +17783,11 @@ __metadata:
 
 "typescript@patch:typescript@^4.7.2#~builtin<compat/typescript>":
   version: 4.7.3
-  resolution: "typescript@patch:typescript@npm%3A4.7.3#~builtin<compat/typescript>::version=4.7.3&hash=65a307"
+  resolution: "typescript@patch:typescript@npm%3A4.7.3#~builtin<compat/typescript>::version=4.7.3&hash=bda367"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 137d18a77f52254a284960b16ab53d0619f57b69b5d585804b8413f798a1175ce3e774fb95e6a101868577aafe357d8fcfc9171f0dc9fc0c210e9ae59d107cc0
+  checksum: 8257ce7ecbbf9416da60045a76a99d473698ca9e973fa0ddab7137cacb1587255431176cbbcc801a650938c4dc8109ab88355774829a714fabe56a53a2fe4524
   languageName: node
   linkType: hard
 

@@ -1,11 +1,11 @@
 {
   "name": "@ortege/core",
   "description": "Core solidity contracts for Ortege",
-  "version": "1.3.6-beta0",
+  "version": "1.3.7",
   "dependencies": {
     "@openzeppelin/contracts": "^4.8.0",
     "@openzeppelin/contracts-upgradeable": "^4.8.0",
-    "@ortege/utils": "1.3.6-beta0"
+    "@ortege/utils": "1.3.6"
   },
   "devDependencies": {
     "@nomiclabs/hardhat-ethers": "^2.2.1",
@@ -52,7 +52,11 @@
     "test:forge": "forge test -vvv",
     "gas": "forge snapshot",
     "gas-ci": "yarn gas --check --tolerance 2 || (echo 'Manually update gas snapshot' && exit 1)",
-    "slither": "slither ."
+    "slither": "slither .",
+    "prepublishOnly": "yarn build"
   },
-  "types": "dist/index.d.ts"
+  "types": "dist/index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  }
 }
