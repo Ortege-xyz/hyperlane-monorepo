@@ -2,6 +2,9 @@
 
 - Create a service principal with ACR(Azure Container Registry) push and pull roles in Azure.
 ```sh
+# Set the default resource group
+az config set defaults.group=Ortege
+
 ACR_NAME="Ortege01"
 SERVICE_PRINCIPAL_NAME="ortege_acr_rw"
 ACR_REGISTRY_ID=$(az acr show --name $ACR_NAME --query "id" --output tsv)
