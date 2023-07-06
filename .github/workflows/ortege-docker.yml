@@ -1,4 +1,4 @@
-name: Build and Push Agent Image to GCR
+name: Build and Push Agent Image
 on:
   push:
     branches: [ortege]
@@ -7,6 +7,7 @@ on:
   pull_request:
     paths:
       - 'rust/**'
+      - '.github/workflows/ortege-docker.yml'
 
 concurrency:
   group: build-push-agents-${{ github.ref }}
@@ -31,7 +32,7 @@ jobs:
         with:
           # list of Docker images to use as base name for tags
           images: |
-            gcr.io/abacus-labs-dev/hyperlane-agent
+            ${{ secrets.CR_ENDPOINT }}/ortege/hyperlane-agent
           # generate Docker tags based on the following events/attributes
           tags: |
             type=ref,event=branch
