@@ -18,14 +18,14 @@ jobs:
         source_repo: https://github.com/hyperlane-xyz/hyperlane-monorepo
         source_branch: main
         destination_branch: upstream/main
-        github_token: ${{ secrets.GITHUB_TOKEN }}
+        github_token: ${{ secrets.GH_PAT }}
 
     - name: Create pull request
       uses: repo-sync/pull-request@v2
       with:
         source_branch: upstream/main
         destination_branch: main
-        github_token: ${{ secrets.GITHUB_TOKEN }}
+        github_token: ${{ secrets.GH_PAT }}
         pr_title: "Pulling ${{ github.ref }} into main"
         pr_body: |
           :crown: *An automated PR to sync with upstream*
