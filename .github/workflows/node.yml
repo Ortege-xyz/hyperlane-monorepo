@@ -139,6 +139,9 @@ jobs:
         run: cd typescript/infra && ./fork.sh ${{ matrix.environment }} ${{ matrix.module }}
 
   test-sol:
+    permissions:
+      security-events: write
+
     env:
       ETHERSCAN_API_KEY: ''
 
