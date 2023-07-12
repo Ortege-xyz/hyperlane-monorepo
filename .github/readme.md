@@ -1,6 +1,7 @@
 # Github Workflow
 
 - Create a service principal with ACR(Azure Container Registry) push and pull roles in Azure.
+
 ```sh
 # Set the default resource group
 az config set defaults.group=Ortege
@@ -19,6 +20,7 @@ echo "Service principal password: $CR_PASSWORD"
 ```
 
 - Set repository secrets in Github project settings page using the above values.
+
 ```sh
 CR_ENDPOINT
 CR_USERNAME

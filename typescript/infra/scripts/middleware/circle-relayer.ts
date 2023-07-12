@@ -10,13 +10,13 @@ import { LiquidityLayerConfig } from '@ortege/sdk/dist/middleware/liquidity-laye
 
 import { readJSON, sleep } from '../../src/utils/utils';
 import {
-  getEnvironment,
+  getArgs,
   getEnvironmentConfig,
   getEnvironmentDirectory,
 } from '../utils';
 
 async function check() {
-  const environment = await getEnvironment();
+  const { environment } = await getArgs().argv;
   const config = getEnvironmentConfig(environment);
 
   if (config.liquidityLayerConfig === undefined) {

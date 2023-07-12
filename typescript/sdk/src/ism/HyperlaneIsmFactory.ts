@@ -99,7 +99,10 @@ export class HyperlaneIsmFactory extends HyperlaneApp<IsmFactoryFactories> {
     const signer = this.multiProvider.getSigner(chain);
     let address: string;
     if (config.type === ModuleType.LEGACY_MULTISIG) {
-      if (process.env.CI !== 'true') {
+      if (
+        process.env.CI !== 'true' &&
+        process.env.ALLOW_LEGACY_MULTISIG_ISM !== 'true'
+      ) {
         throw new Error(
           'Legacy multisig ISM is being deprecated, do not deploy',
         );
@@ -110,8 +113,14 @@ export class HyperlaneIsmFactory extends HyperlaneApp<IsmFactoryFactories> {
         .deploy();
       await this.multiProvider.handleTx(chain, multisig.deployTransaction);
       const originDomain = this.multiProvider.getDomainId(origin!);
-      await multisig.enrollValidators([originDomain], [config.validators]);
-      await multisig.setThreshold(originDomain, config.threshold);
+      await this.multiProvider.handleTx(
+        chain,
+        multisig.enrollValidators([originDomain], [config.validators]),
+      );
+      await this.multiProvider.handleTx(
+        chain,
+        multisig.setThreshold(originDomain, config.threshold),
+      );
       address = multisig.address;
     } else {
       const multisigIsmFactory =
@@ -160,7 +169,10 @@ export class HyperlaneIsmFactory extends HyperlaneApp<IsmFactoryFactories> {
       moduleAddress,
       this.multiProvider.getSigner(chain),
     );
-    await routingIsm.transferOwnership(config.owner);
+    await this.multiProvider.handleTx(
+      chain,
+      await routingIsm.transferOwnership(config.owner),
+    );
     const address = dispatchLogs[0].args['module'];
     return IRoutingIsm__factory.connect(address, signer);
   }
@@ -215,7 +227,7 @@ export class HyperlaneIsmFactory extends HyperlaneApp<IsmFactoryFactories> {
 // body specific logic, as the sample message used when querying the ISM
 // sets all of these to zero.
 export async function moduleCanCertainlyVerify(
-  moduleAddress: types.Address,
+  destModuleAddress: types.Address,
   multiProvider: MultiProvider,
   origin: ChainName,
   destination: ChainName,
@@ -231,7 +243,7 @@ export async function moduleCanCertainlyVerify(
   );
   const provider = multiProvider.getSignerOrProvider(destination);
   const module = IInterchainSecurityModule__factory.connect(
-    moduleAddress,
+    destModuleAddress,
     provider,
   );
   try {
@@ -242,7 +254,7 @@ export async function moduleCanCertainlyVerify(
       moduleType === ModuleType.MESSAGE_ID_MULTISIG
     ) {
       const multisigModule = IMultisigIsm__factory.connect(
-        moduleAddress,
+        destModuleAddress,
         provider,
       );
 
@@ -251,7 +263,10 @@ export async function moduleCanCertainlyVerify(
       );
       return threshold > 0;
     } else if (moduleType === ModuleType.ROUTING) {
-      const routingIsm = IRoutingIsm__factory.connect(moduleAddress, provider);
+      const routingIsm = IRoutingIsm__factory.connect(
+        destModuleAddress,
+        provider,
+      );
       const subModule = await routingIsm.route(message);
       return moduleCanCertainlyVerify(
         subModule,
@@ -261,7 +276,7 @@ export async function moduleCanCertainlyVerify(
       );
     } else if (moduleType === ModuleType.AGGREGATION) {
       const aggregationIsm = IAggregationIsm__factory.connect(
-        moduleAddress,
+        destModuleAddress,
         provider,
       );
       const [subModules, threshold] = await aggregationIsm.modulesAndThreshold(
@@ -284,7 +299,7 @@ export async function moduleCanCertainlyVerify(
       throw new Error(`Unsupported module type: ${moduleType}`);
     }
   } catch (e) {
-    logging.warn(`Error checking module ${moduleAddress}: ${e}`);
+    logging.warn(`Error checking module ${destModuleAddress}: ${e}`);
     return false;
   }
 }

@@ -1,15 +1,17 @@
+import { Keypair } from '@solana/web3.js';
 import { Wallet, ethers } from 'ethers';
 
-import { ChainName } from '@ortege/sdk';
+import { ChainName, ProtocolType } from '@ortege/sdk';
+import { utils } from '@ortege/utils';
 
 import { Contexts } from '../../config/contexts';
 import { DeployEnvironment } from '../config';
+import { Role } from '../roles';
 import { fetchGCPSecret, setGCPSecret } from '../utils/gcloud';
 import { execCmd, include } from '../utils/utils';
 
 import { isValidatorKey, keyIdentifier } from './agent';
 import { CloudAgentKey } from './keys';
-import { KEY_ROLE_ENUM } from './roles';
 
 // This is the type for how the keys are persisted in GCP
 export interface SecretManagerPersistedKeys {
@@ -38,7 +40,7 @@ export class AgentGCPKey extends CloudAgentKey {
   constructor(
     environment: DeployEnvironment,
     context: Contexts,
-    role: KEY_ROLE_ENUM,
+    role: Role,
     chainName?: ChainName,
     index?: number,
     private remoteKey: RemoteKey = { fetched: false },
@@ -89,10 +91,26 @@ export class AgentGCPKey extends CloudAgentKey {
     return this.remoteKey.address;
   }
 
+  addressForProtocol(protocol: ProtocolType): string | undefined {
+    this.requireFetched();
+
+    switch (protocol) {
+      case ProtocolType.Ethereum:
+        return this.address;
+      case ProtocolType.Sealevel:
+        const keypair = Keypair.fromSeed(
+          Uint8Array.from(Buffer.from(utils.strip0x(this.privateKey), 'hex')),
+        );
+        return keypair.publicKey.toBase58();
+      default:
+        return undefined;
+    }
+  }
+
   async fetch() {
-    const secret: SecretManagerPersistedKeys = await fetchGCPSecret(
+    const secret: SecretManagerPersistedKeys = (await fetchGCPSecret(
       this.identifier,
-    );
+    )) as any;
     this.remoteKey = {
       fetched: true,
       privateKey: secret.privateKey,

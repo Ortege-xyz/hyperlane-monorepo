@@ -1,104 +1,171 @@
-import { AgentConnectionType, chainMetadata } from '@ortege/sdk';
+import {
+  AgentConnectionType,
+  chainMetadata,
+  getDomainId,
+  hyperlaneEnvironments,
+  objMap,
+} from '@ortege/sdk';
 
-import { ALL_KEY_ROLES, KEY_ROLE_ENUM } from '../../../src/agents/roles';
-import { AgentConfig } from '../../../src/config';
-import { GasPaymentEnforcementPolicyType } from '../../../src/config/agent';
+import {
+  GasPaymentEnforcementPolicyType,
+  RootAgentConfig,
+  routerMatchingList,
+} from '../../../src/config';
+import { GasPaymentEnforcementConfig } from '../../../src/config/agent/relayer';
+import { ALL_KEY_ROLES, Role } from '../../../src/roles';
 import { Contexts } from '../../contexts';
-import { helloworldMatchingList, routerMatchingList } from '../../utils';
 
-import { chainNames, environment } from './chains';
+import { agentChainNames, environment } from './chains';
 import { helloWorld } from './helloworld';
-import interchainQueryRouters from './middleware/queries/addresses.json';
 import { validators } from './validators';
 
-const releaseCandidateHelloworldMatchingList = helloworldMatchingList(
-  helloWorld,
-  Contexts.ReleaseCandidate,
+const releaseCandidateHelloworldMatchingList = routerMatchingList(
+  helloWorld[Contexts.ReleaseCandidate].addresses,
+);
+
+const interchainQueryRouters = objMap(
+  hyperlaneEnvironments.testnet,
+  (_, addresses) => {
+    return {
+      // @ts-ignore moonbasealpha has no interchain query router
+      router: addresses.interchainQueryRouter,
+    };
+  },
 );
 
 const interchainQueriesMatchingList = routerMatchingList(
   interchainQueryRouters,
 );
 
-export const hyperlane: AgentConfig = {
+const repo = 'gcr.io/abacus-labs-dev/hyperlane-agent';
+
+const contextBase = {
   namespace: environment,
   runEnv: environment,
-  context: Contexts.Hyperlane,
-  docker: {
-    repo: 'gcr.io/abacus-labs-dev/hyperlane-agent',
-    tag: '40cc4a6-20230420-080111',
-  },
+  contextChainNames: agentChainNames,
+  environmentChainNames: agentChainNames,
   aws: {
     region: 'us-east-1',
   },
-  environmentChainNames: chainNames,
-  contextChainNames: chainNames,
-  connectionType: AgentConnectionType.HttpFallback,
-  validators,
+} as const;
+
+const gasPaymentEnforcement: GasPaymentEnforcementConfig[] = [
+  {
+    type: GasPaymentEnforcementPolicyType.None,
+    // To continue relaying interchain query callbacks, we whitelist
+    // all messages between interchain query routers.
+    // This whitelist will become more strict with
+    // https://github.com/hyperlane-xyz/hyperlane-monorepo/issues/1605
+    matchingList: interchainQueriesMatchingList,
+  },
+  // Default policy is OnChainFeeQuoting
+  {
+    type: GasPaymentEnforcementPolicyType.OnChainFeeQuoting,
+  },
+];
+
+const hyperlane: RootAgentConfig = {
+  ...contextBase,
+  context: Contexts.Hyperlane,
+  rolesWithKeys: ALL_KEY_ROLES,
   relayer: {
-    default: {
-      blacklist: [
-        ...releaseCandidateHelloworldMatchingList,
-        {
-          // In an effort to reduce some giant retry queues that resulted
-          // from spam txs to the old TestRecipient before we were charging for
-          // gas, we blacklist the old TestRecipient address.
-          recipientAddress: '0xBC3cFeca7Df5A45d61BC60E7898E63670e1654aE',
-        },
-      ],
-      gasPaymentEnforcement: [
-        {
-          type: GasPaymentEnforcementPolicyType.None,
-          // To continue relaying interchain query callbacks, we whitelist
-          // all messages between interchain query routers.
-          // This whitelist will become more strict with
-          // https://github.com/hyperlane-xyz/hyperlane-monorepo/issues/1605
-          matchingList: interchainQueriesMatchingList,
-        },
-        // Default policy is OnChainFeeQuoting
-        {
-          type: GasPaymentEnforcementPolicyType.OnChainFeeQuoting,
-        },
-      ],
+    connectionType: AgentConnectionType.HttpFallback,
+    docker: {
+      repo,
+      tag: '2deb9b8-20230602-205342',
+    },
+    blacklist: [
+      ...releaseCandidateHelloworldMatchingList,
+      {
+        // In an effort to reduce some giant retry queues that resulted
+        // from spam txs to the old TestRecipient before we were charging for
+        // gas, we blacklist the old TestRecipient address.
+        recipientAddress: '0xBC3cFeca7Df5A45d61BC60E7898E63670e1654aE',
+      },
+    ],
+    gasPaymentEnforcement,
+  },
+  validators: {
+    connectionType: AgentConnectionType.HttpFallback,
+    docker: {
+      repo,
+      tag: '497db63-20230614-174455',
+    },
+    chainDockerOverrides: {
+      [chainMetadata.solanadevnet.name]: {
+        tag: '79bad9d-20230706-190752',
+      },
+      [chainMetadata.zbctestnet.name]: {
+        tag: '79bad9d-20230706-190752',
+      },
+    },
+    chains: validators,
+  },
+  scraper: {
+    connectionType: AgentConnectionType.HttpFallback,
+    docker: {
+      repo,
+      tag: 'aaddba7-20230620-154941',
     },
   },
-  rolesWithKeys: ALL_KEY_ROLES,
 };
 
-export const releaseCandidate: AgentConfig = {
-  namespace: environment,
-  runEnv: environment,
+const releaseCandidate: RootAgentConfig = {
+  ...contextBase,
   context: Contexts.ReleaseCandidate,
-  docker: {
-    repo: 'gcr.io/abacus-labs-dev/hyperlane-agent',
-    tag: '40cc4a6-20230420-080111',
-  },
-  aws: {
-    region: 'us-east-1',
-  },
-  environmentChainNames: chainNames,
-  contextChainNames: chainNames,
-  connectionType: AgentConnectionType.HttpFallback,
+  rolesWithKeys: [Role.Relayer, Role.Kathy],
   relayer: {
-    default: {
-      whitelist: releaseCandidateHelloworldMatchingList,
-      gasPaymentEnforcement: [
-        {
-          type: GasPaymentEnforcementPolicyType.None,
-          matchingList: interchainQueriesMatchingList,
-        },
-        // Default policy is OnChainFeeQuoting
-        {
-          type: GasPaymentEnforcementPolicyType.OnChainFeeQuoting,
-        },
-      ],
-      transactionGasLimit: 750000,
-      // Skipping arbitrum because the gas price estimates are inclusive of L1
-      // fees which leads to wildly off predictions.
-      skipTransactionGasLimitFor: [chainMetadata.arbitrumgoerli.chainId],
+    connectionType: AgentConnectionType.HttpFallback,
+    docker: {
+      repo,
+      tag: '79bad9d-20230706-190752',
     },
+    whitelist: [
+      ...releaseCandidateHelloworldMatchingList,
+      // Whitelist all traffic to solanadevnet and zbctestnet
+      {
+        originDomain: '*',
+        senderAddress: '*',
+        destinationDomain: [
+          getDomainId(chainMetadata.solanadevnet),
+          getDomainId(chainMetadata.zbctestnet),
+        ],
+        recipientAddress: '*',
+      },
+      // Whitelist all traffic from solanadevnet and zbctestnet to fuji
+      {
+        originDomain: [
+          getDomainId(chainMetadata.solanadevnet),
+          getDomainId(chainMetadata.zbctestnet),
+        ],
+        senderAddress: '*',
+        destinationDomain: [getDomainId(chainMetadata.fuji)],
+        recipientAddress: '*',
+      },
+    ],
+    gasPaymentEnforcement: [
+      // Don't require gas payments from solanadevnet or zbctestnet
+      {
+        type: GasPaymentEnforcementPolicyType.None,
+        matchingList: [
+          {
+            originDomain: [
+              getDomainId(chainMetadata.solanadevnet),
+              getDomainId(chainMetadata.zbctestnet),
+            ],
+            senderAddress: '*',
+            destinationDomain: [getDomainId(chainMetadata.fuji)],
+            recipientAddress: '*',
+          },
+        ],
+      },
+      ...gasPaymentEnforcement,
+    ],
+    transactionGasLimit: 750000,
+    // Skipping arbitrum because the gas price estimates are inclusive of L1
+    // fees which leads to wildly off predictions.
+    skipTransactionGasLimitFor: [chainMetadata.arbitrumgoerli.chainId],
   },
-  rolesWithKeys: [KEY_ROLE_ENUM.Relayer, KEY_ROLE_ENUM.Kathy],
 };
 
 export const agents = {
