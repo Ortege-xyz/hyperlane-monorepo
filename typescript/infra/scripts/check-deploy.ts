@@ -7,8 +7,8 @@ import {
   InterchainAccountChecker,
   InterchainQuery,
   InterchainQueryChecker,
-} from '@hyperlane-xyz/sdk';
-import { HyperlaneIsmFactory } from '@hyperlane-xyz/sdk/dist/ism/HyperlaneIsmFactory';
+} from '@ortege/sdk';
+import { HyperlaneIsmFactory } from '@ortege/sdk/dist/ism/HyperlaneIsmFactory';
 
 import { deployEnvToSdkEnv } from '../src/config/environment';
 import { HyperlaneAppGovernor } from '../src/govern/HyperlaneAppGovernor';

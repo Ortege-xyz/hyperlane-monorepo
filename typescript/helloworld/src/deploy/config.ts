@@ -1,4 +1,4 @@
-import { RouterConfig, chainMetadata } from '@hyperlane-xyz/sdk';
+import { RouterConfig, chainMetadata } from '@ortege/sdk';
 
 export type HelloWorldConfig = RouterConfig;
 

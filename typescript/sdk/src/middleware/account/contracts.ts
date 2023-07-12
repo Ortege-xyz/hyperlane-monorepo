@@ -2,7 +2,7 @@ import {
   InterchainAccountIsm__factory,
   InterchainAccountRouter__factory,
   ProxyAdmin__factory,
-} from '@hyperlane-xyz/core';
+} from '@ortege/core';
 
 export const interchainAccountFactories = {
   interchainAccountRouter: new InterchainAccountRouter__factory(),

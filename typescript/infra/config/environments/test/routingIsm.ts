@@ -1,4 +1,4 @@
-import { ModuleType, RoutingIsmConfig } from '@hyperlane-xyz/sdk';
+import { ModuleType, RoutingIsmConfig } from '@ortege/sdk';
 
 import { multisigIsm } from './multisigIsm';
 

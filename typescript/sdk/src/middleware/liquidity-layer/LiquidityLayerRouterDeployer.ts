@@ -4,8 +4,8 @@ import {
   CircleBridgeAdapter,
   LiquidityLayerRouter,
   PortalAdapter,
-} from '@hyperlane-xyz/core';
-import { types, utils } from '@hyperlane-xyz/utils';
+} from '@ortege/core';
+import { types, utils } from '@ortege/utils';
 
 import { HyperlaneContracts, HyperlaneContractsMap } from '../../contracts';
 import { MultiProvider } from '../../providers/MultiProvider';

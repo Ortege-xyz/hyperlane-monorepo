@@ -5,8 +5,8 @@ import {
   defaultMultisigIsmConfigs,
   multisigIsmVerificationCost,
   objMap,
-} from '@hyperlane-xyz/sdk';
-import { utils } from '@hyperlane-xyz/utils';
+} from '@ortege/sdk';
+import { utils } from '@ortege/utils';
 
 import { MainnetChains, chainNames } from './chains';
 import { owners } from './owners';

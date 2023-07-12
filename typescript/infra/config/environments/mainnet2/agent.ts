@@ -3,7 +3,7 @@ import {
   chainMetadata,
   hyperlaneEnvironments,
   objMap,
-} from '@hyperlane-xyz/sdk';
+} from '@ortege/sdk';
 
 import {
   GasPaymentEnforcementPolicyType,

@@ -4,7 +4,7 @@ import {
   MultiProvider,
   attachContractsMap,
   createRouterConfigMap,
-} from '@hyperlane-xyz/sdk';
+} from '@ortege/sdk';
 
 import { HelloWorldApp } from '../app/app';
 import { helloWorldFactories } from '../app/contracts';

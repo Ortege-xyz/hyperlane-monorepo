@@ -1,4 +1,4 @@
-import { AgentConnectionType } from '@hyperlane-xyz/sdk';
+import { AgentConnectionType } from '@ortege/sdk';
 
 import { Contexts } from '../../config/contexts';
 import { Role } from '../roles';

@@ -1,7 +1,7 @@
 import { ethers } from 'ethers';
 
-import { Mailbox, Mailbox__factory } from '@hyperlane-xyz/core';
-import { types, utils } from '@hyperlane-xyz/utils';
+import { Mailbox, Mailbox__factory } from '@ortege/core';
+import { types, utils } from '@ortege/utils';
 
 import { HyperlaneApp } from '../HyperlaneApp';
 import {

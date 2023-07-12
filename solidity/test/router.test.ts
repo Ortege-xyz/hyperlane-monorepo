@@ -4,7 +4,7 @@ import { expect } from 'chai';
 import { BigNumberish, ContractTransaction } from 'ethers';
 import { ethers } from 'hardhat';
 
-import { utils } from '@hyperlane-xyz/utils';
+import { utils } from '@ortege/utils';
 
 import {
   TestInterchainGasPaymaster,

@@ -1,7 +1,7 @@
 import type {
   DispatchEvent,
   ProcessEvent,
-} from '@hyperlane-xyz/core/dist/contracts/Mailbox';
+} from '@ortege/core/dist/contracts/Mailbox';
 
 export { DispatchEvent, ProcessEvent };
 

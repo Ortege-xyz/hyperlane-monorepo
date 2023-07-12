@@ -4,7 +4,7 @@ import {
   ChainMap,
   Chains,
   chainMetadata,
-} from '@hyperlane-xyz/sdk';
+} from '@ortege/sdk';
 
 const circleDomainMapping = [
   { hyperlaneDomain: chainMetadata[Chains.goerli].chainId, circleDomain: 0 },

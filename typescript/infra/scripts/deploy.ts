@@ -12,7 +12,7 @@ import {
   InterchainQueryDeployer,
   LiquidityLayerDeployer,
   objMap,
-} from '@hyperlane-xyz/sdk';
+} from '@ortege/sdk';
 
 import { deployEnvToSdkEnv } from '../src/config/environment';
 import { deployWithArtifacts } from '../src/deployment/deploy';

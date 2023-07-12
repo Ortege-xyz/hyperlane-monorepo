@@ -1,6 +1,6 @@
 import { BigNumber, ethers } from 'ethers';
 
-import { ChainMap, ChainName } from '@hyperlane-xyz/sdk';
+import { ChainMap, ChainName } from '@ortege/sdk';
 
 import { AllStorageGasOracleConfigs } from '../../../src/config';
 import {

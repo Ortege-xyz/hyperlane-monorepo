@@ -1,7 +1,7 @@
 import { BigNumber } from 'ethers';
 
-import { InterchainGasPaymaster, OverheadIgp } from '@hyperlane-xyz/core';
-import type { types } from '@hyperlane-xyz/utils';
+import { InterchainGasPaymaster, OverheadIgp } from '@ortege/core';
+import type { types } from '@ortege/utils';
 
 import type { CheckerViolation } from '../deploy/types';
 import { ChainMap } from '../types';

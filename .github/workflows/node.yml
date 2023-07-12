@@ -105,16 +105,16 @@ jobs:
           key: ${{ github.sha }}
 
       - name: sdk
-        run: yarn workspace @hyperlane-xyz/sdk run test
+        run: yarn workspace @ortege/sdk run test
 
       - name: helloworld
-        run: yarn workspace @hyperlane-xyz/helloworld run test
+        run: yarn workspace @ortege/helloworld run test
 
       - name: token
-        run: yarn workspace @hyperlane-xyz/hyperlane-token run test
+        run: yarn workspace @ortege/hyperlane-token run test
 
       - name: infra
-        run: yarn workspace @hyperlane-xyz/infra run test
+        run: yarn workspace @ortege/infra run test
 
   test-env:
     runs-on: ubuntu-latest
@@ -122,7 +122,8 @@ jobs:
     strategy:
       matrix:
         environment: [testnet3, mainnet2]
-        module: [ism, core, igp, ica]
+        # module: [ism, core, igp, ica]
+        module: [ism, core, igp]
 
     steps:
       - uses: actions/checkout@v3
@@ -169,10 +170,10 @@ jobs:
         run: cd solidity && forge build --build-info
 
       #- name: gas
-      #  run: yarn workspace @hyperlane-xyz/core run gas-ci
+      #  run: yarn workspace @ortege/core run gas-ci
 
       - name: Unit tests
-        run: yarn workspace @hyperlane-xyz/core run test
+        run: yarn workspace @ortege/core run test
 
       - name: Run Slither
         uses: crytic/slither-action@main

@@ -1,6 +1,6 @@
 import { utils as ethersUtils } from 'ethers';
 
-import { types, utils } from '@hyperlane-xyz/utils';
+import { types, utils } from '@ortege/utils';
 
 import { BytecodeHash } from '../consts/bytecode';
 import { HyperlaneAppChecker } from '../deploy/HyperlaneAppChecker';

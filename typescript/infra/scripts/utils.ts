@@ -17,7 +17,7 @@ import {
   collectValidators,
   objMap,
   promiseObjAll,
-} from '@hyperlane-xyz/sdk';
+} from '@ortege/sdk';
 
 import { Contexts } from '../config/contexts';
 import { environments } from '../config/environments';

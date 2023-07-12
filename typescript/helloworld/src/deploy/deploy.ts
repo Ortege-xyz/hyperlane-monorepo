@@ -3,7 +3,7 @@ import {
   HyperlaneContracts,
   HyperlaneRouterDeployer,
   MultiProvider,
-} from '@hyperlane-xyz/sdk';
+} from '@ortege/sdk';
 
 import { HelloWorldFactories, helloWorldFactories } from '../app/contracts';
 import { HelloWorld } from '../types';

@@ -7,8 +7,8 @@ import {
   HyperlaneContracts,
   MultiProvider,
   objMap,
-} from '@hyperlane-xyz/sdk';
-import { GasConfig, RouterConfig } from '@hyperlane-xyz/sdk/dist/router/types';
+} from '@ortege/sdk';
+import { GasConfig, RouterConfig } from '@ortege/sdk/dist/router/types';
 
 import {
   CollateralConfig,

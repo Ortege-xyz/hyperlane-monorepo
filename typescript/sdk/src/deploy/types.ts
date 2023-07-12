@@ -1,6 +1,6 @@
 import type { Contract } from 'ethers';
 
-import type { Ownable } from '@hyperlane-xyz/core';
+import type { Ownable } from '@ortege/core';
 
 import type { ChainName } from '../types';
 

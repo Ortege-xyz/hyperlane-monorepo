@@ -1,7 +1,7 @@
 import { BigNumber, utils as ethersUtils } from 'ethers';
 
-import { Ownable } from '@hyperlane-xyz/core';
-import { types, utils } from '@hyperlane-xyz/utils';
+import { Ownable } from '@ortege/core';
+import { types, utils } from '@ortege/utils';
 
 import { BytecodeHash } from '../consts/bytecode';
 import { HyperlaneAppChecker } from '../deploy/HyperlaneAppChecker';

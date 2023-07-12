@@ -8,8 +8,8 @@ import {
   HyperlaneCore,
   MultiProvider,
   RouterApp,
-} from '@hyperlane-xyz/sdk';
-import { debug } from '@hyperlane-xyz/utils';
+} from '@ortege/sdk';
+import { debug } from '@ortege/utils';
 
 import { HelloWorld } from '../types';
 

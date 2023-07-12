@@ -1,4 +1,4 @@
-import { InterchainAccountRouter } from '@hyperlane-xyz/core';
+import { InterchainAccountRouter } from '@ortege/core';
 
 import {
   HyperlaneEnvironment,

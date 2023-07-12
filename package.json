@@ -1,6 +1,6 @@
 {
-  "name": "@hyperlane-xyz/monorepo",
-  "description": "A yarn workspace of core Hyperlane packages",
+  "name": "@ortege/monorepo",
+  "description": "A yarn workspace of core Ortege packages",
   "version": "0.0.0",
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "^3.2.0",
@@ -16,6 +16,7 @@
   "private": true,
   "scripts": {
     "build": "yarn workspaces foreach --verbose --parallel --topological run build",
+    "build:e2e": "yarn workspaces foreach --verbose --parallel --exclude @ortege/monorepo --exclude @ortege/hyperlane-token --topological run build",
     "clean": "yarn workspaces foreach --verbose --parallel run clean",
     "postinstall": "husky install",
     "prettier": "yarn workspaces foreach --verbose --parallel run prettier",

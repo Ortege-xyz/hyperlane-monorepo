@@ -8,7 +8,7 @@ import {
   TestCoreApp,
   TestCoreDeployer,
   deployTestIgpsAndGetRouterConfig,
-} from '@hyperlane-xyz/sdk';
+} from '@ortege/sdk';
 
 import { HelloWorldApp } from '../app/app';
 import { HelloWorldFactories } from '../app/contracts';

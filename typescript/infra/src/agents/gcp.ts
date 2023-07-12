@@ -1,8 +1,8 @@
 import { Keypair } from '@solana/web3.js';
 import { Wallet, ethers } from 'ethers';
 
-import { ChainName, ProtocolType } from '@hyperlane-xyz/sdk';
-import { utils } from '@hyperlane-xyz/utils';
+import { ChainName, ProtocolType } from '@ortege/sdk';
+import { utils } from '@ortege/utils';
 
 import { Contexts } from '../../config/contexts';
 import { DeployEnvironment } from '../config';

@@ -1,4 +1,4 @@
-import { ChainName, ProtocolType, chainMetadata } from '@hyperlane-xyz/sdk';
+import { ChainName, ProtocolType, chainMetadata } from '@ortege/sdk';
 
 import { Contexts } from '../../config/contexts';
 import {

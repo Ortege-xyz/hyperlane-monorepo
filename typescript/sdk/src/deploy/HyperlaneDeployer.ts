@@ -8,8 +8,8 @@ import {
   ProxyAdmin__factory,
   TransparentUpgradeableProxy,
   TransparentUpgradeableProxy__factory,
-} from '@hyperlane-xyz/core';
-import { types, utils } from '@hyperlane-xyz/utils';
+} from '@ortege/core';
+import { types, utils } from '@ortege/utils';
 
 import {
   HyperlaneAddressesMap,

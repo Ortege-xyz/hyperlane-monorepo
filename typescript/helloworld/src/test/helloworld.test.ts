@@ -9,7 +9,7 @@ import {
   TestCoreApp,
   TestCoreDeployer,
   deployTestIgpsAndGetRouterConfig,
-} from '@hyperlane-xyz/sdk';
+} from '@ortege/sdk';
 
 import { HelloWorldConfig } from '../deploy/config';
 import { HelloWorldDeployer } from '../deploy/deploy';

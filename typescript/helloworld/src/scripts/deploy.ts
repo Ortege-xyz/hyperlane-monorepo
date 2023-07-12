@@ -6,7 +6,7 @@ import {
   MultiProvider,
   createRouterConfigMap,
   serializeContractsMap,
-} from '@hyperlane-xyz/sdk';
+} from '@ortege/sdk';
 
 import { prodConfigs } from '../deploy/config';
 import { HelloWorldDeployer } from '../deploy/deploy';
