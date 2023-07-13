@@ -26,10 +26,8 @@ jobs:
         source_branch: upstream/main
         destination_branch: main
         github_token: ${{ secrets.GH_PAT }}
-        pr_title: "Pulling upstream into main"
+        pr_title: ":rocket: Pulling upstream into main"
         pr_body: |
-          :crown: *An automated PR to sync with upstream*
+          *An automated PR to sync with upstream*
 
           Co-authored-by: josedev-union josedev-union@users.noreply.github.com
-
-        pr_reviewer: "HariSeldon23"
