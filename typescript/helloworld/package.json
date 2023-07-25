@@ -1,10 +1,10 @@
 {
   "name": "@ortege/helloworld",
   "description": "A basic skeleton of an Hyperlane app",
-  "version": "1.3.8",
+  "version": "1.4.2",
   "dependencies": {
     "@openzeppelin/contracts-upgradeable": "^4.8.0",
-    "@ortege/sdk": "1.3.8",
+    "@ortege/sdk": "1.4.2",
     "ethers": "^5.7.2"
   },
   "devDependencies": {

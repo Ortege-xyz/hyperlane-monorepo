@@ -86,7 +86,7 @@ export const arbitrum: ChainMetadata = {
   },
   gasCurrencyCoinGeckoId: 'ethereum', // ETH is used for gas
   gnosisSafeTransactionServiceUrl:
-    'https://safe-transaction.arbitrum.gnosis.io/',
+    'https://safe-transaction-arbitrum.safe.global/',
 };
 
 export const arbitrumgoerli: ChainMetadata = {
@@ -145,7 +145,7 @@ export const avalanche: ChainMetadata = {
   },
   gasCurrencyCoinGeckoId: 'avalanche-2',
   gnosisSafeTransactionServiceUrl:
-    'https://safe-transaction.avalanche.gnosis.io/',
+    'https://safe-transaction-avalanche.safe.global/',
 };
 
 export const bsc: ChainMetadata = {
@@ -174,7 +174,7 @@ export const bsc: ChainMetadata = {
     estimateBlockTime: 3,
   },
   gasCurrencyCoinGeckoId: 'binancecoin',
-  gnosisSafeTransactionServiceUrl: 'https://safe-transaction.bsc.gnosis.io/',
+  gnosisSafeTransactionServiceUrl: 'https://safe-transaction-bsc.safe.global/',
 };
 
 export const bsctestnet: ChainMetadata = {
@@ -262,7 +262,8 @@ export const ethereum: ChainMetadata = {
     reorgPeriod: 14,
     estimateBlockTime: 13,
   },
-  gnosisSafeTransactionServiceUrl: 'https://safe-transaction.gnosis.io',
+  gnosisSafeTransactionServiceUrl:
+    'https://safe-transaction-mainnet.safe.global/',
 };
 
 export const fuji: ChainMetadata = {
@@ -466,7 +467,7 @@ export const optimism: ChainMetadata = {
   },
   gasCurrencyCoinGeckoId: 'ethereum', // ETH is used for gas
   gnosisSafeTransactionServiceUrl:
-    'https://safe-transaction.optimism.gnosis.io/',
+    'https://safe-transaction-optimism.safe.global/',
 };
 
 export const optimismgoerli: ChainMetadata = {
@@ -527,7 +528,7 @@ export const polygon: ChainMetadata = {
   },
   gasCurrencyCoinGeckoId: 'matic-network',
   gnosisSafeTransactionServiceUrl:
-    'https://safe-transaction.polygon.gnosis.io/',
+    'https://safe-transaction-polygon.safe.global/',
 };
 
 export const gnosis: ChainMetadata = {
@@ -560,7 +561,8 @@ export const gnosis: ChainMetadata = {
     estimateBlockTime: 5,
   },
   gasCurrencyCoinGeckoId: 'xdai',
-  gnosisSafeTransactionServiceUrl: 'https://safe-transaction.xdai.gnosis.io/',
+  gnosisSafeTransactionServiceUrl:
+    'https://safe-transaction-gnosis-chain.safe.global/',
 };
 export const coston2: ChainMetadata = {
   chainId: 114,
@@ -699,7 +701,7 @@ export const test1: ChainMetadata = {
   protocol: ProtocolType.Ethereum,
   displayName: 'Test 1',
   nativeToken: etherToken,
-  rpcUrls: [{ http: 'http://localhost:8545' }],
+  rpcUrls: [{ http: 'http://127.0.0.1:8545' }],
   blockExplorers: [],
   blocks: {
     confirmations: 1,
@@ -716,7 +718,7 @@ export const test2: ChainMetadata = {
   protocol: ProtocolType.Ethereum,
   displayName: 'Test 2',
   nativeToken: etherToken,
-  rpcUrls: [{ http: 'http://localhost:8545' }],
+  rpcUrls: [{ http: 'http://127.0.0.1:8545' }],
   blockExplorers: [],
   blocks: {
     confirmations: 1,
@@ -733,7 +735,7 @@ export const test3: ChainMetadata = {
   protocol: ProtocolType.Ethereum,
   displayName: 'Test 3',
   nativeToken: etherToken,
-  rpcUrls: [{ http: 'http://localhost:8545' }],
+  rpcUrls: [{ http: 'http://127.0.0.1:8545' }],
   blockExplorers: [],
   blocks: {
     confirmations: 1,
@@ -773,8 +775,8 @@ export const solana: ChainMetadata = {
 
 export const solanatestnet: ChainMetadata = {
   protocol: ProtocolType.Sealevel,
-  chainId: 13998111450,
-  domainId: 13998111450,
+  chainId: 1399811150,
+  domainId: 1399811150,
   name: 'solanatestnet',
   displayName: 'Solana Testnet',
   displayNameShort: 'Sol Testnet',
@@ -813,7 +815,7 @@ export const zbctestnet: ChainMetadata = {
   displayName: 'Zebec Devnet',
   displayNameShort: 'Zebec Dev',
   nativeToken: solToken,
-  rpcUrls: [{ http: 'https://api.devnet.solana.com' }],
+  rpcUrls: [{ http: 'https://api.zebec.eclipsenetwork.xyz:8899' }],
   blockExplorers: [],
   blocks: {
     confirmations: 1,
