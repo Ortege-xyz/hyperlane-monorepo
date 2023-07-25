@@ -3,7 +3,7 @@ import {
   LiquidityLayerRouter__factory,
   PortalAdapter__factory,
   ProxyAdmin__factory,
-} from '@hyperlane-xyz/core';
+} from '@ortege/core';
 
 export const liquidityLayerFactories = {
   circleBridgeAdapter: new CircleBridgeAdapter__factory(),

@@ -2,7 +2,7 @@ import {
   InterchainAccountRouter,
   Router,
   TransparentUpgradeableProxy__factory,
-} from '@hyperlane-xyz/core';
+} from '@ortege/core';
 
 import { HyperlaneContracts } from '../../contracts';
 import { MultiProvider } from '../../providers/MultiProvider';

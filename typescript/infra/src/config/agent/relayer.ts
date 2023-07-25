@@ -1,6 +1,6 @@
 import { BigNumberish } from 'ethers';
 
-import { ChainMap, ProtocolType, chainMetadata } from '@hyperlane-xyz/sdk';
+import { ChainMap, ProtocolType, chainMetadata } from '@ortege/sdk';
 
 import { AgentAwsUser } from '../../agents/aws';
 import { Role } from '../../roles';

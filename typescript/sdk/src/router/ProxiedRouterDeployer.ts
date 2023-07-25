@@ -1,5 +1,5 @@
-import { Router } from '@hyperlane-xyz/core';
-import { eqAddress } from '@hyperlane-xyz/utils/dist/src/utils';
+import { Router } from '@ortege/core';
+import { eqAddress } from '@ortege/utils/dist/src/utils';
 
 import { HyperlaneContracts } from '../contracts';
 import { ChainName } from '../types';

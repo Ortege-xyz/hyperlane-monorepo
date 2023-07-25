@@ -6,7 +6,7 @@ import {
   NoMetadataIsmConfig,
   filterByChains,
   objMap,
-} from '@hyperlane-xyz/sdk';
+} from '@ortege/sdk';
 
 import { owners } from './owners';
 

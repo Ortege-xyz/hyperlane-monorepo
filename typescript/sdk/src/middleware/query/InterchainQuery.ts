@@ -1,4 +1,4 @@
-import { InterchainQueryRouter } from '@hyperlane-xyz/core';
+import { InterchainQueryRouter } from '@ortege/core';
 
 import {
   HyperlaneEnvironment,

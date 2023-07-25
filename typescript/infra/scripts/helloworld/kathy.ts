@@ -2,15 +2,15 @@ import { BigNumber, ethers } from 'ethers';
 import { Counter, Gauge, Registry } from 'prom-client';
 import { format } from 'util';
 
-import { HelloWorldApp } from '@hyperlane-xyz/helloworld';
+import { HelloWorldApp } from '@ortege/helloworld';
 import {
   AgentConnectionType,
   ChainName,
   DispatchedMessage,
   HyperlaneCore,
   HyperlaneIgp,
-} from '@hyperlane-xyz/sdk';
-import { debug, error, log, utils, warn } from '@hyperlane-xyz/utils';
+} from '@ortege/sdk';
+import { debug, error, log, utils, warn } from '@ortege/utils';
 
 import { deployEnvToSdkEnv } from '../../src/config/environment';
 import { Role } from '../../src/roles';

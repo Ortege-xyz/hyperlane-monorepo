@@ -1,4 +1,4 @@
-import { ChainMap, ChainMetadata, chainMetadata } from '@hyperlane-xyz/sdk';
+import { ChainMap, ChainMetadata, chainMetadata } from '@ortege/sdk';
 
 export const testConfigs: ChainMap<ChainMetadata> = {
   test1: chainMetadata.test1,

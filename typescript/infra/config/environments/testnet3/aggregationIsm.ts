@@ -9,7 +9,7 @@ import {
   defaultMultisigIsmConfigs,
   objFilter,
   objMap,
-} from '@hyperlane-xyz/sdk';
+} from '@ortege/sdk';
 
 import { Contexts } from '../../contexts';
 import { rcMultisigIsmConfigs } from '../../multisigIsm';

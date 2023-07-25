@@ -1,6 +1,6 @@
 import { ethers } from 'ethers';
 
-import { utils } from '@hyperlane-xyz/utils';
+import { utils } from '@ortege/utils';
 
 import { HyperlaneFactories } from '../contracts';
 import { HyperlaneAppChecker } from '../deploy/HyperlaneAppChecker';

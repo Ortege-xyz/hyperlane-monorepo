@@ -1,4 +1,4 @@
-import type { types } from '@hyperlane-xyz/utils';
+import type { types } from '@ortege/utils';
 
 export enum HookContractType {
   HOOK = 'hook',

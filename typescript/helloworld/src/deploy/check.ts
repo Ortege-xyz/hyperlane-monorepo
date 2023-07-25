@@ -1,4 +1,4 @@
-import { HyperlaneRouterChecker } from '@hyperlane-xyz/sdk';
+import { HyperlaneRouterChecker } from '@ortege/sdk';
 
 import { HelloWorldApp } from '../app/app';
 import { HelloWorldFactories } from '../app/contracts';

@@ -6,12 +6,12 @@ import {
   HyperlaneCoreChecker,
   OwnerViolation,
   ViolationType,
-} from '@hyperlane-xyz/sdk';
+} from '@ortege/sdk';
 import {
   MailboxViolation,
   MailboxViolationType,
-} from '@hyperlane-xyz/sdk/dist/core/types';
-import { types } from '@hyperlane-xyz/utils';
+} from '@ortege/sdk/dist/core/types';
+import { types } from '@ortege/utils';
 
 import { HyperlaneAppGovernor } from '../govern/HyperlaneAppGovernor';
 

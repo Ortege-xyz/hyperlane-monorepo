@@ -1,8 +1,8 @@
 import { keccak256 } from 'ethers/lib/utils';
 
-import { Ownable } from '@hyperlane-xyz/core';
-import type { types } from '@hyperlane-xyz/utils';
-import { utils } from '@hyperlane-xyz/utils';
+import { Ownable } from '@ortege/core';
+import type { types } from '@ortege/utils';
+import { utils } from '@ortege/utils';
 
 import { HyperlaneApp } from '../HyperlaneApp';
 import { filterOwnableContracts } from '../contracts';

@@ -3,7 +3,7 @@ import {
   OverheadIgp__factory,
   ProxyAdmin__factory,
   StorageGasOracle__factory,
-} from '@hyperlane-xyz/core';
+} from '@ortege/core';
 
 export const igpFactories = {
   proxyAdmin: new ProxyAdmin__factory(),

@@ -1,8 +1,5 @@
-import {
-  HyperlaneConnectionClient,
-  ProxyAdmin__factory,
-} from '@hyperlane-xyz/core';
-import type { types } from '@hyperlane-xyz/utils';
+import { HyperlaneConnectionClient, ProxyAdmin__factory } from '@ortege/core';
+import type { types } from '@ortege/utils';
 
 import { HyperlaneFactories } from '../contracts';
 import { CheckerViolation } from '../deploy/types';

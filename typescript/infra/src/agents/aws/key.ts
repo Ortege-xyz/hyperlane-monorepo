@@ -18,7 +18,7 @@ import {
 import { KmsEthersSigner } from 'aws-kms-ethers-signer';
 import { ethers } from 'ethers';
 
-import { ChainName } from '@hyperlane-xyz/sdk';
+import { ChainName } from '@ortege/sdk';
 
 import { AgentContextConfig, AwsKeyConfig, KeyType } from '../../config/agent';
 import { Role } from '../../roles';

@@ -8,7 +8,7 @@ import {
   providers,
 } from 'ethers';
 
-import { types, utils } from '@hyperlane-xyz/utils';
+import { types, utils } from '@ortege/utils';
 
 import { chainMetadata as defaultChainMetadata } from '../consts/chainMetadata';
 import { CoreChainName, TestChains } from '../consts/chains';

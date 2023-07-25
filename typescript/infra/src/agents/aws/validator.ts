@@ -1,4 +1,4 @@
-import { BaseValidator, types, utils } from '@hyperlane-xyz/utils';
+import { BaseValidator, types, utils } from '@ortege/utils';
 
 import { S3Receipt, S3Wrapper } from './s3';
 

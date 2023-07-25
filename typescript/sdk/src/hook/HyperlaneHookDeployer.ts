@@ -7,9 +7,9 @@ import {
   OptimismMessageHook__factory,
   TestRecipient,
   TestRecipient__factory,
-} from '@hyperlane-xyz/core';
-import { types } from '@hyperlane-xyz/utils';
-import { addressToBytes32 } from '@hyperlane-xyz/utils/dist/src/utils';
+} from '@ortege/core';
+import { types } from '@ortege/utils';
+import { addressToBytes32 } from '@ortege/utils/dist/src/utils';
 
 import { HyperlaneContracts, HyperlaneContractsMap } from '../contracts';
 import { HyperlaneDeployer } from '../deploy/HyperlaneDeployer';

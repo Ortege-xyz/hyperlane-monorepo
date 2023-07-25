@@ -1,4 +1,4 @@
-# Hyperlane
+# Ortege
 
 [![GitHub Actions][gha-badge]][gha] [![codecov](https://codecov.io/gh/hyperlane-xyz/hyperlane-monorepo/branch/main/graph/badge.svg?token=APC7C3Q2GS)](https://codecov.io/gh/hyperlane-xyz/hyperlane-monorepo) [![Foundry][foundry-badge]][foundry] [![License: MIT][license-badge]][license]
 
@@ -12,19 +12,19 @@
 
 ## Versioning
 
-Note this is the branch for Hyperlane v2.
+Note this is the branch for Ortege v2.
 
 V1 has since been deprecated in favor of V2, but if you are looking for code relating to the existing V1 deployments of the `testnet2` or `mainnet` environments, refer to the [v1](https://github.com/hyperlane-xyz/hyperlane-monorepo/tree/v1) branch.
 
 ## Overview
 
-Hyperlane is an interchain messaging protocol that allows applications to communicate between blockchains.
+Ortege is an interchain messaging protocol that allows applications to communicate between blockchains.
 
-Developers can use Hyperlane to share state between blockchains, allowing them to build interchain applications that live natively across multiple chains.
+Developers can use Ortege to share state between blockchains, allowing them to build interchain applications that live natively across multiple chains.
 
-To read more about interchain applications, how the protocol works, and how to integrate with Hyperlane, please see the [documentation](https://docs.hyperlane.xyz/).
+To read more about interchain applications, how the protocol works, and how to integrate with Ortege, please see the [documentation](https://docs.hyperlane.xyz/).
 
-## Working on Hyperlane
+## Working on Ortege
 
 ### Workspaces
 

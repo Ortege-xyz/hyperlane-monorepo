@@ -9,7 +9,7 @@ import {
   objMap,
   promiseObjAll,
   serializeContractsMap,
-} from '@hyperlane-xyz/sdk';
+} from '@ortege/sdk';
 
 import { getAgentConfigDirectory } from '../../scripts/utils';
 import { DeployEnvironment } from '../config';

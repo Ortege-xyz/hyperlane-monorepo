@@ -1,7 +1,7 @@
 import {
   InterchainQueryRouter__factory,
   ProxyAdmin__factory,
-} from '@hyperlane-xyz/core';
+} from '@ortege/core';
 
 export const interchainQueryFactories = {
   interchainQueryRouter: new InterchainQueryRouter__factory(),

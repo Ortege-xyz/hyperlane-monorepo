@@ -1,4 +1,4 @@
-import { AgentConnectionType, ChainMap, ChainName } from '@hyperlane-xyz/sdk';
+import { AgentConnectionType, ChainMap, ChainName } from '@ortege/sdk';
 
 import { DockerConfig } from './agent';
 

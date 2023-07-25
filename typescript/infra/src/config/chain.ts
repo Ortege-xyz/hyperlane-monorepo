@@ -5,7 +5,7 @@ import {
   ChainName,
   RetryJsonRpcProvider,
   RetryProviderOptions,
-} from '@hyperlane-xyz/sdk';
+} from '@ortege/sdk';
 
 import { getSecretRpcEndpoint } from '../agents';
 

@@ -1,4 +1,4 @@
-import { AgentConnectionType } from '@hyperlane-xyz/sdk';
+import { AgentConnectionType } from '@ortege/sdk';
 
 import { KeyFunderConfig } from '../../../src/config/funding';
 import { Role } from '../../../src/roles';

@@ -5,7 +5,7 @@ import {
   RoutingIsmConfig,
   defaultMultisigIsmConfigs,
   objMap,
-} from '@hyperlane-xyz/sdk';
+} from '@ortege/sdk';
 
 import { chainNames } from './chains';
 import { owners } from './owners';

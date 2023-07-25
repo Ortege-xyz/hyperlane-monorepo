@@ -3,7 +3,7 @@ import Safe from '@safe-global/protocol-kit';
 import { EthersAdapter } from '@safe-global/protocol-kit';
 import { ethers } from 'ethers';
 
-import { ChainName, MultiProvider, chainMetadata } from '@hyperlane-xyz/sdk';
+import { ChainName, MultiProvider, chainMetadata } from '@ortege/sdk';
 
 export function getSafeService(
   chain: ChainName,

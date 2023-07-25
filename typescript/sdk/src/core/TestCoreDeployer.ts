@@ -2,7 +2,7 @@ import {
   TestInterchainGasPaymaster__factory,
   TestMailbox__factory,
   TestMultisigIsm__factory,
-} from '@hyperlane-xyz/core';
+} from '@ortege/core';
 
 import { TestChains } from '../consts/chains';
 import { HyperlaneContracts } from '../contracts';

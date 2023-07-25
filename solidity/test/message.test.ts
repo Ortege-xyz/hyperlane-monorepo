@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import { ethers } from 'hardhat';
 
-import { utils } from '@hyperlane-xyz/utils';
+import { utils } from '@ortege/utils';
 
 import testCases from '../../vectors/message.json';
 import { TestMessage, TestMessage__factory } from '../types';

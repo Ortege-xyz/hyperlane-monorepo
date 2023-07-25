@@ -1,6 +1,6 @@
 import { ethers } from 'ethers';
 
-import { GasRouterConfig } from '@hyperlane-xyz/sdk';
+import { GasRouterConfig } from '@ortege/sdk';
 
 export enum TokenType {
   synthetic = 'synthetic',

@@ -5,8 +5,8 @@ import {
   OverheadIgp,
   ProxyAdmin,
   StorageGasOracle,
-} from '@hyperlane-xyz/core';
-import { types, utils } from '@hyperlane-xyz/utils';
+} from '@ortege/core';
+import { types, utils } from '@ortege/utils';
 
 import { HyperlaneContracts, filterOwnableContracts } from '../contracts';
 import { HyperlaneDeployer } from '../deploy/HyperlaneDeployer';

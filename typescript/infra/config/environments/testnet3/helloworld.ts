@@ -1,10 +1,10 @@
-import { HelloWorldConfig as HelloWorldContractsConfig } from '@hyperlane-xyz/helloworld';
+import { HelloWorldConfig as HelloWorldContractsConfig } from '@ortege/helloworld';
 import {
   AgentConnectionType,
   ChainMap,
   RouterConfig,
   objMap,
-} from '@hyperlane-xyz/sdk';
+} from '@ortege/sdk';
 
 import { HelloWorldConfig } from '../../../src/config';
 import { HelloWorldKathyRunMode } from '../../../src/config/helloworld';

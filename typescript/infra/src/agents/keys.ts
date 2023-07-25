@@ -1,6 +1,6 @@
 import { ethers } from 'ethers';
 
-import { ChainName, ProtocolType } from '@hyperlane-xyz/sdk';
+import { ChainName, ProtocolType } from '@ortege/sdk';
 
 import { Contexts } from '../../config/contexts';
 import { DeployEnvironment } from '../config';

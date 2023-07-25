@@ -1,5 +1,5 @@
-import { ChainMap } from '@hyperlane-xyz/sdk';
-import { types } from '@hyperlane-xyz/utils';
+import { ChainMap } from '@ortege/sdk';
+import { types } from '@ortege/utils';
 
 import { chainNames } from './chains';
 

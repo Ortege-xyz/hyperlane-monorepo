@@ -1,7 +1,7 @@
 import { ethers } from 'ethers';
 
-import type { types } from '@hyperlane-xyz/utils';
-import { eqAddress } from '@hyperlane-xyz/utils/dist/src/utils';
+import type { types } from '@ortege/utils';
+import { eqAddress } from '@ortege/utils/dist/src/utils';
 
 export async function proxyImplementation(
   provider: ethers.providers.Provider,

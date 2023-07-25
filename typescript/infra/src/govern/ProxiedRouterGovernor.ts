@@ -5,8 +5,8 @@ import {
   HyperlaneAppChecker,
   RouterApp,
   RouterConfig,
-} from '@hyperlane-xyz/sdk';
-import { types } from '@hyperlane-xyz/utils';
+} from '@ortege/sdk';
+import { types } from '@ortege/utils';
 
 import { HyperlaneAppGovernor } from './HyperlaneAppGovernor';
 

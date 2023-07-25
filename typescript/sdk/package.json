@@ -1,10 +1,10 @@
 {
-  "name": "@hyperlane-xyz/sdk",
-  "description": "The official SDK for the Hyperlane Network",
+  "name": "@ortege/sdk",
+  "description": "The official SDK for the Ortege Network",
   "version": "1.4.2",
   "dependencies": {
-    "@hyperlane-xyz/core": "1.4.2",
-    "@hyperlane-xyz/utils": "1.4.2",
+    "@ortege/core": "1.4.2",
+    "@ortege/utils": "1.4.2",
     "@types/coingecko-api": "^1.0.10",
     "@types/debug": "^4.1.7",
     "@wagmi/chains": "^0.2.6",
@@ -34,15 +34,15 @@
     "/dist",
     "/logos"
   ],
-  "homepage": "https://www.hyperlane.xyz",
+  "homepage": "https://www.ortege.io",
   "keywords": [
-    "Hyperlane",
+    "Ortege",
     "SDK",
     "Typescript"
   ],
   "license": "Apache-2.0",
   "main": "dist/index.js",
-  "repository": "https://github.com/hyperlane-xyz/hyperlane-monorepo",
+  "repository": "https://github.com/ortege-xyz/ortege-monorepo",
   "scripts": {
     "build": "tsc",
     "check": "tsc --noEmit",

@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: Apache-2.0
 pragma solidity >=0.8.0;
 
-import {GasRouter} from "@hyperlane-xyz/core/contracts/GasRouter.sol";
-import {TypeCasts} from "@hyperlane-xyz/core/contracts/libs/TypeCasts.sol";
+import {GasRouter} from "@ortege/core/contracts/GasRouter.sol";
+import {TypeCasts} from "@ortege/core/contracts/libs/TypeCasts.sol";
 import {Message} from "./Message.sol";
 
 /**

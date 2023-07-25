@@ -1,4 +1,4 @@
-import { ChainMap, ModuleType, MultisigIsmConfig } from '@hyperlane-xyz/sdk';
+import { ChainMap, ModuleType, MultisigIsmConfig } from '@ortege/sdk';
 
 export const rcMultisigIsmConfigs: ChainMap<MultisigIsmConfig> = {
   // ----------------- Mainnets -----------------

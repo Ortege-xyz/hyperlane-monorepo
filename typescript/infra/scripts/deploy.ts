@@ -1,6 +1,6 @@
 import path from 'path';
 
-import { HelloWorldDeployer } from '@hyperlane-xyz/helloworld';
+import { HelloWorldDeployer } from '@ortege/helloworld';
 import {
   ChainMap,
   HyperlaneCoreDeployer,
@@ -14,7 +14,7 @@ import {
   InterchainQueryDeployer,
   LiquidityLayerDeployer,
   objMap,
-} from '@hyperlane-xyz/sdk';
+} from '@ortege/sdk';
 
 import { Contexts } from '../config/contexts';
 import { helloWorldConfig } from '../config/environments/testnet3/helloworld';

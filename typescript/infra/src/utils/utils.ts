@@ -5,12 +5,7 @@ import { ethers } from 'ethers';
 import fs from 'fs';
 import path from 'path';
 
-import {
-  AllChains,
-  ChainName,
-  CoreChainName,
-  objMerge,
-} from '@hyperlane-xyz/sdk';
+import { AllChains, ChainName, CoreChainName, objMerge } from '@ortege/sdk';
 
 import { Contexts } from '../../config/contexts';
 import { Role } from '../roles';

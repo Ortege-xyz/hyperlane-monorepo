@@ -3,8 +3,8 @@ import { ethers } from 'ethers';
 import {
   TestInterchainGasPaymaster,
   TestInterchainGasPaymaster__factory,
-} from '@hyperlane-xyz/core';
-import { types } from '@hyperlane-xyz/utils';
+} from '@ortege/core';
+import { types } from '@ortege/utils';
 
 import { chainMetadata } from '../consts/chainMetadata';
 import { HyperlaneContractsMap } from '../contracts';

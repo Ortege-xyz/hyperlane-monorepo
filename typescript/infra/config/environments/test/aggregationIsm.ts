@@ -1,4 +1,4 @@
-import { AggregationIsmConfig, ModuleType } from '@hyperlane-xyz/sdk';
+import { AggregationIsmConfig, ModuleType } from '@ortege/sdk';
 
 import { merkleRootMultisig, messageIdMultisig } from './multisigIsm';
 
