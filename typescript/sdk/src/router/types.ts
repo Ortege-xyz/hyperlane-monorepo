@@ -1,21 +1,32 @@
-import { HyperlaneConnectionClient, ProxyAdmin__factory } from '@ortege/core';
-import type { types } from '@ortege/utils';
+import {
+  HyperlaneConnectionClient,
+  ProxyAdmin__factory,
+  TimelockController__factory,
+} from '@ortege/core';
+import type { Address } from '@ortege/utils';
 
-import { HyperlaneFactories } from '../contracts';
+import { HyperlaneFactories } from '../contracts/types';
+import { UpgradeConfig } from '../deploy/proxy';
 import { CheckerViolation } from '../deploy/types';
 import { IsmConfig } from '../ism/types';
 
+export type RouterAddress = {
+  router: Address;
+};
+
 export type OwnableConfig = {
-  owner: types.Address;
+  owner: Address;
 };
 
 export type ForeignDeploymentConfig = {
-  foreignDeployment?: types.Address;
+  foreignDeployment?: Address;
 };
 
 export type RouterConfig = ConnectionClientConfig &
   OwnableConfig &
   ForeignDeploymentConfig;
+
+export type ProxiedRouterConfig = RouterConfig & Partial<UpgradeConfig>;
 
 export type GasConfig = {
   gas: number;
@@ -25,12 +36,18 @@ export type GasRouterConfig = RouterConfig & GasConfig;
 
 export type ProxiedFactories = HyperlaneFactories & {
   proxyAdmin: ProxyAdmin__factory;
+  timelockController: TimelockController__factory;
+};
+
+export const proxiedFactories: ProxiedFactories = {
+  proxyAdmin: new ProxyAdmin__factory(),
+  timelockController: new TimelockController__factory(),
 };
 
 export type ConnectionClientConfig = {
-  mailbox: types.Address;
-  interchainGasPaymaster: types.Address;
-  interchainSecurityModule?: types.Address | IsmConfig;
+  mailbox: Address;
+  interchainGasPaymaster: Address;
+  interchainSecurityModule?: Address | IsmConfig;
 };
 
 export enum ConnectionClientViolationType {

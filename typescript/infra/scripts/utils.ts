@@ -12,12 +12,11 @@ import {
   HyperlaneCore,
   HyperlaneIgp,
   MultiProvider,
-  ProtocolType,
   RouterConfig,
   collectValidators,
-  objMap,
-  promiseObjAll,
 } from '@ortege/sdk';
+import { ProxiedRouterConfig } from '@ortege/sdk/dist/router/types';
+import { ProtocolType, objMap, promiseObjAll } from '@ortege/utils';
 
 import { Contexts } from '../config/contexts';
 import { environments } from '../config/environments';
@@ -250,7 +249,7 @@ export async function assertCorrectKubeContext(coreConfig: EnvironmentConfig) {
 export async function getRouterConfig(
   environment: DeployEnvironment,
   multiProvider: MultiProvider,
-  useMultiProviderOwners = false,
+  useMultiProviderOwners = true,
 ): Promise<ChainMap<RouterConfig>> {
   const core = HyperlaneCore.fromEnvironment(
     deployEnvToSdkEnv[environment],
@@ -277,6 +276,17 @@ export async function getRouterConfig(
     };
   }
   return config;
+}
+
+export async function getProxiedRouterConfig(
+  environment: DeployEnvironment,
+  multiProvider: MultiProvider,
+): Promise<ChainMap<ProxiedRouterConfig>> {
+  const config = await getRouterConfig(environment, multiProvider);
+  return objMap(config, (chain, routerConfig) => ({
+    timelock: environments[environment].core[chain].upgrade?.timelock,
+    ...routerConfig,
+  }));
 }
 
 export function getValidatorsByChain(

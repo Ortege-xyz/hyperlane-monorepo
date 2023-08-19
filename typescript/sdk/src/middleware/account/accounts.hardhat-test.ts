@@ -5,7 +5,7 @@ import { ethers } from 'hardhat';
 import { InterchainAccountRouter, TestRecipient__factory } from '@ortege/core';
 
 import { Chains } from '../../consts/chains';
-import { HyperlaneContractsMap } from '../../contracts';
+import { HyperlaneContractsMap } from '../../contracts/types';
 import { TestCoreApp } from '../../core/TestCoreApp';
 import { TestCoreDeployer } from '../../core/TestCoreDeployer';
 import { MultiProvider } from '../../providers/MultiProvider';

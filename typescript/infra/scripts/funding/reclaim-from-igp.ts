@@ -1,6 +1,7 @@
 import { BigNumber } from 'ethers';
 
-import { HyperlaneIgp, objMap, promiseObjAll } from '@ortege/sdk';
+import { HyperlaneIgp } from '@ortege/sdk';
+import { objMap, promiseObjAll } from '@ortege/utils';
 
 import { deployEnvToSdkEnv } from '../../src/config/environment';
 import { getArgs, getEnvironmentConfig } from '../utils';

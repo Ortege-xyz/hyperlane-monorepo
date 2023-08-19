@@ -3,8 +3,8 @@ import {
   CoreConfig,
   ModuleType,
   RoutingIsmConfig,
-  objMap,
 } from '@ortege/sdk';
+import { objMap } from '@ortege/utils';
 
 import { aggregationIsm } from './aggregationIsm';
 import { chainToValidator } from './multisigIsm';

@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import { ethers } from 'hardhat';
 
-import { utils } from '@ortege/utils';
+import { addressToBytes32 } from '@ortege/utils';
 
 import { TestSendReceiver__factory } from '../types';
 
@@ -25,7 +25,7 @@ describe('TestSendReceiver', () => {
         });
         await recipient.handle(
           0,
-          utils.addressToBytes32(recipient.address),
+          addressToBytes32(recipient.address),
           '0x1234',
         );
         successes += 1;

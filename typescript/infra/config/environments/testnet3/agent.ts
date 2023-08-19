@@ -3,8 +3,8 @@ import {
   chainMetadata,
   getDomainId,
   hyperlaneEnvironments,
-  objMap,
 } from '@ortege/sdk';
+import { objMap } from '@ortege/utils';
 
 import {
   GasPaymentEnforcementPolicyType,
@@ -72,7 +72,7 @@ const hyperlane: RootAgentConfig = {
     connectionType: AgentConnectionType.HttpFallback,
     docker: {
       repo,
-      tag: 'f03257a-20230714-154845',
+      tag: 'ed7569d-20230725-171222',
     },
     blacklist: [
       ...releaseCandidateHelloworldMatchingList,
@@ -89,13 +89,10 @@ const hyperlane: RootAgentConfig = {
     connectionType: AgentConnectionType.HttpFallback,
     docker: {
       repo,
-      tag: '497db63-20230614-174455',
+      tag: 'ed7569d-20230725-171222',
     },
     chainDockerOverrides: {
       [chainMetadata.solanadevnet.name]: {
-        tag: '79bad9d-20230706-190752',
-      },
-      [chainMetadata.zbctestnet.name]: {
         tag: '79bad9d-20230706-190752',
       },
     },
@@ -118,41 +115,32 @@ const releaseCandidate: RootAgentConfig = {
     connectionType: AgentConnectionType.HttpFallback,
     docker: {
       repo,
-      tag: 'f03257a-20230714-154845',
+      tag: 'ed7569d-20230725-171222',
     },
     whitelist: [
       ...releaseCandidateHelloworldMatchingList,
-      // Whitelist all traffic to solanadevnet and zbctestnet
+      // Whitelist all traffic to solanadevnet
       {
         originDomain: '*',
         senderAddress: '*',
-        destinationDomain: [
-          getDomainId(chainMetadata.solanadevnet),
-          getDomainId(chainMetadata.zbctestnet),
-        ],
+        destinationDomain: [getDomainId(chainMetadata.solanadevnet)],
         recipientAddress: '*',
       },
-      // Whitelist all traffic from solanadevnet and zbctestnet to fuji
+      // Whitelist all traffic from solanadevnet to fuji
       {
-        originDomain: [
-          getDomainId(chainMetadata.solanadevnet),
-          getDomainId(chainMetadata.zbctestnet),
-        ],
+        originDomain: [getDomainId(chainMetadata.solanadevnet)],
         senderAddress: '*',
         destinationDomain: [getDomainId(chainMetadata.fuji)],
         recipientAddress: '*',
       },
     ],
     gasPaymentEnforcement: [
-      // Don't require gas payments from solanadevnet or zbctestnet
+      // Don't require gas payments from solanadevnet
       {
         type: GasPaymentEnforcementPolicyType.None,
         matchingList: [
           {
-            originDomain: [
-              getDomainId(chainMetadata.solanadevnet),
-              getDomainId(chainMetadata.zbctestnet),
-            ],
+            originDomain: [getDomainId(chainMetadata.solanadevnet)],
             senderAddress: '*',
             destinationDomain: [getDomainId(chainMetadata.fuji)],
             recipientAddress: '*',
@@ -170,7 +158,7 @@ const releaseCandidate: RootAgentConfig = {
     connectionType: AgentConnectionType.HttpFallback,
     docker: {
       repo,
-      tag: '497db63-20230614-174455',
+      tag: 'ed7569d-20230725-171222',
     },
     chains: validatorChainConfig(Contexts.ReleaseCandidate),
   },

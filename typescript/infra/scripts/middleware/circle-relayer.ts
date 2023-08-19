@@ -2,11 +2,11 @@ import path from 'path';
 
 import {
   LiquidityLayerApp,
+  LiquidityLayerConfig,
   attachContractsMap,
   liquidityLayerFactories,
-  objFilter,
 } from '@ortege/sdk';
-import { LiquidityLayerConfig } from '@ortege/sdk/dist/middleware/liquidity-layer/LiquidityLayerRouterDeployer';
+import { objFilter } from '@ortege/utils';
 
 import { readJSON, sleep } from '../../src/utils/utils';
 import {

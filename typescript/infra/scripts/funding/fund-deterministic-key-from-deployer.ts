@@ -1,8 +1,7 @@
 import { BigNumber } from 'ethers';
 import { format } from 'util';
 
-import { promiseObjAll } from '@ortege/sdk';
-import { error } from '@ortege/utils';
+import { error, promiseObjAll } from '@ortege/utils';
 
 import { Contexts } from '../../config/contexts';
 import {

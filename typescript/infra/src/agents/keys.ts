@@ -1,6 +1,7 @@
 import { ethers } from 'ethers';
 
-import { ChainName, ProtocolType } from '@ortege/sdk';
+import { ChainName } from '@ortege/sdk';
+import { ProtocolType } from '@ortege/utils';
 
 import { Contexts } from '../../config/contexts';
 import { DeployEnvironment } from '../config';

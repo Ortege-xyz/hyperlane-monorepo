@@ -1,6 +1,7 @@
 import { BigNumberish } from 'ethers';
 
-import { ChainMap, ProtocolType, chainMetadata } from '@ortege/sdk';
+import { ChainMap, chainMetadata } from '@ortege/sdk';
+import { ProtocolType } from '@ortege/utils';
 
 import { AgentAwsUser } from '../../agents/aws';
 import { Role } from '../../roles';

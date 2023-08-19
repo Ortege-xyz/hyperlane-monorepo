@@ -1,4 +1,5 @@
-import { ChainName, ProtocolType, chainMetadata } from '@ortege/sdk';
+import { ChainName, chainMetadata } from '@ortege/sdk';
+import { ProtocolType } from '@ortege/utils';
 
 import { Contexts } from '../../config/contexts';
 import {
@@ -30,7 +31,7 @@ export function getRelayerCloudAgentKeys(
 
   const keys = [];
   keys.push(new AgentAwsKey(agentConfig, Role.Relayer));
-  let nonEthereumChains = agentConfig.contextChainNames.find(
+  const nonEthereumChains = agentConfig.contextChainNames.find(
     (chainName) => chainMetadata[chainName].protocol !== ProtocolType.Ethereum,
   );
   // If there are any non-ethereum chains, we also want hex keys.

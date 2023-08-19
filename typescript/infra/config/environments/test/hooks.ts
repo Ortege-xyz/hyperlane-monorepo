@@ -5,8 +5,8 @@ import {
   MessageHookConfig,
   NoMetadataIsmConfig,
   filterByChains,
-  objMap,
 } from '@ortege/sdk';
+import { objMap } from '@ortege/utils';
 
 import { owners } from './owners';
 

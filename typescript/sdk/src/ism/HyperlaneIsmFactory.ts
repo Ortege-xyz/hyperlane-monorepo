@@ -11,18 +11,15 @@ import {
   StaticAggregationIsm__factory,
   StaticMOfNAddressSetFactory,
 } from '@ortege/core';
-import { logging, types, utils } from '@ortege/utils';
+import { Address, eqAddress, formatMessage, warn } from '@ortege/utils';
 
-import { HyperlaneApp } from '../HyperlaneApp';
+import { HyperlaneApp } from '../app/HyperlaneApp';
 import {
   HyperlaneEnvironment,
   hyperlaneEnvironments,
 } from '../consts/environments';
-import {
-  HyperlaneAddressesMap,
-  HyperlaneContracts,
-  appFromAddressesMapHelper,
-} from '../contracts';
+import { appFromAddressesMapHelper } from '../contracts/contracts';
+import { HyperlaneAddressesMap, HyperlaneContracts } from '../contracts/types';
 import { MultiProvider } from '../providers/MultiProvider';
 import { ChainMap, ChainName } from '../types';
 
@@ -69,6 +66,14 @@ export class HyperlaneIsmFactory extends HyperlaneApp<IsmFactoryFactories> {
     config: IsmConfig,
     origin?: ChainName,
   ): Promise<DeployedIsm> {
+    if (typeof config === 'string') {
+      // TODO: return the appropriate ISM type
+      return IInterchainSecurityModule__factory.connect(
+        config,
+        this.multiProvider.getSignerOrProvider(chain),
+      );
+    }
+
     if (
       config.type === ModuleType.MERKLE_ROOT_MULTISIG ||
       config.type === ModuleType.MESSAGE_ID_MULTISIG ||
@@ -150,7 +155,7 @@ export class HyperlaneIsmFactory extends HyperlaneApp<IsmFactoryFactories> {
   private async deployRoutingIsm(chain: ChainName, config: RoutingIsmConfig) {
     const signer = this.multiProvider.getSigner(chain);
     const routingIsmFactory = this.getContracts(chain).routingIsmFactory;
-    const isms: ChainMap<types.Address> = {};
+    const isms: ChainMap<Address> = {};
     for (const origin of Object.keys(config.domains)) {
       const ism = await this.deploy(chain, config.domains[origin], origin);
       isms[origin] = ism.address;
@@ -159,7 +164,12 @@ export class HyperlaneIsmFactory extends HyperlaneApp<IsmFactoryFactories> {
       this.multiProvider.getDomainId(chain),
     );
     const submoduleAddresses = Object.values(isms);
-    const tx = await routingIsmFactory.deploy(domains, submoduleAddresses);
+    const overrides = this.multiProvider.getTransactionOverrides(chain);
+    const tx = await routingIsmFactory.deploy(
+      domains,
+      submoduleAddresses,
+      overrides,
+    );
     const receipt = await this.multiProvider.handleTx(chain, tx);
     // TODO: Break this out into a generalized function
     const dispatchLogs = receipt.logs
@@ -182,7 +192,7 @@ export class HyperlaneIsmFactory extends HyperlaneApp<IsmFactoryFactories> {
     this.logger(`Transferring ownership of routing ISM to ${config.owner}`);
     await this.multiProvider.handleTx(
       chain,
-      await routingIsm.transferOwnership(config.owner),
+      await routingIsm.transferOwnership(config.owner, overrides),
     );
     const address = dispatchLogs[0].args['module'];
     return IRoutingIsm__factory.connect(address, signer);
@@ -195,7 +205,7 @@ export class HyperlaneIsmFactory extends HyperlaneApp<IsmFactoryFactories> {
     const signer = this.multiProvider.getSigner(chain);
     const aggregationIsmFactory =
       this.getContracts(chain).aggregationIsmFactory;
-    const addresses: types.Address[] = [];
+    const addresses: Address[] = [];
     for (const module of config.modules) {
       addresses.push((await this.deploy(chain, module)).address);
     }
@@ -211,9 +221,9 @@ export class HyperlaneIsmFactory extends HyperlaneApp<IsmFactoryFactories> {
   private async deployMOfNFactory(
     chain: ChainName,
     factory: StaticMOfNAddressSetFactory,
-    values: types.Address[],
+    values: Address[],
     threshold: number,
-  ): Promise<types.Address> {
+  ): Promise<Address> {
     const sorted = [...values].sort();
     const address = await factory.getAddress(sorted, threshold);
     const provider = this.multiProvider.getProvider(chain);
@@ -223,7 +233,6 @@ export class HyperlaneIsmFactory extends HyperlaneApp<IsmFactoryFactories> {
       this.logger(
         `Deploying new ${threshold} of ${values.length} address set to ${chain}`,
       );
-
       const overrides = this.multiProvider.getTransactionOverrides(chain);
       const hash = await factory.deploy(sorted, threshold, overrides);
       await this.multiProvider.handleTx(chain, hash);
@@ -242,12 +251,12 @@ export class HyperlaneIsmFactory extends HyperlaneApp<IsmFactoryFactories> {
 // body specific logic, as the sample message used when querying the ISM
 // sets all of these to zero.
 export async function moduleCanCertainlyVerify(
-  destModule: types.Address | IsmConfig,
+  destModule: Address | IsmConfig,
   multiProvider: MultiProvider,
   origin: ChainName,
   destination: ChainName,
 ): Promise<boolean> {
-  const message = utils.formatMessage(
+  const message = formatMessage(
     0,
     0,
     multiProvider.getDomainId(origin),
@@ -313,7 +322,7 @@ export async function moduleCanCertainlyVerify(
         throw new Error(`Unsupported module type: ${moduleType}`);
       }
     } catch (e) {
-      logging.warn(`Error checking module ${destModule}: ${e}`);
+      warn(`Error checking module ${destModule}: ${e}`);
       return false;
     }
   } else {
@@ -351,12 +360,16 @@ export async function moduleCanCertainlyVerify(
 
 export async function moduleMatchesConfig(
   chain: ChainName,
-  moduleAddress: types.Address,
+  moduleAddress: Address,
   config: IsmConfig,
   multiProvider: MultiProvider,
   contracts: HyperlaneContracts<IsmFactoryFactories>,
   origin?: ChainName,
 ): Promise<boolean> {
+  if (typeof config === 'string') {
+    return eqAddress(moduleAddress, config);
+  }
+
   const provider = multiProvider.getProvider(chain);
   const module = IInterchainSecurityModule__factory.connect(
     moduleAddress,
@@ -373,7 +386,7 @@ export async function moduleMatchesConfig(
           config.validators.sort(),
           config.threshold,
         );
-      matches = utils.eqAddress(expectedAddress, module.address);
+      matches = eqAddress(expectedAddress, module.address);
       break;
     }
     case ModuleType.MESSAGE_ID_MULTISIG: {
@@ -383,7 +396,7 @@ export async function moduleMatchesConfig(
           config.validators.sort(),
           config.threshold,
         );
-      matches = utils.eqAddress(expectedAddress, module.address);
+      matches = eqAddress(expectedAddress, module.address);
       break;
     }
     case ModuleType.LEGACY_MULTISIG: {
@@ -414,7 +427,7 @@ export async function moduleMatchesConfig(
       );
       // Check that the RoutingISM owner matches the config
       const owner = await routingIsm.owner();
-      matches = matches && utils.eqAddress(owner, config.owner);
+      matches = matches && eqAddress(owner, config.owner);
       // Recursively check that the submodule for each configured
       // domain matches the submodule config.
       for (const [origin, subConfig] of Object.entries(config.domains)) {
@@ -481,6 +494,14 @@ export function collectValidators(
   origin: ChainName,
   config: IsmConfig,
 ): Set<string> {
+  // TODO: support address configurations in collectValidators
+  if (typeof config === 'string') {
+    debug('hyperlane:IsmFactory')(
+      'Address config unimplemented in collectValidators',
+    );
+    return new Set([]);
+  }
+
   let validators: string[] = [];
   if (
     config.type === ModuleType.MERKLE_ROOT_MULTISIG ||

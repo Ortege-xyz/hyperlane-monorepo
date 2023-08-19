@@ -1,7 +1,8 @@
+import { objMap } from '@ortege/utils';
+
 import { MultiProvider } from '../../providers/MultiProvider';
 import { ProxiedRouterChecker } from '../../router/ProxiedRouterChecker';
 import { ChainMap } from '../../types';
-import { objMap } from '../../utils/objects';
 
 import { InterchainAccount } from './InterchainAccount';
 import { InterchainAccountConfig } from './InterchainAccountDeployer';

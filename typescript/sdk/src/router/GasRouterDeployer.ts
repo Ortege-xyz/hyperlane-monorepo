@@ -1,11 +1,11 @@
 import { GasRouter } from '@ortege/core';
-import { types } from '@ortege/utils';
+import { Address } from '@ortege/utils';
 
 import {
   HyperlaneContracts,
   HyperlaneContractsMap,
   HyperlaneFactories,
-} from '../contracts';
+} from '../contracts/types';
 import { ChainMap } from '../types';
 
 import { HyperlaneRouterDeployer } from './HyperlaneRouterDeployer';
@@ -20,7 +20,7 @@ export abstract class GasRouterDeployer<
   async enrollRemoteRouters(
     contractsMap: HyperlaneContractsMap<Factories>,
     configMap: ChainMap<Config>,
-    foreignRouters: ChainMap<types.Address> = {},
+    foreignRouters: ChainMap<Address> = {},
   ): Promise<void> {
     await super.enrollRemoteRouters(contractsMap, configMap, foreignRouters);
 

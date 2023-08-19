@@ -1,8 +1,8 @@
 import { Keypair } from '@solana/web3.js';
 import { Wallet, ethers } from 'ethers';
 
-import { ChainName, ProtocolType } from '@ortege/sdk';
-import { utils } from '@ortege/utils';
+import { ChainName } from '@ortege/sdk';
+import { ProtocolType, strip0x } from '@ortege/utils';
 
 import { Contexts } from '../../config/contexts';
 import { DeployEnvironment } from '../config';
@@ -99,7 +99,7 @@ export class AgentGCPKey extends CloudAgentKey {
         return this.address;
       case ProtocolType.Sealevel:
         const keypair = Keypair.fromSeed(
-          Uint8Array.from(Buffer.from(utils.strip0x(this.privateKey), 'hex')),
+          Uint8Array.from(Buffer.from(strip0x(this.privateKey), 'hex')),
         );
         return keypair.publicKey.toBase58();
       default:

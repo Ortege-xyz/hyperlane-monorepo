@@ -1,6 +1,6 @@
 {
   "name": "@ortege/helloworld",
-  "description": "A basic skeleton of an Hyperlane app",
+  "description": "A basic skeleton of an Ortege app",
   "version": "1.4.2",
   "dependencies": {
     "@openzeppelin/contracts-upgradeable": "^4.8.0",
@@ -14,8 +14,8 @@
     "@typechain/ethers-v5": "10.0.0",
     "@typechain/hardhat": "^6.0.0",
     "@types/mocha": "^9.1.0",
-    "@typescript-eslint/eslint-plugin": "^5.27.0",
-    "@typescript-eslint/parser": "^5.27.0",
+    "@typescript-eslint/eslint-plugin": "^5.62.0",
+    "@typescript-eslint/parser": "^5.62.0",
     "chai": "^4.3.0",
     "eslint": "^8.16.0",
     "eslint-config-prettier": "^8.5.0",
@@ -29,15 +29,15 @@
     "solidity-coverage": "^0.8.3",
     "ts-node": "^10.8.0",
     "typechain": "8.0.0",
-    "typescript": "^4.7.2"
+    "typescript": "^5.1.6"
   },
   "files": [
     "/dist",
     "/contracts"
   ],
-  "homepage": "https://www.hyperlane.xyz",
+  "homepage": "https://www.ortege.io",
   "keywords": [
-    "Hyperlane",
+    "Ortege",
     "HelloWorld",
     "Solidity",
     "Typescript"
@@ -47,7 +47,7 @@
   "packageManager": "yarn@3.2.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/hyperlane-xyz/hyperlane-app-template"
+    "url": "https://github.com/ortege-xyz/ortege-app-template"
   },
   "scripts": {
     "build": "hardhat compile && tsc",

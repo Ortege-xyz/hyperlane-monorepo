@@ -7,10 +7,10 @@ import {
   Mailbox__factory,
   PortalAdapter__factory,
 } from '@ortege/core';
-import { utils } from '@ortege/utils';
+import { addressToBytes32, ensure0x, eqAddress, strip0x } from '@ortege/utils';
 
-import { HyperlaneApp } from '../../HyperlaneApp';
-import { HyperlaneContracts } from '../../contracts';
+import { HyperlaneApp } from '../../app/HyperlaneApp';
+import { HyperlaneContracts } from '../../contracts/types';
 import { MultiProvider } from '../../providers/MultiProvider';
 import { ChainMap, ChainName } from '../../types';
 import { fetchWithTimeout } from '../../utils/fetch';
@@ -201,7 +201,7 @@ export class LiquidityLayerApp extends HyperlaneApp<
     const transferTokenAddress =
       await destinationPortalAdapter.portalTransfersProcessed(transferId);
 
-    if (!utils.eqAddress(transferTokenAddress, ethers.constants.AddressZero)) {
+    if (!eqAddress(transferTokenAddress, ethers.constants.AddressZero)) {
       console.log(
         `Transfer with nonce ${message.nonce} from ${message.origin} to ${message.destination} already processed`,
       );
@@ -215,10 +215,8 @@ export class LiquidityLayerApp extends HyperlaneApp<
         mapping.hyperlaneDomain ===
         this.multiProvider.getDomainId(message.origin),
     )?.wormholeDomain;
-    const emitter = utils.strip0x(
-      utils.addressToBytes32(
-        this.config[message.origin].portal!.portalBridgeAddress,
-      ),
+    const emitter = strip0x(
+      addressToBytes32(this.config[message.origin].portal!.portalBridgeAddress),
     );
 
     const vaa = await fetchWithTimeout(
@@ -238,7 +236,7 @@ export class LiquidityLayerApp extends HyperlaneApp<
       await this.multiProvider.handleTx(
         message.destination,
         destinationPortalAdapter.completeTransfer(
-          utils.ensure0x(Buffer.from(vaa.vaaBytes, 'base64').toString('hex')),
+          ensure0x(Buffer.from(vaa.vaaBytes, 'base64').toString('hex')),
         ),
       );
     } catch (error: any) {

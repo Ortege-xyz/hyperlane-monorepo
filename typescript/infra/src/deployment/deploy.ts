@@ -6,10 +6,9 @@ import {
   HyperlaneDeploymentArtifacts,
   MultiProvider,
   buildAgentConfigDeprecated,
-  objMap,
-  promiseObjAll,
   serializeContractsMap,
 } from '@ortege/sdk';
+import { objMap, promiseObjAll } from '@ortege/utils';
 
 import { getAgentConfigDirectory } from '../../scripts/utils';
 import { DeployEnvironment } from '../config';

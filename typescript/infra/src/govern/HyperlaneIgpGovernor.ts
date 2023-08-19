@@ -11,7 +11,7 @@ import {
   IgpViolationType,
   OverheadIgpConfig,
 } from '@ortege/sdk';
-import { types } from '@ortege/utils';
+import { Address } from '@ortege/utils';
 
 import { HyperlaneAppGovernor } from '../govern/HyperlaneAppGovernor';
 
@@ -19,7 +19,7 @@ export class HyperlaneIgpGovernor extends HyperlaneAppGovernor<
   HyperlaneIgp,
   OverheadIgpConfig
 > {
-  constructor(checker: HyperlaneIgpChecker, owners: ChainMap<types.Address>) {
+  constructor(checker: HyperlaneIgpChecker, owners: ChainMap<Address>) {
     super(checker, owners);
   }
 

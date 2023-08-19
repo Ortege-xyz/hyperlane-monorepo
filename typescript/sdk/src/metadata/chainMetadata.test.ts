@@ -1,10 +1,8 @@
 import { expect } from 'chai';
 
-import {
-  ChainMetadata,
-  ProtocolType,
-  isValidChainMetadata,
-} from './chainMetadataTypes';
+import { ProtocolType } from '@ortege/utils';
+
+import { ChainMetadata, isValidChainMetadata } from './chainMetadataTypes';
 
 const minimalSchema: ChainMetadata = {
   chainId: 5,

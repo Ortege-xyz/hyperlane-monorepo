@@ -10,7 +10,7 @@ import {
   OverheadIgpConfig,
 } from '@ortege/sdk';
 import { HyperlaneEnvironment } from '@ortege/sdk/dist/consts/environments';
-import { types } from '@ortege/utils';
+import { Address } from '@ortege/utils';
 
 import { Contexts } from '../../config/contexts';
 import { environments } from '../../config/environments';
@@ -38,7 +38,7 @@ export type EnvironmentConfig = {
   core: ChainMap<CoreConfig>;
   hooks: ChainMap<HookConfig>;
   igp: ChainMap<OverheadIgpConfig>;
-  owners: ChainMap<types.Address>;
+  owners: ChainMap<Address>;
   infra: InfrastructureConfig;
   getMultiProvider: (
     context?: Contexts,

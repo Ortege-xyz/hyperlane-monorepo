@@ -6,7 +6,13 @@ For details on how to use the various abstractions and utilities, [see the docum
 
 ## Install
 
-`yarn install @ortege/sdk`
+```bash
+# Install with NPM
+npm install @ortege/sdk
+
+# Or with Yarn
+yarn add @ortege/sdk
+```
 
 ## Contents
 
