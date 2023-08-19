@@ -7,7 +7,7 @@ import {
   SignatureLike,
   isS3Checkpoint,
   isS3CheckpointWithId,
-} from '@hyperlane-xyz/utils';
+} from '@ortege/utils';
 
 import { S3Receipt, S3Wrapper } from './s3';
 

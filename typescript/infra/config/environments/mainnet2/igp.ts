@@ -4,8 +4,8 @@ import {
   OverheadIgpConfig,
   defaultMultisigIsmConfigs,
   multisigIsmVerificationCost,
-} from '@hyperlane-xyz/sdk';
-import { exclude, objMap } from '@hyperlane-xyz/utils';
+} from '@ortege/sdk';
+import { exclude, objMap } from '@ortege/utils';
 
 import { MainnetChains, chainNames } from './chains';
 import { core } from './core';

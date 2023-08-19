@@ -3,8 +3,8 @@ import {
   GasRouter__factory,
   Router,
   Router__factory,
-} from '@hyperlane-xyz/core';
-import { Address, Domain, bytes32ToAddress } from '@hyperlane-xyz/utils';
+} from '@ortege/core';
+import { Address, Domain, bytes32ToAddress } from '@ortege/utils';
 
 import { BaseEvmAdapter } from '../../app/MultiProtocolApp';
 import { MultiProtocolProvider } from '../../providers/MultiProtocolProvider';

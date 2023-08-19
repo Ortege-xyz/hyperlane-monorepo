@@ -1,5 +1,5 @@
-import { Mailbox } from '@hyperlane-xyz/core';
-import type { Address } from '@hyperlane-xyz/utils';
+import { Mailbox } from '@ortege/core';
+import type { Address } from '@ortege/utils';
 
 import { UpgradeConfig } from '../deploy/proxy';
 import type { CheckerViolation } from '../deploy/types';

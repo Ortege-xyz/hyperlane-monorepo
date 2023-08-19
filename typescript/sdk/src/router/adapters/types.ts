@@ -1,4 +1,4 @@
-import { Address, Domain } from '@hyperlane-xyz/utils';
+import { Address, Domain } from '@ortege/utils';
 
 import { BaseAppAdapter } from '../../app/MultiProtocolApp';
 import { ChainName } from '../../types';

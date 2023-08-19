@@ -1,6 +1,6 @@
 import { ethers } from 'ethers';
 
-import { Address, eqAddress } from '@hyperlane-xyz/utils';
+import { Address, eqAddress } from '@ortege/utils';
 
 export type UpgradeConfig = {
   timelock: {

@@ -2,7 +2,7 @@ import http from 'http';
 import { Pushgateway, Registry } from 'prom-client';
 import { format } from 'util';
 
-import { error, log } from '@hyperlane-xyz/utils';
+import { error, log } from '@ortege/utils';
 
 function getPushGateway(register: Registry): Pushgateway | null {
   const gatewayAddr = process.env['PROMETHEUS_PUSH_GATEWAY'];

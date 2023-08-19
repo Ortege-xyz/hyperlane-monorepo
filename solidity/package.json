@@ -1,12 +1,12 @@
 {
-  "name": "@hyperlane-xyz/core",
-  "description": "Core solidity contracts for Hyperlane",
+  "name": "@ortege/core",
+  "description": "Core solidity contracts for Ortege",
   "version": "1.4.2",
   "dependencies": {
     "@eth-optimism/contracts": "^0.6.0",
-    "@hyperlane-xyz/utils": "1.4.2",
     "@openzeppelin/contracts": "^4.8.0",
-    "@openzeppelin/contracts-upgradeable": "^4.8.0"
+    "@openzeppelin/contracts-upgradeable": "^4.8.0",
+    "@ortege/utils": "1.4.2"
   },
   "devDependencies": {
     "@nomiclabs/hardhat-ethers": "^2.2.1",
@@ -36,14 +36,14 @@
     "/interfaces",
     "/docs"
   ],
-  "homepage": "https://www.hyperlane.xyz",
+  "homepage": "https://www.ortege.io",
   "keywords": [
-    "Hyperlane",
+    "Ortege",
     "Solidity"
   ],
   "license": "Apache-2.0",
   "main": "dist/index.js",
-  "repository": "https://github.com/hyperlane-xyz/hyperlane-monorepo",
+  "repository": "https://github.com/ortege-xyz/ortege-monorepo",
   "scripts": {
     "build": "hardhat compile && tsc",
     "lint": "solhint contracts/**/*.sol",

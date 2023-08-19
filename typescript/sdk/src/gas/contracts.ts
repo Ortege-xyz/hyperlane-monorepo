@@ -2,7 +2,7 @@ import {
   InterchainGasPaymaster__factory,
   OverheadIgp__factory,
   StorageGasOracle__factory,
-} from '@hyperlane-xyz/core';
+} from '@ortege/core';
 
 import { proxiedFactories } from '../router/types';
 

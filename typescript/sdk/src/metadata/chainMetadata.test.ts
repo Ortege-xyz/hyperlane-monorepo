@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 
-import { ProtocolType } from '@hyperlane-xyz/utils';
+import { ProtocolType } from '@ortege/utils';
 
 import { ChainMetadata, isValidChainMetadata } from './chainMetadataTypes';
 

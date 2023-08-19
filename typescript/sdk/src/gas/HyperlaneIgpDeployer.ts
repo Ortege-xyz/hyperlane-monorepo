@@ -8,8 +8,8 @@ import {
   StorageGasOracle,
   TimelockController,
   TimelockController__factory,
-} from '@hyperlane-xyz/core';
-import { Address, eqAddress } from '@hyperlane-xyz/utils';
+} from '@ortege/core';
+import { Address, eqAddress } from '@ortege/utils';
 
 import { HyperlaneContracts } from '../contracts/types';
 import { HyperlaneDeployer } from '../deploy/HyperlaneDeployer';

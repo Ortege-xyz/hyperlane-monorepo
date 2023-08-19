@@ -4,7 +4,7 @@ import { LedgerSigner } from '@ethersproject/hardware-wallets';
 import '@ethersproject/hardware-wallets/thirdparty';
 import { AddSafeDelegateProps } from '@safe-global/api-kit';
 
-import { AllChains } from '@hyperlane-xyz/sdk';
+import { AllChains } from '@ortege/sdk';
 
 import { getSafeDelegates, getSafeService } from '../src/utils/safe';
 

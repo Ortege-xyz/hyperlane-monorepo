@@ -2,7 +2,7 @@ import fetch from 'cross-fetch';
 import { Debugger, debug } from 'debug';
 import { ethers } from 'ethers';
 
-import { sleep, strip0x } from '@hyperlane-xyz/utils';
+import { sleep, strip0x } from '@ortege/utils';
 
 import { MultiProvider } from '../../providers/MultiProvider';
 import { ChainMap, ChainName } from '../../types';

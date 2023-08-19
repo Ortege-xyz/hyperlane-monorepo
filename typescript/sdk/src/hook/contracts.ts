@@ -2,7 +2,7 @@ import {
   OptimismISM__factory,
   OptimismMessageHook__factory,
   TestRecipient__factory,
-} from '@hyperlane-xyz/core';
+} from '@ortege/core';
 
 export const optimismMessageHookFactories = {
   optimismMessageHook: new OptimismMessageHook__factory(),

@@ -1,4 +1,4 @@
-import { InterchainGasPaymaster, OverheadIgp } from '@hyperlane-xyz/core';
+import { InterchainGasPaymaster, OverheadIgp } from '@ortege/core';
 import {
   ChainMap,
   ChainName,
@@ -10,8 +10,8 @@ import {
   IgpViolation,
   IgpViolationType,
   OverheadIgpConfig,
-} from '@hyperlane-xyz/sdk';
-import { Address } from '@hyperlane-xyz/utils';
+} from '@ortege/sdk';
+import { Address } from '@ortege/utils';
 
 import { HyperlaneAppGovernor } from '../govern/HyperlaneAppGovernor';
 

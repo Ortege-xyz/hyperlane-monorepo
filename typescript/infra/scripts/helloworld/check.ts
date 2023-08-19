@@ -1,4 +1,4 @@
-import { HelloWorldChecker } from '@hyperlane-xyz/helloworld';
+import { HelloWorldChecker } from '@ortege/helloworld';
 
 import { Contexts } from '../../config/contexts';
 import { Role } from '../../src/roles';

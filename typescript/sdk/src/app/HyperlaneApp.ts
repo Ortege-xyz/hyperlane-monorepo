@@ -1,6 +1,6 @@
 import debug from 'debug';
 
-import { objMap } from '@hyperlane-xyz/utils';
+import { objMap } from '@ortege/utils';
 
 import { connectContracts, serializeContracts } from '../contracts/contracts';
 import {

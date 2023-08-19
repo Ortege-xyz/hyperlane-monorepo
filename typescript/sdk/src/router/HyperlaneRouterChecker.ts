@@ -1,6 +1,6 @@
 import { ethers } from 'ethers';
 
-import { addressToBytes32, assert, eqAddress } from '@hyperlane-xyz/utils';
+import { addressToBytes32, assert, eqAddress } from '@ortege/utils';
 
 import { HyperlaneFactories } from '../contracts/types';
 import { HyperlaneAppChecker } from '../deploy/HyperlaneAppChecker';

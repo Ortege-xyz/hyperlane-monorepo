@@ -6,8 +6,8 @@ import {
   InterchainQueryRouter,
   TestQuery,
   TestQuery__factory,
-} from '@hyperlane-xyz/core';
-import { addressToBytes32 } from '@hyperlane-xyz/utils';
+} from '@ortege/core';
+import { addressToBytes32 } from '@ortege/utils';
 
 import { chainMetadata } from '../../consts/chainMetadata';
 import { Chains } from '../../consts/chains';

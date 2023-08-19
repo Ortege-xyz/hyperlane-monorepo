@@ -1,13 +1,13 @@
 import type { BigNumber } from 'ethers';
 
-import { GasRouter, Router } from '@hyperlane-xyz/core';
-import { Address, objMap, promiseObjAll } from '@hyperlane-xyz/utils';
+import { GasRouter, Router } from '@ortege/core';
+import { Address, objMap, promiseObjAll } from '@ortege/utils';
 
 import { HyperlaneApp } from '../app/HyperlaneApp';
 import { HyperlaneContracts, HyperlaneFactories } from '../contracts/types';
 import { ChainMap, ChainName } from '../types';
 
-export { Router } from '@hyperlane-xyz/core';
+export { Router } from '@ortege/core';
 
 export abstract class RouterApp<
   Factories extends HyperlaneFactories,

@@ -1,4 +1,4 @@
-import { objMerge } from '@hyperlane-xyz/utils';
+import { objMerge } from '@ortege/utils';
 
 import { ChainName } from '../../types';
 import { CoreChainName } from '../chains';

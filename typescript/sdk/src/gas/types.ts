@@ -1,7 +1,7 @@
 import { BigNumber } from 'ethers';
 
-import { InterchainGasPaymaster, OverheadIgp } from '@hyperlane-xyz/core';
-import type { Address } from '@hyperlane-xyz/utils';
+import { InterchainGasPaymaster, OverheadIgp } from '@ortege/core';
+import type { Address } from '@ortege/utils';
 
 import { UpgradeConfig } from '../deploy/proxy';
 import type { CheckerViolation } from '../deploy/types';

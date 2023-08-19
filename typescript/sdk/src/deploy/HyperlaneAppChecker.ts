@@ -1,13 +1,13 @@
 import { keccak256 } from 'ethers/lib/utils';
 
-import { Ownable, TimelockController } from '@hyperlane-xyz/core';
+import { Ownable, TimelockController } from '@ortege/core';
 import {
   Address,
   assert,
   eqAddress,
   objMap,
   promiseObjAll,
-} from '@hyperlane-xyz/utils';
+} from '@ortege/utils';
 
 import { HyperlaneApp } from '../app/HyperlaneApp';
 import { filterOwnableContracts } from '../contracts/contracts';

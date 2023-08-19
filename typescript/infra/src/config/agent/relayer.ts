@@ -1,7 +1,7 @@
 import { BigNumberish } from 'ethers';
 
-import { ChainMap, chainMetadata } from '@hyperlane-xyz/sdk';
-import { ProtocolType } from '@hyperlane-xyz/utils';
+import { ChainMap, chainMetadata } from '@ortege/sdk';
+import { ProtocolType } from '@ortege/utils';
 
 import { AgentAwsUser } from '../../agents/aws';
 import { Role } from '../../roles';

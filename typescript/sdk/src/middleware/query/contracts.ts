@@ -1,4 +1,4 @@
-import { InterchainQueryRouter__factory } from '@hyperlane-xyz/core';
+import { InterchainQueryRouter__factory } from '@ortege/core';
 
 import { proxiedFactories } from '../../router/types';
 

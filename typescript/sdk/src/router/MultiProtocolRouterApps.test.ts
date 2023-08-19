@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 
-import { Address } from '@hyperlane-xyz/utils';
+import { Address } from '@ortege/utils';
 
 import { Chains } from '../consts/chains';
 import { MultiProtocolProvider } from '../providers/MultiProtocolProvider';

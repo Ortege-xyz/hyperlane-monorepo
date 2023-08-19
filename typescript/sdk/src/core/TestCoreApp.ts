@@ -1,7 +1,7 @@
 import { ethers } from 'ethers';
 
-import { TestMailbox, TestMailbox__factory } from '@hyperlane-xyz/core';
-import { messageId } from '@hyperlane-xyz/utils';
+import { TestMailbox, TestMailbox__factory } from '@ortege/core';
+import { messageId } from '@ortege/utils';
 
 import { HyperlaneContracts } from '../contracts/types';
 import { ChainName } from '../types';

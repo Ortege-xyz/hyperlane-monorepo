@@ -1,10 +1,6 @@
 import type { Contract } from 'ethers';
 
-import type {
-  AccessControl,
-  Ownable,
-  TimelockController,
-} from '@hyperlane-xyz/core';
+import type { AccessControl, Ownable, TimelockController } from '@ortege/core';
 
 import type { ChainName } from '../types';
 

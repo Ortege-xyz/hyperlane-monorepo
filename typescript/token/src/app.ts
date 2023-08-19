@@ -1,7 +1,7 @@
 import { BigNumberish } from 'ethers';
 
-import { ChainName, HyperlaneContracts, RouterApp } from '@hyperlane-xyz/sdk';
-import { Address } from '@hyperlane-xyz/utils';
+import { ChainName, HyperlaneContracts, RouterApp } from '@ortege/sdk';
+import { Address } from '@ortege/utils';
 
 import {
   HypERC20Factories,

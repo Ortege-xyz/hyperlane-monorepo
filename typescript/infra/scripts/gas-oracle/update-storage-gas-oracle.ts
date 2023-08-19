@@ -1,4 +1,4 @@
-import { ChainName, HyperlaneIgp } from '@hyperlane-xyz/sdk';
+import { ChainName, HyperlaneIgp } from '@ortege/sdk';
 
 import { RemoteGasData, StorageGasOracleConfig } from '../../src/config';
 import { deployEnvToSdkEnv } from '../../src/config/environment';

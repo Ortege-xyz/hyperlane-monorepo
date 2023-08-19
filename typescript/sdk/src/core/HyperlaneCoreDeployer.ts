@@ -6,8 +6,8 @@ import {
   TimelockController,
   TimelockController__factory,
   ValidatorAnnounce,
-} from '@hyperlane-xyz/core';
-import { Address } from '@hyperlane-xyz/utils';
+} from '@ortege/core';
+import { Address } from '@ortege/utils';
 
 import { HyperlaneContracts } from '../contracts/types';
 import { HyperlaneDeployer } from '../deploy/HyperlaneDeployer';

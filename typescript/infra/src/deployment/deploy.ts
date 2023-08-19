@@ -7,8 +7,8 @@ import {
   MultiProvider,
   buildAgentConfigDeprecated,
   serializeContractsMap,
-} from '@hyperlane-xyz/sdk';
-import { objMap, promiseObjAll } from '@hyperlane-xyz/utils';
+} from '@ortege/sdk';
+import { objMap, promiseObjAll } from '@ortege/utils';
 
 import { getAgentConfigDirectory } from '../../scripts/utils';
 import { DeployEnvironment } from '../config';

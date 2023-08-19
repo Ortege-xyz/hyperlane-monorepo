@@ -13,8 +13,8 @@ import {
   MockToken,
   MockToken__factory,
   TestLiquidityLayerMessageRecipient__factory,
-} from '@hyperlane-xyz/core';
-import { addressToBytes32, objMap } from '@hyperlane-xyz/utils';
+} from '@ortege/core';
+import { addressToBytes32, objMap } from '@ortege/utils';
 
 import { chainMetadata } from '../../consts/chainMetadata';
 import { Chains } from '../../consts/chains';

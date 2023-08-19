@@ -3,7 +3,7 @@ import {
   StaticAggregationIsmFactory__factory,
   StaticMerkleRootMultisigIsmFactory__factory,
   StaticMessageIdMultisigIsmFactory__factory,
-} from '@hyperlane-xyz/core';
+} from '@ortege/core';
 
 export const ismFactoryFactories = {
   merkleRootMultisigIsmFactory:

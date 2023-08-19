@@ -1,4 +1,4 @@
-import { ChainMap, ChainName } from '@hyperlane-xyz/sdk';
+import { ChainMap, ChainName } from '@ortege/sdk';
 
 import { ValidatorAgentAwsUser } from '../../agents/aws';
 import { Role } from '../../roles';

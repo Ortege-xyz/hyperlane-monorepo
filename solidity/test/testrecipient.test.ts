@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import { ethers } from 'hardhat';
 
-import { addressToBytes32 } from '@hyperlane-xyz/utils';
+import { addressToBytes32 } from '@ortege/utils';
 
 import { TestRecipient, TestRecipient__factory } from '../types';
 

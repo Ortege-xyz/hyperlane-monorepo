@@ -10,9 +10,9 @@ import {
   Chains,
   HyperlaneIgp,
   MultiProvider,
-} from '@hyperlane-xyz/sdk';
-import { ChainMap } from '@hyperlane-xyz/sdk/dist/types';
-import { error, log, warn } from '@hyperlane-xyz/utils';
+} from '@ortege/sdk';
+import { ChainMap } from '@ortege/sdk/dist/types';
+import { error, log, warn } from '@ortege/utils';
 
 import { Contexts } from '../../config/contexts';
 import { parseKeyIdentifier } from '../../src/agents/agent';

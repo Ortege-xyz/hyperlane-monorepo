@@ -1,6 +1,6 @@
 import { BigNumber, utils as ethersUtils } from 'ethers';
 
-import { Address, eqAddress } from '@hyperlane-xyz/utils';
+import { Address, eqAddress } from '@ortege/utils';
 
 import { BytecodeHash } from '../consts/bytecode';
 import { HyperlaneAppChecker } from '../deploy/HyperlaneAppChecker';

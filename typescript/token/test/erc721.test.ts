@@ -4,7 +4,7 @@ import { expect } from 'chai';
 import { BigNumber, BigNumberish } from 'ethers';
 import { ethers } from 'hardhat';
 
-import { InterchainGasPaymaster__factory } from '@hyperlane-xyz/core';
+import { InterchainGasPaymaster__factory } from '@ortege/core';
 import {
   Chains,
   HyperlaneContractsMap,
@@ -12,8 +12,8 @@ import {
   TestCoreApp,
   TestCoreDeployer,
   deployTestIgpsAndGetRouterConfig,
-} from '@hyperlane-xyz/sdk';
-import { addressToBytes32, objMap } from '@hyperlane-xyz/utils';
+} from '@ortege/sdk';
+import { addressToBytes32, objMap } from '@ortege/utils';
 
 import { TokenConfig, TokenType } from '../src/config';
 import { HypERC721Factories } from '../src/contracts';

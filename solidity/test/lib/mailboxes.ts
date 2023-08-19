@@ -12,7 +12,7 @@ import {
   formatMessage,
   messageId,
   parseMessage,
-} from '@hyperlane-xyz/utils';
+} from '@ortege/utils';
 
 import { LegacyMultisigIsm, TestMailbox } from '../../types';
 import { DispatchEvent } from '../../types/contracts/Mailbox';

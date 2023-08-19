@@ -1,7 +1,7 @@
 import path from 'path';
 
-import { HelloWorldDeployer } from '@hyperlane-xyz/helloworld';
-import { serializeContractsMap } from '@hyperlane-xyz/sdk';
+import { HelloWorldDeployer } from '@ortege/helloworld';
+import { serializeContractsMap } from '@ortege/sdk';
 
 import { Contexts } from '../../config/contexts';
 import { Role } from '../../src/roles';

@@ -4,14 +4,14 @@ import {
   IInterchainGasPaymaster__factory,
   Mailbox__factory,
   Router,
-} from '@hyperlane-xyz/core';
+} from '@ortege/core';
 import {
   Address,
   addressToBytes32,
   objFilter,
   objMap,
   objMerge,
-} from '@hyperlane-xyz/utils';
+} from '@ortege/utils';
 
 import { filterOwnableContracts } from '../contracts/contracts';
 import {

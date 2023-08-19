@@ -8,10 +8,10 @@ For details on how to use the various abstractions and utilities, [see the docum
 
 ```bash
 # Install with NPM
-npm install @hyperlane-xyz/sdk
+npm install @ortege/sdk
 
 # Or with Yarn
-yarn add @hyperlane-xyz/sdk
+yarn add @ortege/sdk
 ```
 
 ## Contents
@@ -29,8 +29,8 @@ Classes for deploying, testing, and building applications using Hyperlane are in
 The SDK contains SVG files for all Hyperlane-supported chains. They can be imported from the `/logos` folder.
 
 ```js
-import ArbitrumBlack from '@hyperlane-xyz/sdk/logos/black/arbitrum.svg';
-import ArbitrumColor from '@hyperlane-xyz/sdk/logos/color/arbitrum.svg';
+import ArbitrumBlack from '@ortege/sdk/logos/black/arbitrum.svg';
+import ArbitrumColor from '@ortege/sdk/logos/color/arbitrum.svg';
 ```
 
 ## License

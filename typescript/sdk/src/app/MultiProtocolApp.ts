@@ -1,6 +1,6 @@
 import debug from 'debug';
 
-import { ProtocolType, objMap, promiseObjAll } from '@hyperlane-xyz/utils';
+import { ProtocolType, objMap, promiseObjAll } from '@ortege/utils';
 
 import { ChainMetadata } from '../metadata/chainMetadataTypes';
 import { MultiProtocolProvider } from '../providers/MultiProtocolProvider';

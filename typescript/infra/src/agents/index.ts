@@ -1,11 +1,7 @@
 import fs from 'fs';
 
-import {
-  AgentConnectionType,
-  ChainName,
-  chainMetadata,
-} from '@hyperlane-xyz/sdk';
-import { ProtocolType } from '@hyperlane-xyz/utils';
+import { AgentConnectionType, ChainName, chainMetadata } from '@ortege/sdk';
+import { ProtocolType } from '@ortege/utils';
 
 import { Contexts } from '../../config/contexts';
 import {

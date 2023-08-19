@@ -3,8 +3,8 @@ import {
   IInterchainSecurityModule,
   IMultisigIsm,
   IRoutingIsm,
-} from '@hyperlane-xyz/core';
-import type { Address } from '@hyperlane-xyz/utils';
+} from '@ortege/core';
+import type { Address } from '@ortege/utils';
 
 import { ChainMap } from '../types';
 

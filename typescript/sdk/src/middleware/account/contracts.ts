@@ -1,7 +1,7 @@
 import {
   InterchainAccountIsm__factory,
   InterchainAccountRouter__factory,
-} from '@hyperlane-xyz/core';
+} from '@ortege/core';
 
 import { proxiedFactories } from '../../router/types';
 

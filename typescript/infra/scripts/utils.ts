@@ -14,9 +14,9 @@ import {
   MultiProvider,
   RouterConfig,
   collectValidators,
-} from '@hyperlane-xyz/sdk';
-import { ProxiedRouterConfig } from '@hyperlane-xyz/sdk/dist/router/types';
-import { ProtocolType, objMap, promiseObjAll } from '@hyperlane-xyz/utils';
+} from '@ortege/sdk';
+import { ProxiedRouterConfig } from '@ortege/sdk/dist/router/types';
+import { ProtocolType, objMap, promiseObjAll } from '@ortege/utils';
 
 import { Contexts } from '../config/contexts';
 import { environments } from '../config/environments';

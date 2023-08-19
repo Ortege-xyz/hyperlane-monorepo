@@ -1,4 +1,4 @@
-import { objMap } from '@hyperlane-xyz/utils';
+import { objMap } from '@ortege/utils';
 
 import { MultiProvider } from '../../providers/MultiProvider';
 import { ProxiedRouterChecker } from '../../router/ProxiedRouterChecker';

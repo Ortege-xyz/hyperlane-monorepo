@@ -4,8 +4,8 @@ import {
   Router,
   TimelockController,
   TimelockController__factory,
-} from '@hyperlane-xyz/core';
-import { eqAddress } from '@hyperlane-xyz/utils';
+} from '@ortege/core';
+import { eqAddress } from '@ortege/utils';
 
 import { HyperlaneContracts } from '../contracts/types';
 import { ChainName } from '../types';

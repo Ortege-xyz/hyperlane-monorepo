@@ -1,6 +1,6 @@
 import { Debugger, debug } from 'debug';
 
-import { objMap } from '@hyperlane-xyz/utils';
+import { objMap } from '@ortege/utils';
 
 import { chainMetadata as defaultChainMetadata } from '../consts/chainMetadata';
 import { ChainMetadataManager } from '../metadata/ChainMetadataManager';

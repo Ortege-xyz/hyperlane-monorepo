@@ -1,6 +1,6 @@
 {
-  "name": "@hyperlane-xyz/utils",
-  "description": "General utilities and types for the Hyperlane network",
+  "name": "@ortege/utils",
+  "description": "General utilities and types for the Ortege network",
   "version": "1.4.2",
   "dependencies": {
     "@solana/web3.js": "^1.78.0",
@@ -12,16 +12,16 @@
     "prettier": "^2.4.1",
     "typescript": "^5.1.6"
   },
-  "homepage": "https://www.hyperlane.xyz",
+  "homepage": "https://www.ortege.io",
   "keywords": [
-    "Hyperlane",
+    "Ortege",
     "Utilities",
     "Typescript"
   ],
   "license": "Apache-2.0",
   "main": "dist/index.js",
   "prepublish": "yarn build",
-  "repository": "https://github.com/hyperlane-xyz/hyperlane-monorepo",
+  "repository": "https://github.com/ortege-xyz/ortege-monorepo",
   "scripts": {
     "build": "tsc",
     "clean": "rm -rf ./dist",

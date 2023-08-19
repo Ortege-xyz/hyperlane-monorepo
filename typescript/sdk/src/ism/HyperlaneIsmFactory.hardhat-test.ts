@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import { ethers } from 'hardhat';
 
-import { error } from '@hyperlane-xyz/utils';
+import { error } from '@ortege/utils';
 
 import { TestChains } from '../consts/chains';
 import { MultiProvider } from '../providers/MultiProvider';

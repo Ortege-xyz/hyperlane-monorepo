@@ -1,6 +1,6 @@
 import { Contract } from 'ethers';
 
-import { Ownable } from '@hyperlane-xyz/core';
+import { Ownable } from '@ortege/core';
 import {
   Address,
   ValueOf,
@@ -8,7 +8,7 @@ import {
   objMap,
   pick,
   promiseObjAll,
-} from '@hyperlane-xyz/utils';
+} from '@ortege/utils';
 
 import { MultiProvider } from '../providers/MultiProvider';
 import { ChainMap, Connection } from '../types';

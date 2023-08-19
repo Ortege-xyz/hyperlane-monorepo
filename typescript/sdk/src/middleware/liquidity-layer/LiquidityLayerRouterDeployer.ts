@@ -4,8 +4,8 @@ import {
   CircleBridgeAdapter,
   LiquidityLayerRouter,
   PortalAdapter,
-} from '@hyperlane-xyz/core';
-import { Address, eqAddress, objFilter, objMap } from '@hyperlane-xyz/utils';
+} from '@ortege/core';
+import { Address, eqAddress, objFilter, objMap } from '@ortege/utils';
 
 import {
   HyperlaneContracts,

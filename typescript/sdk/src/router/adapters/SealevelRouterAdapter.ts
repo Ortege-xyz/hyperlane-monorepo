@@ -2,7 +2,7 @@
 import { PublicKey } from '@solana/web3.js';
 import { deserializeUnchecked } from 'borsh';
 
-import { Address, Domain } from '@hyperlane-xyz/utils';
+import { Address, Domain } from '@ortege/utils';
 
 import { BaseSealevelAdapter } from '../../app/MultiProtocolApp';
 import { MultiProtocolProvider } from '../../providers/MultiProtocolProvider';

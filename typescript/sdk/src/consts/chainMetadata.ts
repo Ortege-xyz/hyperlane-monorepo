@@ -1,4 +1,4 @@
-import { ProtocolType } from '@hyperlane-xyz/utils';
+import { ProtocolType } from '@ortege/utils';
 
 import { ChainMetadata, ExplorerFamily } from '../metadata/chainMetadataTypes';
 import { ChainMap } from '../types';
@@ -15,7 +15,18 @@ export const etherToken = { name: 'Ether', symbol: 'ETH', decimals: 18 };
 export const maticToken = { name: 'MATIC', symbol: 'MATIC', decimals: 18 };
 export const xDaiToken = { name: 'xDai', symbol: 'xDai', decimals: 18 };
 export const solToken = { name: 'Sol', symbol: 'SOL', decimals: 9 };
-
+export const coston2Token = {
+  name: 'Coston2Flare',
+  symbol: 'C2FLR',
+  decimals: 18,
+};
+export const costonToken = {
+  name: 'CostonFlare',
+  symbol: 'cFLR',
+  decimals: 18,
+};
+export const songbirdToken = { name: 'Songbird', symbol: 'SGB', decimals: 18 };
+export const flareToken = { name: 'Flare', symbol: 'FLR', decimals: 18 };
 /**
  * Metadata for Ethereum chains
  */
@@ -549,6 +560,131 @@ export const gnosis: ChainMetadata = {
   gasCurrencyCoinGeckoId: 'xdai',
   gnosisSafeTransactionServiceUrl:
     'https://safe-transaction-gnosis-chain.safe.global/',
+};
+export const coston2: ChainMetadata = {
+  chainId: 114,
+  domainId: 114,
+  name: Chains.coston2,
+  protocol: ProtocolType.Ethereum,
+  displayName: 'Coston 2',
+  nativeToken: coston2Token,
+  rpcUrls: [
+    {
+      http: 'https://coston2-api.flare.network/ext/C/rpc',
+      pagination: {
+        maxBlockRange: 100,
+        minBlockNumber: 4732043,
+      },
+    },
+  ],
+  blockExplorers: [
+    {
+      name: 'Coston2 Explorer',
+      url: 'https://coston2-explorer.flare.network/',
+      apiUrl: 'https://coston2-explorer.flare.network/api',
+      family: ExplorerFamily.Blockscout,
+    },
+  ],
+  blocks: {
+    confirmations: 3,
+    reorgPeriod: 3,
+    estimateBlockTime: 7,
+  },
+  isTestnet: true,
+};
+
+export const coston: ChainMetadata = {
+  chainId: 16,
+  domainId: 16,
+  name: Chains.coston,
+  displayName: 'Coston',
+  protocol: ProtocolType.Ethereum,
+  nativeToken: costonToken,
+  rpcUrls: [
+    {
+      http: 'https://coston-api.flare.network/ext/bc/C/rpc',
+      pagination: {
+        maxBlockRange: 100,
+        minBlockNumber: 9271948,
+      },
+    },
+  ],
+  blockExplorers: [
+    {
+      name: 'Coston Explorer',
+      url: 'https://coston-explorer.flare.network/',
+      apiUrl: 'https://coston-explorer.flare.network/api',
+      family: ExplorerFamily.Blockscout,
+    },
+  ],
+  blocks: {
+    confirmations: 3,
+    reorgPeriod: 3,
+    estimateBlockTime: 15,
+  },
+  isTestnet: true,
+};
+
+export const songbird: ChainMetadata = {
+  chainId: 19,
+  domainId: 19,
+  name: Chains.songbird,
+  displayName: 'Songbird',
+  protocol: ProtocolType.Ethereum,
+  nativeToken: songbirdToken,
+  rpcUrls: [
+    {
+      http: 'https://sgb.ftso.com.au/ext/bc/C/rpc',
+      pagination: {
+        maxBlockRange: 100,
+        minBlockNumber: 36717988,
+      },
+    },
+  ],
+  blockExplorers: [
+    {
+      name: 'Songbird Explorer',
+      url: 'https://songbird-explorer.flare.network/',
+      apiUrl: 'https://songbird-explorer.flare.network/api',
+      family: ExplorerFamily.Blockscout,
+    },
+  ],
+  blocks: {
+    confirmations: 3,
+    reorgPeriod: 3,
+    estimateBlockTime: 3,
+  },
+};
+
+export const flare: ChainMetadata = {
+  chainId: 14,
+  domainId: 14,
+  name: Chains.flare,
+  displayName: 'Flare',
+  protocol: ProtocolType.Ethereum,
+  nativeToken: flareToken,
+  rpcUrls: [
+    {
+      http: 'https://flare-api.flare.network/ext/C/rpc',
+      pagination: {
+        maxBlockRange: 100,
+        minBlockNumber: 9647872,
+      },
+    },
+  ],
+  blockExplorers: [
+    {
+      name: 'Flare Explorer',
+      url: 'https://flare-explorer.flare.network/',
+      apiUrl: 'https://flare-explorer.flare.network/api',
+      family: ExplorerFamily.Blockscout,
+    },
+  ],
+  blocks: {
+    confirmations: 3,
+    reorgPeriod: 3,
+    estimateBlockTime: 3,
+  },
 };
 
 /**

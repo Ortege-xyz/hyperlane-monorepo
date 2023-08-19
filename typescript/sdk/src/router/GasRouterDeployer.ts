@@ -1,5 +1,5 @@
-import { GasRouter } from '@hyperlane-xyz/core';
-import { Address } from '@hyperlane-xyz/utils';
+import { GasRouter } from '@ortege/core';
+import { Address } from '@ortege/utils';
 
 import {
   HyperlaneContracts,

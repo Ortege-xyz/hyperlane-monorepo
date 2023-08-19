@@ -8,9 +8,9 @@ import {
   HookConfig,
   MultiProvider,
   OverheadIgpConfig,
-} from '@hyperlane-xyz/sdk';
-import { HyperlaneEnvironment } from '@hyperlane-xyz/sdk/dist/consts/environments';
-import { Address } from '@hyperlane-xyz/utils';
+} from '@ortege/sdk';
+import { HyperlaneEnvironment } from '@ortege/sdk/dist/consts/environments';
+import { Address } from '@ortege/utils';
 
 import { Contexts } from '../../config/contexts';
 import { environments } from '../../config/environments';

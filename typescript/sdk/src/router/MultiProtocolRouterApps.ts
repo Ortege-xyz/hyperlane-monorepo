@@ -1,4 +1,4 @@
-import { Address, Domain, ProtocolType } from '@hyperlane-xyz/utils';
+import { Address, Domain, ProtocolType } from '@ortege/utils';
 
 import { MultiProtocolApp } from '../app/MultiProtocolApp';
 import { ChainMap, ChainName } from '../types';
@@ -14,7 +14,7 @@ import {
 import { IGasRouterAdapter, IRouterAdapter } from './adapters/types';
 import { RouterAddress } from './types';
 
-export { Router } from '@hyperlane-xyz/core';
+export { Router } from '@ortege/core';
 
 export class MultiProtocolRouterApp<
   ContractAddrs extends RouterAddress = RouterAddress,

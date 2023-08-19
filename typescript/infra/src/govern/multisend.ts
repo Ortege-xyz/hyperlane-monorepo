@@ -1,5 +1,5 @@
-import { ChainName, MultiProvider } from '@hyperlane-xyz/sdk';
-import { CallData } from '@hyperlane-xyz/utils';
+import { ChainName, MultiProvider } from '@ortege/sdk';
+import { CallData } from '@ortege/utils';
 
 import { getSafe, getSafeService } from '../utils/safe';
 

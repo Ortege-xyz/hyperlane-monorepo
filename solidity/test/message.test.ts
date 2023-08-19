@@ -1,11 +1,7 @@
 import { expect } from 'chai';
 import { ethers } from 'hardhat';
 
-import {
-  addressToBytes32,
-  formatMessage,
-  messageId,
-} from '@hyperlane-xyz/utils';
+import { addressToBytes32, formatMessage, messageId } from '@ortege/utils';
 
 import testCases from '../../vectors/message.json';
 import { TestMessage, TestMessage__factory } from '../types';

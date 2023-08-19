@@ -8,7 +8,7 @@ import {
   S3Client,
 } from '@aws-sdk/client-s3';
 
-import { ChainName } from '@hyperlane-xyz/sdk';
+import { ChainName } from '@ortege/sdk';
 
 import { Contexts } from '../../../config/contexts';
 import { AgentContextConfig, DeployEnvironment } from '../../config';

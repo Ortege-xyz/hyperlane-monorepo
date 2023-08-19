@@ -1,6 +1,6 @@
 import debug from 'debug';
 
-import { isObject } from '@hyperlane-xyz/utils';
+import { isObject } from '@ortege/utils';
 
 import { HyperlaneContracts, HyperlaneContractsMap } from '../contracts/types';
 import { HyperlaneDeployer } from '../deploy/HyperlaneDeployer';

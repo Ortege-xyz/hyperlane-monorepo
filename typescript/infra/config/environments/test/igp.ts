@@ -3,8 +3,8 @@ import {
   GasOracleContractType,
   OverheadIgpConfig,
   multisigIsmVerificationCost,
-} from '@hyperlane-xyz/sdk';
-import { exclude, objMap } from '@hyperlane-xyz/utils';
+} from '@ortege/sdk';
+import { exclude, objMap } from '@ortege/utils';
 
 import { TestChains, chainNames } from './chains';
 import { multisigIsm } from './multisigIsm';

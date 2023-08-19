@@ -8,8 +8,8 @@ import {
   MultisigIsmConfig,
   RoutingIsmConfig,
   defaultMultisigIsmConfigs,
-} from '@hyperlane-xyz/sdk';
-import { Address, objFilter, objMap } from '@hyperlane-xyz/utils';
+} from '@ortege/sdk';
+import { Address, objFilter, objMap } from '@ortege/utils';
 
 import { DeployEnvironment } from '../src/config';
 

@@ -4,8 +4,8 @@ import { expect } from 'chai';
 import { ContractReceipt } from 'ethers';
 import { ethers } from 'hardhat';
 
-import { TestMailbox, TestRecipient__factory } from '@hyperlane-xyz/core';
-import { addressToBytes32 } from '@hyperlane-xyz/utils';
+import { TestMailbox, TestRecipient__factory } from '@ortege/core';
+import { addressToBytes32 } from '@ortege/utils';
 
 import { Chains } from '../consts/chains';
 import { MultiProvider } from '../providers/MultiProvider';

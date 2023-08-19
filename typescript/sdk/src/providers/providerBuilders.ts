@@ -2,7 +2,7 @@ import { Connection } from '@solana/web3.js';
 import { providers } from 'ethers';
 import { createPublicClient, http } from 'viem';
 
-import { ProtocolType, isNumeric } from '@hyperlane-xyz/utils';
+import { ProtocolType, isNumeric } from '@ortege/utils';
 
 import { ChainMetadata } from '../metadata/chainMetadataTypes';
 

@@ -12,8 +12,8 @@ import {
   TimelockController__factory,
   TransparentUpgradeableProxy,
   TransparentUpgradeableProxy__factory,
-} from '@hyperlane-xyz/core';
-import { Address, eqAddress, runWithTimeout } from '@hyperlane-xyz/utils';
+} from '@ortege/core';
+import { Address, eqAddress, runWithTimeout } from '@ortege/utils';
 
 import {
   HyperlaneAddressesMap,

@@ -6,13 +6,8 @@ import {
   ITokenMessenger__factory,
   Mailbox__factory,
   PortalAdapter__factory,
-} from '@hyperlane-xyz/core';
-import {
-  addressToBytes32,
-  ensure0x,
-  eqAddress,
-  strip0x,
-} from '@hyperlane-xyz/utils';
+} from '@ortege/core';
+import { addressToBytes32, ensure0x, eqAddress, strip0x } from '@ortege/utils';
 
 import { HyperlaneApp } from '../../app/HyperlaneApp';
 import { HyperlaneContracts } from '../../contracts/types';

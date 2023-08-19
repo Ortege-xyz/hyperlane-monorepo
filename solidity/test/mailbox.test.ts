@@ -2,7 +2,7 @@ import { SignerWithAddress } from '@nomiclabs/hardhat-ethers/signers';
 import { expect } from 'chai';
 import { ethers } from 'hardhat';
 
-import { addressToBytes32, messageId } from '@hyperlane-xyz/utils';
+import { addressToBytes32, messageId } from '@ortege/utils';
 
 import {
   BadRecipient1__factory,

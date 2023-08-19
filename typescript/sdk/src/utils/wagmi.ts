@@ -1,6 +1,6 @@
 import type { Chain as WagmiChain } from '@wagmi/chains';
 
-import { objMap } from '@hyperlane-xyz/utils';
+import { objMap } from '@ortege/utils';
 
 import { chainMetadata, etherToken } from '../consts/chainMetadata';
 import type { ChainMetadata } from '../metadata/chainMetadataTypes';

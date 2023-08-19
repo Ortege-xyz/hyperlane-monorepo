@@ -1,10 +1,6 @@
-import { HelloWorldConfig as HelloWorldContractsConfig } from '@hyperlane-xyz/helloworld';
-import {
-  AgentConnectionType,
-  ChainMap,
-  RouterConfig,
-} from '@hyperlane-xyz/sdk';
-import { objMap } from '@hyperlane-xyz/utils';
+import { HelloWorldConfig as HelloWorldContractsConfig } from '@ortege/helloworld';
+import { AgentConnectionType, ChainMap, RouterConfig } from '@ortege/sdk';
+import { objMap } from '@ortege/utils';
 
 import { DeployEnvironment, HelloWorldConfig } from '../../../src/config';
 import { HelloWorldKathyRunMode } from '../../../src/config/helloworld';

@@ -6,8 +6,8 @@ import {
   HyperlaneApp,
   HyperlaneAppChecker,
   OwnerViolation,
-} from '@hyperlane-xyz/sdk';
-import { Address, CallData, objMap } from '@hyperlane-xyz/utils';
+} from '@ortege/sdk';
+import { Address, CallData, objMap } from '@ortege/utils';
 
 import { canProposeSafeTransactions } from '../utils/safe';
 

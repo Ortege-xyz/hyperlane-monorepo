@@ -1,6 +1,6 @@
 import { Debugger, debug } from 'debug';
 
-import { exclude, isNumeric } from '@hyperlane-xyz/utils';
+import { exclude, isNumeric } from '@ortege/utils';
 
 import { chainMetadata as defaultChainMetadata } from '../consts/chainMetadata';
 import { ChainMap, ChainName } from '../types';

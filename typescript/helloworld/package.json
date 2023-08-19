@@ -1,10 +1,10 @@
 {
-  "name": "@hyperlane-xyz/helloworld",
-  "description": "A basic skeleton of an Hyperlane app",
+  "name": "@ortege/helloworld",
+  "description": "A basic skeleton of an Ortege app",
   "version": "1.4.2",
   "dependencies": {
-    "@hyperlane-xyz/sdk": "1.4.2",
     "@openzeppelin/contracts-upgradeable": "^4.8.0",
+    "@ortege/sdk": "1.4.2",
     "ethers": "^5.7.2"
   },
   "devDependencies": {
@@ -35,9 +35,9 @@
     "/dist",
     "/contracts"
   ],
-  "homepage": "https://www.hyperlane.xyz",
+  "homepage": "https://www.ortege.io",
   "keywords": [
-    "Hyperlane",
+    "Ortege",
     "HelloWorld",
     "Solidity",
     "Typescript"
@@ -47,7 +47,7 @@
   "packageManager": "yarn@3.2.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/hyperlane-xyz/hyperlane-app-template"
+    "url": "https://github.com/ortege-xyz/ortege-app-template"
   },
   "scripts": {
     "build": "hardhat compile && tsc",

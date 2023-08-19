@@ -8,8 +8,8 @@ import {
   HyperlaneContracts,
   MultiProvider,
   RouterConfig,
-} from '@hyperlane-xyz/sdk';
-import { objMap } from '@hyperlane-xyz/utils';
+} from '@ortege/sdk';
+import { objMap } from '@ortege/utils';
 
 import {
   CollateralConfig,

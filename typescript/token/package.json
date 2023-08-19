@@ -1,12 +1,12 @@
 {
-  "name": "@hyperlane-xyz/hyperlane-token",
-  "description": "A template for interchain ERC20 and ERC721 tokens using Hyperlane",
+  "name": "@ortege/hyperlane-token",
+  "description": "A template for interchain ERC20 and ERC721 tokens using Ortege",
   "version": "1.4.2",
   "dependencies": {
-    "@hyperlane-xyz/core": "1.4.2",
-    "@hyperlane-xyz/sdk": "1.4.2",
-    "@hyperlane-xyz/utils": "1.4.2",
     "@openzeppelin/contracts-upgradeable": "^4.8.0",
+    "@ortege/core": "1.4.2",
+    "@ortege/sdk": "1.4.2",
+    "@ortege/utils": "1.4.2",
     "ethers": "^5.7.2"
   },
   "devDependencies": {
@@ -38,9 +38,9 @@
     "/contracts",
     "/docs"
   ],
-  "homepage": "https://www.hyperlane.xyz",
+  "homepage": "https://www.ortege.io",
   "keywords": [
-    "Hyperlane",
+    "Ortege",
     "Solidity",
     "Token"
   ],
@@ -49,7 +49,7 @@
   "packageManager": "yarn@3.2.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/hyperlane-xyz/hyperlane-token"
+    "url": "https://github.com/ortege-xyz/ortege-token"
   },
   "scripts": {
     "clean": "hardhat clean && rm -rf dist cache src/types && forge clean",

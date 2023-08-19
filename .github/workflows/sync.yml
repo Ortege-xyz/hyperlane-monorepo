@@ -1,0 +1,33 @@
+name: Sync with Upstream
+
+on:
+  schedule: 
+  - cron: "0 */24 * * *"
+  workflow_dispatch:
+
+jobs:
+  sync:
+    name: sync
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Synchronize repository
+      uses: repo-sync/github-sync@v2
+      with:
+        source_repo: https://github.com/hyperlane-xyz/hyperlane-monorepo
+        source_branch: main
+        destination_branch: upstream/main
+        github_token: ${{ secrets.GH_PAT }}
+
+    - name: Create pull request
+      uses: repo-sync/pull-request@v2
+      with:
+        source_branch: upstream/main
+        destination_branch: main
+        github_token: ${{ secrets.GH_PAT }}
+        pr_title: ":rocket: Pulling upstream into main"
+        pr_body: |
+          *An automated PR to sync with upstream*
+
+          Co-authored-by: josedev-union josedev-union@users.noreply.github.com

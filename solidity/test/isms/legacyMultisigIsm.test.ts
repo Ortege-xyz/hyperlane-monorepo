@@ -9,7 +9,7 @@ import {
   addressToBytes32,
   formatLegacyMultisigIsmMetadata,
   parseLegacyMultisigIsmMetadata,
-} from '@hyperlane-xyz/utils';
+} from '@ortege/utils';
 
 import domainHashTestCases from '../../../vectors/domainHash.json';
 import {
