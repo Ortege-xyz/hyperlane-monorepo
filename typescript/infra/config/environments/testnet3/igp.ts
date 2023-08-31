@@ -7,12 +7,12 @@ import {
 } from '@ortege/sdk';
 import { exclude, objMap } from '@ortege/utils';
 
-import { TestnetChains, chainNames } from './chains';
+import { TestnetChains, supportedChainNames } from './chains';
 import { owners } from './owners';
 
 function getGasOracles(local: TestnetChains) {
   return Object.fromEntries(
-    exclude(local, chainNames).map((name) => [
+    exclude(local, supportedChainNames).map((name) => [
       name,
       GasOracleContractType.StorageGasOracle,
     ]),
@@ -28,7 +28,7 @@ export const igp: ChainMap<OverheadIgpConfig> = objMap(
       beneficiary: owner,
       gasOracleType: getGasOracles(chain),
       overhead: Object.fromEntries(
-        exclude(chain, chainNames).map((remote) => [
+        exclude(chain, supportedChainNames).map((remote) => [
           remote,
           multisigIsmVerificationCost(
             defaultMultisigIsmConfigs[remote].threshold,

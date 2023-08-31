@@ -687,6 +687,53 @@ export const flare: ChainMetadata = {
   },
 };
 
+// Testnet for Nautilus
+export const proteustestnet: ChainMetadata = {
+  chainId: 88002,
+  domainId: 88002,
+  name: Chains.proteustestnet,
+  protocol: ProtocolType.Ethereum,
+  displayName: 'Proteus Testnet',
+  nativeToken: {
+    name: 'Zebec',
+    symbol: 'ZBC',
+    decimals: 18,
+  },
+  rpcUrls: [
+    {
+      http: 'https://api.proteus.nautchain.xyz/solana',
+    },
+  ],
+  blocks: {
+    confirmations: 1,
+    reorgPeriod: 1,
+    estimateBlockTime: 1,
+  },
+};
+
+export const nautilus: ChainMetadata = {
+  chainId: 22222,
+  domainId: 22222,
+  name: Chains.nautilus,
+  protocol: ProtocolType.Ethereum,
+  displayName: 'Nautilus',
+  nativeToken: {
+    name: 'Zebec',
+    symbol: 'ZBC',
+    decimals: 18,
+  },
+  rpcUrls: [
+    {
+      http: 'https://api.nautilus.nautchain.xyz',
+    },
+  ],
+  blocks: {
+    confirmations: 1,
+    reorgPeriod: 1,
+    estimateBlockTime: 1,
+  },
+};
+
 /**
  * Metadata for local test chains
  */
@@ -829,10 +876,13 @@ export const chainMetadata: ChainMap<ChainMetadata> = {
   optimismgoerli,
   polygon,
   gnosis,
+  proteustestnet,
   test1,
   test2,
   test3,
   solanadevnet,
+  solana,
+  nautilus,
 };
 
 export const chainIdToMetadata = Object.values(chainMetadata).reduce<
