@@ -1,6 +1,0 @@
-/target
-/Cargo.lock
-.soroban
-
-node_modules
-package-lock.json
