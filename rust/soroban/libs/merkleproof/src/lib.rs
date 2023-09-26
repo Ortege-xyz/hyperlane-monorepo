@@ -11,11 +11,9 @@ pub enum Error {
     MerkleProofInvalidMultiproof = 1,
 }
 
-#[contract]
-pub struct Contract;
+pub struct MerkleProof;
 
-#[contractimpl]
-impl Contract {
+impl MerkleProof {
     pub fn verify(env: Env, proof: Vec<BytesN<32>>, root: BytesN<32>, leaf: BytesN<32>) -> bool {
         return Self::process_proof(env, proof, leaf) == root;
     }
@@ -93,10 +91,14 @@ impl Contract {
             hashes.insert(i, Self::_hash_pair(env.clone(), a, b));
         }
 
-        if total_hashes > 0{
-            assert_with_error!(&env, proof_pos == proof_len, Error::MerkleProofInvalidMultiproof);
-            return hashes.get_unchecked(total_hashes -1);
-        } else if leaves_len > 0{
+        if total_hashes > 0 {
+            assert_with_error!(
+                &env,
+                proof_pos == proof_len,
+                Error::MerkleProofInvalidMultiproof
+            );
+            return hashes.get_unchecked(total_hashes - 1);
+        } else if leaves_len > 0 {
             return leaves.get_unchecked(0);
         } else {
             return proof.get_unchecked(0);
@@ -122,5 +124,40 @@ impl Contract {
         return BytesN::from_array(&env, &output);
     }
 }
+
+// This is a contract only for tests
+#[contract]
+pub struct Contract;
+
+#[contractimpl]
+impl Contract {
+    pub fn verify(env: Env, proof: Vec<BytesN<32>>, root: BytesN<32>, leaf: BytesN<32>) -> bool {
+        return MerkleProof::verify(env, proof, root, leaf);
+    }
+
+    pub fn multi_proof_verify(
+        env: Env,
+        proof: Vec<BytesN<32>>,
+        proof_flags: Vec<bool>,
+        root: BytesN<32>,
+        leaves: Vec<BytesN<32>>,
+    ) -> bool {
+        return MerkleProof::multi_proof_verify(env, proof, proof_flags, root, leaves);
+    }
+
+    pub fn process_proof(env: Env, proof: Vec<BytesN<32>>, leaf: BytesN<32>) -> BytesN<32> {
+        return MerkleProof::process_proof(env, proof, leaf);
+    }
+
+    pub fn process_multi_proof(
+        env: Env,
+        proof: Vec<BytesN<32>>,
+        proof_flags: Vec<bool>,
+        leaves: Vec<BytesN<32>>,
+    ) -> BytesN<32> {
+        return MerkleProof::process_multi_proof(env, proof, proof_flags, leaves);
+    }
+}
+
 #[cfg(test)]
 mod tests;

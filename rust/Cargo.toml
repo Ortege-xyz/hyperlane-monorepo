@@ -38,8 +38,8 @@ members = [
     "utils/hex",
     "utils/run-locally",
     "soroban/openzeppelin/ownable",
-    "soroban/merkleproof",
-    "soroban/merkletree",
+    "soroban/libs/merkleproof",
+    "soroban/libs/merkletree",
 ]
 
 [workspace.package]

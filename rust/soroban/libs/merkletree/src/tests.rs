@@ -1,5 +1,5 @@
 use crate::{Contract, ContractClient, MerkleTree};
-use soroban_sdk::{BytesN, Env, Vec, U256, vec};
+use soroban_sdk::{vec, BytesN, Env, Vec, U256};
 use tiny_keccak::{Hasher, Keccak};
 
 const ONE_EXPECTED_ROOT: [u8; 32] = [
@@ -41,27 +41,27 @@ fn one_element_works() {
     assert!(array_root.eq(&ONE_EXPECTED_ROOT), "Error in tree root");
 }
 
-
 #[test]
 #[should_panic]
-fn insert_fails_tree_full(){
+fn insert_fails_tree_full() {
     let env = Env::default();
     let contract_id = env.register_contract(None, Contract);
     let client = ContractClient::new(&env, &contract_id);
 
-    for i in 0..4294967296u64{
-        let hash = MerkleTree::keccak256(vec![&env, [
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, i as u8,
-        ]]);
+    for i in 0..4294967296u64 {
+        let hash = MerkleTree::keccak256(vec![
+            &env,
+            [
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, i as u8,
+            ],
+        ]);
         client.insert(&BytesN::from_array(&env, &hash));
     }
 }
 
 #[test]
-fn insert_fails_vec_wrong_len(){
-    
-}
+fn insert_fails_vec_wrong_len() {}
 
 const THREE_EXPECTED_ROOT: [u8; 32] = [
     24, 242, 241, 100, 111, 238, 51, 90, 30, 175, 81, 145, 168, 206, 88, 234, 119, 32, 128, 5, 125,
