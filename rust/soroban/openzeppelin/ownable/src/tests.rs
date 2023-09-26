@@ -19,6 +19,22 @@ fn owner_address_correct() {
     assert_ne!(owner, user2);
 }
 
+// This Function will test if it throws an error when trying to call init again
+#[test]
+#[should_panic]
+fn init_fails() {
+    let env = Env::default();
+    let contract_id = env.register_contract(None, Contract);
+    let client = ContractClient::new(&env, &contract_id);
+
+    let user = Address::random(&env);
+    let user2 = Address::random(&env);
+
+    client.init(&user);
+
+    client.init(&user2);
+}
+
 // This function will test if the owner increased the count
 #[test]
 fn invalid_owner_increase_count() {

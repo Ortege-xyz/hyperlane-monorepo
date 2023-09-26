@@ -18,6 +18,13 @@ struct OwnershipTransferred {
 
 impl Ownable {
     pub fn init(env: Env, owner: Address) {
+        let _owner = Self::owner(env.clone());
+        let _zero_address = Address::from_contract_id(&BytesN::from_array(&env, &ZERO));
+
+        if _owner != _zero_address {
+            panic!("Ownable: Already initialized")
+        }
+
         env.storage().instance().set(&OWNER, &owner);
     }
 
