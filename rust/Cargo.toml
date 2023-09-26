@@ -37,6 +37,9 @@ members = [
     "utils/backtrace-oneline",
     "utils/hex",
     "utils/run-locally",
+    "soroban/openzeppelin/ownable",
+    "soroban/merkleproof",
+    "soroban/merkletree",
 ]
 
 [workspace.package]
