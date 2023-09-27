@@ -4921,6 +4921,14 @@ dependencies = [
 ]
 
 [[package]]
+name = "message"
+version = "0.1.0"
+dependencies = [
+ "soroban-sdk",
+ "tiny-keccak",
+]
+
+[[package]]
 name = "migration"
 version = "0.1.0"
 dependencies = [
