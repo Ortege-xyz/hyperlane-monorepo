@@ -4667,6 +4667,14 @@ dependencies = [
 ]
 
 [[package]]
+name = "legacymultisigismmetadata"
+version = "0.1.0"
+dependencies = [
+ "soroban-sdk",
+ "tiny-keccak",
+]
+
+[[package]]
 name = "libc"
 version = "0.2.147"
 source = "registry+https://github.com/rust-lang/crates.io-index"

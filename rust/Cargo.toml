@@ -40,6 +40,7 @@ members = [
     "soroban/openzeppelin/ownable",
     "soroban/openzeppelin/ecdsa",
     "soroban/libs/legacycheckpoint",
+    "soroban/libs/legacymultisigismmetadata",
     "soroban/libs/merkleproof",
     "soroban/libs/merkletree",
     "soroban/libs/message",
