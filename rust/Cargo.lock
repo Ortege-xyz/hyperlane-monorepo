@@ -4658,6 +4658,15 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "830d08ce1d1d941e6b30645f1a0eb5643013d835ce3779a5fc208261dbe10f55"
 
 [[package]]
+name = "legacycheckpoint"
+version = "0.1.0"
+dependencies = [
+ "ecdsa 0.1.0",
+ "sha3 0.10.8",
+ "soroban-sdk",
+]
+
+[[package]]
 name = "libc"
 version = "0.2.147"
 source = "registry+https://github.com/rust-lang/crates.io-index"

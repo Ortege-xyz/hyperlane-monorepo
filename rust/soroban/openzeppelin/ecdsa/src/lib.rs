@@ -1,4 +1,4 @@
-//#![no_std]
+#![no_std]
 use secp256k1::ecdsa::{RecoverableSignature, RecoveryId};
 use secp256k1::{Message, Secp256k1};
 use sha3::{Digest, Keccak256};
@@ -6,6 +6,10 @@ use soroban_sdk::{bytes, Address, Bytes, BytesN, Env};
 
 pub struct ECDSA;
 impl ECDSA {
+    /**
+     * Rust version of ecrecover precompiled function
+     * Returns the address in sorobank address format
+     */
     pub fn ecrecover(env: Env, hash: [u8; 32], r: [u8; 32], s: [u8; 32], v: u8) -> Address {
         // Initialize the secp256k1 context
         let secp = Secp256k1::new();
@@ -49,6 +53,20 @@ impl ECDSA {
         return Address::from_contract_id(&BytesN::from_array(&env, &address));
     }
 
+    /**
+     * @dev Returns the address that signed a hashed message (`hash`) with
+     * `signature`. This address can then be used for verification purposes.
+     *
+     * The `ecrecover` EVM opcode allows for malleable (non-unique) signatures:
+     * this function rejects them by requiring the `s` value to be in the lower
+     * half order, and the `v` value to be either 27 or 28.
+     *
+     * IMPORTANT: `hash` _must_ be the result of a hash operation for the
+     * verification to be secure: it is possible to craft signatures that
+     * recover to arbitrary addresses for non-hashed data. A safe way to ensure
+     * this is by receiving a hash of the original message (which may otherwise
+     * be too long), and then calling {toEthSignedMessageHash} on it.
+     */
     pub fn recover(env: Env, hash: BytesN<32>, signature: Bytes) -> Address {
         // Check the signature length
         if signature.len() != 65 {
@@ -88,14 +106,18 @@ impl ECDSA {
         return signer;
     }
 
-    pub fn to_eth_signed_message_hash(env: Env, hash: BytesN<32>) -> BytesN<32> {
-        let array = hash.to_array();
-
+    /**
+     * @dev Returns an Ethereum Signed Message, created from a `hash`. This
+     * replicates the behavior of the
+     * [eth_sign](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_sign) JSON-RPC method.
+     * See {recover}.
+     */
+    pub fn to_eth_signed_message_hash(env: Env, hash: [u8; 32]) -> BytesN<32> {
         let message = b"\x19Ethereum Signed Message:\n32";
 
         let mut combined_values = [0u8; 60];
         combined_values[0..28].copy_from_slice(message);
-        combined_values[28..60].copy_from_slice(&array);
+        combined_values[28..60].copy_from_slice(&hash);
 
         let mut _hash = Keccak256::digest(&combined_values);
 

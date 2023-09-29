@@ -112,15 +112,14 @@ fn to_eth_signed_message_hash_works() {
 
     let msg_str = "OpenZeppelin";
     let message_hash = Keccak256::digest(msg_str.as_bytes());
-
-    let test_message = BytesN::from_array(&env, &message_hash.into());
+    let message_array = message_hash.into();
 
     let expected_hash = bytesn!(
         &env,
         0x7d768af957ef8cbf6219a37e743d5546d911dae3e46449d8a5810522db2ef65e
     );
 
-    let message_hash = ECDSA::to_eth_signed_message_hash(env, test_message);
+    let message_hash = ECDSA::to_eth_signed_message_hash(env, message_array);
 
     assert!(message_hash == expected_hash);
 }

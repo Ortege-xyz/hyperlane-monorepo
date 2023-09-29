@@ -39,6 +39,7 @@ members = [
     "utils/run-locally",
     "soroban/openzeppelin/ownable",
     "soroban/openzeppelin/ecdsa",
+    "soroban/libs/legacycheckpoint",
     "soroban/libs/merkleproof",
     "soroban/libs/merkletree",
     "soroban/libs/message",

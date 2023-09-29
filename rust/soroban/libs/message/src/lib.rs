@@ -1,4 +1,4 @@
-//#![no_std]
+#![no_std]
 use soroban_sdk::{Address, Bytes, BytesN, Env};
 
 use tiny_keccak::{Hasher, Keccak};
