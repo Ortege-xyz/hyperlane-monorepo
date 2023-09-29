@@ -13,10 +13,6 @@ const BODY_OFFSET: u32 = 77;
 
 pub struct Message;
 
-pub const ZERO: [u8; 32] = [
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-];
-
 impl Message {
     pub fn format_message(
         env: Env,

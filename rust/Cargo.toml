@@ -38,6 +38,7 @@ members = [
     "utils/hex",
     "utils/run-locally",
     "soroban/openzeppelin/ownable",
+    "soroban/openzeppelin/ecdsa",
     "soroban/libs/merkleproof",
     "soroban/libs/merkletree",
     "soroban/libs/message",
