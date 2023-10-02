@@ -2307,6 +2307,13 @@ dependencies = [
 ]
 
 [[package]]
+name = "enumerableset"
+version = "0.1.0"
+dependencies = [
+ "soroban-sdk",
+]
+
+[[package]]
 name = "env_logger"
 version = "0.9.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -4658,7 +4665,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "830d08ce1d1d941e6b30645f1a0eb5643013d835ce3779a5fc208261dbe10f55"
 
 [[package]]
-name = "legacycheckpoint"
+name = "legacy_checkpoint"
 version = "0.1.0"
 dependencies = [
  "ecdsa 0.1.0",
@@ -4667,11 +4674,10 @@ dependencies = [
 ]
 
 [[package]]
-name = "legacymultisigismmetadata"
+name = "legacy_multisig_ism_metadata"
 version = "0.1.0"
 dependencies = [
  "soroban-sdk",
- "tiny-keccak",
 ]
 
 [[package]]
