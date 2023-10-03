@@ -45,6 +45,7 @@ members = [
     "soroban/libs/merkleproof",
     "soroban/libs/merkletree",
     "soroban/libs/message",
+    "soroban/multisig/legacymultisigism",
 ]
 
 [workspace.package]

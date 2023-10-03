@@ -29,7 +29,7 @@ impl Ownable {
         env.storage().instance().set(&OWNER, &owner);
     }
 
-    fn only_owner(env: Env, caller: Address) {
+    pub fn only_owner(env: Env, caller: Address) {
         let owner = Self::owner(env.clone());
 
         assert!(owner == caller, "Ownable: Unauthorized Account")
