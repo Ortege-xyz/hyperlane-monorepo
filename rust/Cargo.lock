@@ -4375,6 +4375,13 @@ dependencies = [
 ]
 
 [[package]]
+name = "iinterchain_security_module"
+version = "0.1.0"
+dependencies = [
+ "soroban-sdk",
+]
+
+[[package]]
 name = "im"
 version = "15.1.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -4679,6 +4686,7 @@ version = "0.1.0"
 dependencies = [
  "ecdsa 0.1.0",
  "enumerableset",
+ "iinterchain_security_module",
  "legacy_checkpoint",
  "legacy_multisig_ism_metadata",
  "merkletree",

@@ -1,6 +1,7 @@
 #![no_std]
 use ecdsa::ECDSA;
 use enumerableset::EnumerableSet;
+use iinterchain_security_module::Types;
 use legacy_checkpoint::LegacyCheckpointLib;
 use legacy_multisig_ism_metadata::LegacyMultisigIsmMetadata;
 use merkletree::MerkleTree;
@@ -171,6 +172,10 @@ impl LegacyMultisigIsm {
     pub fn validator_count(env: Env, _domain: u32) -> u32 {
         let validator_set = Self::_get_validator_set(env.clone(), _domain);
         return validator_set.len();
+    }
+
+    pub fn module_type() -> Types {
+        return Types::LEGACYMULTISIG;
     }
 
     fn _enroll_validator(env: Env, _domain: u32, _validator: Address) {

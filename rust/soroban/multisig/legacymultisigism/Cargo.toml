@@ -12,6 +12,7 @@ soroban-sdk = "0.9.2"
 ecdsa = {path = "../../openzeppelin/ecdsa" }
 ownable = { path = "../../openzeppelin/ownable" }
 enumerableset = { path = "../../openzeppelin/enumerableset" }
+iinterchain_security_module = { path = "../../libs/iinterchain-security-module" }
 legacy_checkpoint = { path = "../../libs/legacycheckpoint" }
 legacy_multisig_ism_metadata = { path = "../../libs/legacymultisigismmetadata" }
 merkletree = { path = "../../libs/merkletree" }
