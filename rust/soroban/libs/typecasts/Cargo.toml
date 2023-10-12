@@ -1,5 +1,5 @@
 [package]
-name = "merkleproof"
+name = "typecasts"
 version = "0.1.0"
 edition = "2021"
 
@@ -8,7 +8,6 @@ crate-type = ["cdylib"]
 
 [dependencies]
 soroban-sdk = { workspace = true }
-tiny-keccak  = { workspace = true, features = ["keccak"] }
 
 [dev_dependencies]
 soroban-sdk = { workspace = true, features = ["testutils"] }

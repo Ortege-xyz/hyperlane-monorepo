@@ -1,14 +1,12 @@
 [package]
-name = "merkleproof"
+name = "legacy_checkpoint"
 version = "0.1.0"
-edition = "2021"
-
-[lib]
-crate-type = ["cdylib"]
+edition = "2018"
 
 [dependencies]
+sha3 = { workspace = true }
 soroban-sdk = { workspace = true }
-tiny-keccak  = { workspace = true, features = ["keccak"] }
+ecdsa = { path = "../../openzeppelin/ecdsa" }
 
 [dev_dependencies]
 soroban-sdk = { workspace = true, features = ["testutils"] }
