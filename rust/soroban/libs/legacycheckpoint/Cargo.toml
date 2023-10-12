@@ -1,31 +1,18 @@
 [package]
 name = "legacy_checkpoint"
 version = "0.1.0"
-edition = "2021"
+edition = "2018"
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[lib]
+crate-type = ["cdylib"]
 
 [dependencies]
-sha3 = "0.10.8"
-soroban-sdk = "0.9.2"
-ecdsa = {path = "../../openzeppelin/ecdsa" }
+sha3 = { workspace = true }
+soroban-sdk = { workspace = true }
+openecdsa = {path = "../../openzeppelin/openecdsa" }
 
 [dev_dependencies]
-soroban-sdk = { version = " 0.9.2", features = ["testutils"] }
+soroban-sdk = { workspace = true, features = ["testutils"] }
 
 [features]
 testutils = ["soroban-sdk/testutils"]
-
-[profile.release]
-opt-level = "z"
-overflow-checks = true
-debug = 0
-strip = "symbols"
-debug-assertions = false
-panic = "abort"
-codegen-units = 1
-lto = true
-
-[profile.release-with-logs]
-inherits = "release"
-debug-assertions = true
