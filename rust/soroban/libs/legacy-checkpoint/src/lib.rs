@@ -1,5 +1,5 @@
 #![no_std]
-use crate::openecdsa::ECDSA;
+use ecdsa::ECDSA;
 use sha3::{Digest, Keccak256};
 use soroban_sdk::{BytesN, Env};
 pub struct LegacyCheckpointLib;

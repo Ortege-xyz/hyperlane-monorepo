@@ -1,14 +1,9 @@
 [package]
-name = "openecdsa"
+name = "legacy_multisig_ism_metadata"
 version = "0.1.0"
 edition = "2021"
 
-[lib]
-crate-type = ["cdylib"]
-
 [dependencies]
-sha3 = { workspace = true }
-secp256k1 = { version = "0.27.0", features = ["recovery"] }
 soroban-sdk = { workspace = true }
 
 [dev_dependencies]

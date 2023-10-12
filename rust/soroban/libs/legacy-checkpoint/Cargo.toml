@@ -3,13 +3,10 @@ name = "legacy_checkpoint"
 version = "0.1.0"
 edition = "2018"
 
-[lib]
-crate-type = ["cdylib"]
-
 [dependencies]
 sha3 = { workspace = true }
 soroban-sdk = { workspace = true }
-openecdsa = {path = "../../openzeppelin/openecdsa" }
+ecdsa = { path = "../../openzeppelin/ecdsa" }
 
 [dev_dependencies]
 soroban-sdk = { workspace = true, features = ["testutils"] }

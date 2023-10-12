@@ -2,16 +2,16 @@
 resolver = "2"
 members = [
     "openzeppelin/ownable",
-    "openzeppelin/openecdsa",
+    "openzeppelin/ecdsa",
     "openzeppelin/enumerableset",
     "libs/iinterchain-security-module",
-    "libs/legacycheckpoint",
-    "libs/legacymultisigismmetadata",
+    "libs/legacy-checkpoint",
+    "libs/legacy-multisig-ism-metadata",
     "libs/merkleproof",
     "libs/merkletree",
     "libs/message",
     "libs/typecasts",
-    "multisig/legacymultisigism",
+    "multisig/legacy-multisig-ism",
     "upgrade/versioned",
 ]
 

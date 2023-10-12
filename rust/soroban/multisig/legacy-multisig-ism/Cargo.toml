@@ -12,12 +12,12 @@ crate-type = ["cdylib"]
 sha3 = { workspace = true }
 secp256k1 = { version = "0.27.0", features = ["recovery"] }
 soroban-sdk = { workspace = true }
-openecdsa = {path = "../../openzeppelin/openecdsa" }
+ecdsa = {path = "../../openzeppelin/ecdsa" }
 ownable = { path = "../../openzeppelin/ownable" }
 enumerableset = { path = "../../openzeppelin/enumerableset" }
 iinterchain_security_module = { path = "../../libs/iinterchain-security-module" }
-legacy_checkpoint = { path = "../../libs/legacycheckpoint" }
-legacy_multisig_ism_metadata = { path = "../../libs/legacymultisigismmetadata" }
+legacy_checkpoint = { path = "../../libs/legacy-checkpoint" }
+legacy_multisig_ism_metadata = { path = "../../libs/legacy-multisig-ism-metadata" }
 merkletree = { path = "../../libs/merkletree" }
 message = { path = "../../libs/message" }
 tiny-keccak = { workspace = true, features = ["keccak"] }
