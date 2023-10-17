@@ -1,9 +1,5 @@
 #![no_std]
 use soroban_sdk::{contracttype, contracterror, symbol_short, Env,Symbol};
-use core::primitive::u64;
-
-
-
 
 /**
  * @dev Storage of the initializable contract.
@@ -20,7 +16,6 @@ pub struct InitializableStorage {
     initialized: u64,
     initializing: bool,
 }
-
 
 impl InitializableStorage {
     fn new() -> Self {
@@ -44,18 +39,18 @@ pub const INITIALIZABLE_STORAGE: [u8; 32] = [
 #[repr(u32)]
 pub enum ContractError {
     InvalidInitialization = 1, // @dev The contract is already initialized.
-    NotInitializing = 2,    //  @dev The contract is not initializing.
+    NotInitializing = 2,       //  @dev The contract is not initializing.
 }
 
 const COUNTER: Symbol = symbol_short!("COUNTER");
 
 //TODO: check which storage actullay need env storage or stuct storage
+#[derive(Clone)]
 pub struct Initializable {
     storage: InitializableStorage,
 }
 
 impl Initializable {
-
     pub fn new(env: Env) -> Self {
         Self {
             storage: InitializableStorage::new(),
@@ -66,7 +61,6 @@ impl Initializable {
     pub fn initializer(&mut self, env: Env) -> Result<(), ContractError> {
         let is_top_level_call = !self.storage.initializing;
         let initialized = self.storage.initialized;
-
 
         // Allowed calls:
         // - initialSetup: the contract is not in the initializing state and no previous version was
@@ -80,7 +74,6 @@ impl Initializable {
             return Err(ContractError::InvalidInitialization);
         }
 
-
         // assert_with_error!(
         //     &env,
         //     !initial_setup && !construction,
@@ -92,18 +85,24 @@ impl Initializable {
             self.storage.initializing = true;
         }
 
-        
+        Ok(())
+    }
+
+    // we need to dive the initializer function in two because in solidity
+    // have the "_;" this mean the code before this will be executed
+    // before the function code, and the code after this will be executed
+    // after the function code
+    // https://www.educative.io/answers/what-is-in-solidity
+    pub fn after_initializer(&mut self, env: Env) -> Result<(), ContractError> {
         self.storage.initializing = false;
 
-        env.events()
-            .publish((COUNTER, symbol_short!("initial")), 1);
+        env.events().publish((COUNTER, symbol_short!("initial")), 1);
 
         Ok(())
     }
 
     // A protected reinitializer function that can be invoked at most once.
     pub fn reinitializer(&mut self, env: Env, version: u64) -> Result<(), ContractError> {
-        
         let initializing = self.storage.initializing;
         let initialized = self.storage.initialized;
 
@@ -124,7 +123,7 @@ impl Initializable {
 
         env.events().publish((COUNTER, symbol_short!("reinitial")), version);
 
-         Ok(())
+        Ok(())
     }
 
     // Modifier to protect an initialization function.
