@@ -785,6 +785,14 @@ dependencies = [
 ]
 
 [[package]]
+name = "ownable-upgradeable"
+version = "0.1.0"
+dependencies = [
+ "initializable",
+ "soroban-sdk",
+]
+
+[[package]]
 name = "paste"
 version = "1.0.14"
 source = "registry+https://github.com/rust-lang/crates.io-index"
