@@ -1,9 +1,6 @@
 #![no_std]
-use soroban_sdk::{contracttype, contracterror, symbol_short, Env,Symbol};
 use core::primitive::u64;
-
-
-
+use soroban_sdk::{contract, contracterror, contractimpl, contracttype, symbol_short, Env, Symbol};
 
 /**
  * @dev Storage of the initializable contract.
@@ -21,7 +18,6 @@ pub struct InitializableStorage {
     initializing: bool,
 }
 
-
 impl InitializableStorage {
     fn new() -> Self {
         Self {
@@ -33,10 +29,8 @@ impl InitializableStorage {
 
 // keccak256(abi.encode(uint256(keccak256("openzeppelin.storage.Initializable")) - 1)) & ~bytes32(uint256(0xff))
 pub const INITIALIZABLE_STORAGE: [u8; 32] = [
-    0xf0, 0xc5, 0x7e, 0x16, 0x84, 0x0d, 0xf0, 0x40,
-    0xf1, 0x50, 0x88, 0xdc, 0x2f, 0x81, 0xfe, 0x39,
-    0x1c, 0x39, 0x23, 0xbe, 0xc7, 0x3e, 0x23, 0xa9,
-    0x66, 0x2e, 0xfc, 0x9c, 0x22, 0x9c, 0x6a, 0x00,
+    0xf0, 0xc5, 0x7e, 0x16, 0x84, 0x0d, 0xf0, 0x40, 0xf1, 0x50, 0x88, 0xdc, 0x2f, 0x81, 0xfe, 0x39,
+    0x1c, 0x39, 0x23, 0xbe, 0xc7, 0x3e, 0x23, 0xa9, 0x66, 0x2e, 0xfc, 0x9c, 0x22, 0x9c, 0x6a, 0x00,
 ];
 
 #[contracterror]
@@ -44,7 +38,7 @@ pub const INITIALIZABLE_STORAGE: [u8; 32] = [
 #[repr(u32)]
 pub enum ContractError {
     InvalidInitialization = 1, // @dev The contract is already initialized.
-    NotInitializing = 2,    //  @dev The contract is not initializing.
+    NotInitializing = 2,       //  @dev The contract is not initializing.
 }
 
 const COUNTER: Symbol = symbol_short!("COUNTER");
@@ -55,8 +49,7 @@ pub struct Initializable {
 }
 
 impl Initializable {
-
-    pub fn new(env: Env) -> Self {
+    pub fn new() -> Self {
         Self {
             storage: InitializableStorage::new(),
         }
@@ -67,23 +60,21 @@ impl Initializable {
         let is_top_level_call = !self.storage.initializing;
         let initialized = self.storage.initialized;
 
-
         // Allowed calls:
         // - initialSetup: the contract is not in the initializing state and no previous version was
         //                 initialized
         // - construction: the contract is initialized at version 1 (no reininitialization) and the
         //                 current contract is just being deployed
         let is_initial_setup = initialized < 1 && is_top_level_call;
-        let construction = initialized == 1;     //TODO: need to check and add code length but can not found which one is code
+        let construction = initialized == 1; //TODO: need to check and add code length but can not found which one is code
 
-         if !is_initial_setup && !construction {
+        if !is_initial_setup && !construction {
             return Err(ContractError::InvalidInitialization);
         }
 
-
         // assert_with_error!(
         //     &env,
-        //     !initial_setup && !construction,
+        //     !is_initial_setup && !construction,
         //     ContractError::InvalidInitialization
         // );
 
@@ -92,18 +83,15 @@ impl Initializable {
             self.storage.initializing = true;
         }
 
-        
         self.storage.initializing = false;
 
-        env.events()
-            .publish((COUNTER, symbol_short!("initial")), 1);
+        env.events().publish((COUNTER, symbol_short!("initial")), 1);
 
         Ok(())
     }
 
     // A protected reinitializer function that can be invoked at most once.
-    pub fn reinitializer(&mut self, env: Env, version: u64) -> Result<(), ContractError> {
-        
+    pub fn reinitializer(&mut self, env: &Env, version: u64) -> Result<(), ContractError> {
         let initializing = self.storage.initializing;
         let initialized = self.storage.initialized;
 
@@ -119,12 +107,13 @@ impl Initializable {
 
         self.storage.initialized = version;
         self.storage.initializing = true;
-     
+
         self.storage.initializing = false;
 
-        env.events().publish((COUNTER, symbol_short!("reinitial")), version);
+        env.events()
+            .publish((COUNTER, symbol_short!("initial")), version);
 
-         Ok(())
+        Ok(())
     }
 
     // Modifier to protect an initialization function.
@@ -147,7 +136,7 @@ impl Initializable {
     }
 
     // Locks the contract, preventing any future reinitialization.
-    pub fn disable_initializers(&mut self, env: Env) -> Result<(), ContractError> {
+    pub fn disable_initializers(&mut self, env: &Env) -> Result<(), ContractError> {
         // assert_with_error!(
         //     &env,
         //     self.storage.initializing,
@@ -160,7 +149,8 @@ impl Initializable {
 
         if self.storage.initialized != u64::MAX {
             self.storage.initialized = u64::MAX;
-            env.events().publish((COUNTER, symbol_short!("disable")), u64::MAX);
+            env.events()
+                .publish((COUNTER, symbol_short!("initial")), u64::MAX);
         }
 
         Ok(())
@@ -179,6 +169,76 @@ impl Initializable {
     // Returns a pointer to the storage namespace.
     fn get_initializable_storage(&self) -> &InitializableStorage {
         &self.storage
+    }
+}
+
+/**
+ * This a basic helper contract used to assist with tests.
+ */
+#[contract]
+pub struct Contract;
+
+const STORAGE: Symbol = symbol_short!("STORAGE");
+
+#[contractimpl]
+impl Contract {
+    pub fn get_storage(env: Env) -> InitializableStorage {
+        return env
+            .storage()
+            .instance()
+            .get(&STORAGE)
+            .unwrap_or(InitializableStorage {
+                initialized: 0,
+                initializing: false,
+            });
+    }
+
+    pub fn initializer(env: Env) -> Result<(), ContractError> {
+        let mut init = Initializable::new();
+
+        // Call initializer once and handle the result
+        let result = init.initializer(env.clone());
+
+        match result {
+            Ok(()) => {
+                // Initialization successful, get the updated storage
+                let storage_struct = init.get_initializable_storage();
+                env.storage().instance().set(&STORAGE, storage_struct);
+            }
+            Err(ContractError::InvalidInitialization) => {
+                // Initialization failed, set default storage values
+                env.storage().instance().set(
+                    &STORAGE,
+                    &InitializableStorage {
+                        initialized: 0,
+                        initializing: false,
+                    },
+                );
+            }
+            Err(err) => {
+                // Handle other errors accordingly
+                return Err(err);
+            }
+        }
+
+        Ok(())
+    }
+
+    // Reverts if the contract is not in an initializing state.
+    pub fn check_initializing() -> Result<(), ContractError> {
+        let init = Initializable::new();
+
+        init.check_initializing()
+    }
+
+    pub fn get_initialized_version(env: Env) -> u64 {
+        let storage = Self::get_storage(env.clone());
+        storage.initialized
+    }
+
+    pub fn is_initializing(env: Env) -> bool {
+        let storage = Self::get_storage(env.clone());
+        storage.initializing
     }
 }
 
