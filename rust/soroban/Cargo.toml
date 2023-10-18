@@ -1,6 +1,7 @@
 [workspace]
 resolver = "2"
 members = [
+    "openzeppelin/address",
     "openzeppelin/ownable",
     "openzeppelin/ecdsa",
     "openzeppelin/enumerableset",
