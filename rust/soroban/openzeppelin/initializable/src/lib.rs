@@ -136,7 +136,7 @@ impl Initializable {
     }
 
     // Locks the contract, preventing any future reinitialization.
-    pub fn disable_initializers(&mut self, env: &Env) -> Result<(), ContractError> {
+    pub fn disable_initializers(&mut self, env: Env) -> Result<(), ContractError> {
         // assert_with_error!(
         //     &env,
         //     self.storage.initializing,
@@ -167,8 +167,8 @@ impl Initializable {
     }
 
     // Returns a pointer to the storage namespace.
-    fn get_initializable_storage(&self) -> &InitializableStorage {
-        &self.storage
+    fn get_initializable_storage(&mut self) -> &mut InitializableStorage {
+        &mut self.storage
     }
 }
 
@@ -204,16 +204,40 @@ impl Contract {
                 // Initialization successful, get the updated storage
                 let storage_struct = init.get_initializable_storage();
                 env.storage().instance().set(&STORAGE, storage_struct);
+
+                return Ok(());
             }
-            Err(ContractError::InvalidInitialization) => {
-                // Initialization failed, set default storage values
-                env.storage().instance().set(
-                    &STORAGE,
-                    &InitializableStorage {
-                        initialized: 0,
-                        initializing: false,
-                    },
-                );
+            Err(err) => {
+                // Handle other errors accordingly
+                return Err(err);
+            }
+        }
+    }
+
+    // Reverts if the contract is not in an initializing state.
+    pub fn check_initializing() -> Result<(), ContractError> {
+        let init = Initializable::new();
+
+        // Call initializer once and handle the result
+        return init.check_initializing();
+    }
+
+    pub fn disable_initializers(env: Env) -> Result<(), ContractError> {
+        let mut init = Initializable::new();
+
+        // Call initializer once and handle the result
+        let result = init.disable_initializers(env.clone());
+
+        match result {
+            Ok(()) => {
+                // Initialization successful, get the updated storage as a mutable reference
+                let storage_struct = init.get_initializable_storage();
+
+                // if storage_struct.initialized != u64::MAX {
+                //     storage_struct.initialized = u64::MAX;
+
+                env.storage().instance().set(&STORAGE, storage_struct);
+                //}
             }
             Err(err) => {
                 // Handle other errors accordingly
@@ -222,13 +246,6 @@ impl Contract {
         }
 
         Ok(())
-    }
-
-    // Reverts if the contract is not in an initializing state.
-    pub fn check_initializing() -> Result<(), ContractError> {
-        let init = Initializable::new();
-
-        init.check_initializing()
     }
 
     pub fn get_initialized_version(env: Env) -> u64 {
