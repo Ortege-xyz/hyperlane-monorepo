@@ -6,7 +6,7 @@ const GAS_LIMIT_OFFSET: u32 = 34;
 const REFUND_ADDRESS_OFFSET: u32 = 66;
 const MIN_METADATA_LENGTH: u32 = 86;
 
-const VARIANT: u16 = 1;
+pub const VARIANT: u16 = 1;
 
 pub struct StandardHookMetadata;
 
