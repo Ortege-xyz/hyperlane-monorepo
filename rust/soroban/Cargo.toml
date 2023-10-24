@@ -4,6 +4,7 @@ members = [
     "openzeppelin/ownable",
     "openzeppelin/ecdsa",
     "openzeppelin/enumerableset",
+    "libs/interchain-gas-paymaster",
     "libs/abstractpostdispatchhook",
     "libs/indexed",
     "libs/iinterchain-security-module",

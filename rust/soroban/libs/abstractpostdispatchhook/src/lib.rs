@@ -1,7 +1,7 @@
-use soroban_sdk::{Bytes};
+use soroban_sdk::Bytes;
 use standardhookmetadata::{StandardHookMetadata, VARIANT};
 
-pub struct  AbstractPostDispatchHook;
+pub struct AbstractPostDispatchHook;
 
 impl AbstractPostDispatchHook {
     pub fn supports_metadata(metadata: Bytes) -> bool {
