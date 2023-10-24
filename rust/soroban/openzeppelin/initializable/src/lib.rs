@@ -44,6 +44,7 @@ pub enum ContractError {
 const COUNTER: Symbol = symbol_short!("COUNTER");
 
 //TODO: check which storage actullay need env storage or stuct storage
+#[derive(Clone)]
 pub struct Initializable {
     storage: InitializableStorage,
 }
@@ -83,6 +84,13 @@ impl Initializable {
             self.storage.initializing = true;
         }
 
+        Ok(())
+    }
+
+    // This fuction is the continuation of initializer fuction because in 
+    // solidity the modifier have the special param '_;'
+    // https://www.educative.io/answers/what-is-in-solidity
+    pub fn after_initializer(&mut self, env: Env){
         self.storage.initializing = false;
 
         env.events().publish((COUNTER, symbol_short!("initial")), 1);

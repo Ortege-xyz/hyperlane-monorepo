@@ -1,11 +1,14 @@
 [workspace]
 resolver = "2"
 members = [
+    "openzeppelin/address",
     "openzeppelin/ownable",
     "openzeppelin/ecdsa",
     "openzeppelin/enumerableset",
     "openzeppelin/initializable",
+    "openzeppelin/ownableupgradeable",
     "libs/iinterchain-security-module",
+    "libs/imessage-recipient",
     "libs/legacy-checkpoint",
     "libs/legacy-multisig-ism-metadata",
     "libs/merkleproof",
