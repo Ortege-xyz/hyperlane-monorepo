@@ -1,0 +1,14 @@
+[package]
+name = "storagegasoracle"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+soroban-sdk = { workspace = true }
+ownable = { path = "../../openzeppelin/ownable" }
+
+[dev_dependencies]
+soroban-sdk = { workspace = true, features = ["testutils"] }
+
+[features]
+testutils = ["soroban-sdk/testutils"]
