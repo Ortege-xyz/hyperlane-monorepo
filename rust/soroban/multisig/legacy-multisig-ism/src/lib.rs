@@ -144,13 +144,13 @@ impl LegacyMultisigIsm {
         return _validator_set.contains(_address.contract_id());
     }
 
-    pub fn verify(env: Env, _metadata: Bytes, _message: Bytes) -> bool {
+    pub fn verify(env: Env, _metadata: Bytes, _message: Message) -> bool {
         assert!(
-            Self::_verify_merkle_proof(env.clone(), _metadata.clone(), _message.clone()),
+            Self::_verify_merkle_proof(env.clone(), _metadata.clone(), _message),
             "mismatch merkle"
         );
         assert!(
-            Self::_verify_validator_signatures(env.clone(), _metadata.clone(), _message.clone()),
+            Self::_verify_validator_signatures(env.clone(), _metadata.clone(), _message),
             "mismatch merkle"
         );
         return true;
@@ -212,21 +212,21 @@ impl LegacyMultisigIsm {
         return _commitment;
     }
 
-    fn _verify_merkle_proof(env: Env, _metadata: Bytes, _message: Bytes) -> bool {
+    fn _verify_merkle_proof(env: Env, _metadata: Bytes, _message: Message) -> bool {
         let _calculated_root = MerkleTree::branch_root(
             env.clone(),
-            Message::id(env.clone(), _message.clone()),
+            _message.id(env.clone()),
             LegacyMultisigIsmMetadata::proof(env.clone(), _metadata.clone()),
-            Message::nonce(_message.clone()) as u64,
+            _message.nonce() as u64,
         );
 
         return _calculated_root == LegacyMultisigIsmMetadata::root(_metadata.clone());
     }
 
-    fn _verify_validator_signatures(env: Env, _metadata: Bytes, _message: Bytes) -> bool {
+    fn _verify_validator_signatures(env: Env, _metadata: Bytes, _message: Message) -> bool {
         let _threshold = LegacyMultisigIsmMetadata::threshold(_metadata.clone());
         let _digest: BytesN<32> = {
-            let _origin = Message::origin(_message.clone());
+            let _origin = _message.origin();
 
             let _validators_bytes = LegacyMultisigIsmMetadata::validators(_metadata.clone());
             let mut _validators: Vec<Address> = vec![&env];

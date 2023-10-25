@@ -17,6 +17,7 @@ members = [
     "libs/typecasts",
     "multisig/legacy-multisig-ism",
     "upgrade/versioned",
+    "mailbox"
 ]
 
 [workspace.dependencies]

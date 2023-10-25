@@ -92,7 +92,7 @@ const COUNTER: Symbol = symbol_short!("COUNTER");
 #[contractimpl]
 impl Contract {
     pub fn init(env: Env, owner: Address) {
-        let mut initializable = Initializable::new(env.clone());
+        let mut initializable = Initializable::new();
         initializable.initializer(env.clone());
 
         OwnableUpgradeable::init(env.clone(), owner, initializable.clone());

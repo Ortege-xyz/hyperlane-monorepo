@@ -1,0 +1,23 @@
+[package]
+name = "mailbox"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+soroban-sdk = { workspace = true }
+ownable = { path = "../openzeppelin/ownable" }
+merkletree = { path = "../libs/merkletree" }
+message = { path = "../libs/message" }
+versioned = { path = "../upgrade/versioned" }
+iinterchain_security_module = { path = "../libs/iinterchain-security-module" }
+address-lib = { path = "../openzeppelin/address" }
+imessage_recipient = { path = "../libs/imessage-recipient" }
+
+
+[dev_dependencies]
+soroban-sdk = { workspace = true, features = ["testutils"] }
+
+[features]
+testutils = ["soroban-sdk/testutils"]

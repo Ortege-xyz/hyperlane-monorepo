@@ -19,8 +19,8 @@ const MAX_LEAVES: u64 = u64::pow(2, TREE_DEPTH as u32) - 1;
 #[contracttype]
 #[derive(Clone, Debug, Eq, PartialEq)]
 pub struct MerkleTree {
-    branch: Vec<BytesN<32>>,
-    count: u32,
+    pub branch: Vec<BytesN<32>>,
+    pub count: u32,
 }
 
 impl MerkleTree {
