@@ -1,13 +1,7 @@
 use crate::Message;
-use soroban_sdk::{Bytes, BytesN, Env};
+use soroban_sdk::{testutils::Address as _, Address, Bytes, Env};
 
 const BODY: &str = "hello world";
-const SENDER_ARRAY: [u8; 32] = [
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-];
-const RECIPIENT_ADDRESS: [u8; 32] = [
-    1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-];
 
 const ORIGIN: u32 = 10;
 const NONCE: u32 = 0;
@@ -15,45 +9,15 @@ const VERSION: u8 = 1u8;
 const DESTINATION: u32 = 15;
 
 #[test]
-fn message_is_valid() {
-    let env = Env::default();
-
-    let body_bytes = Bytes::from_slice(&env, BODY.as_bytes());
-    let sender = BytesN::from_array(&env, &SENDER_ARRAY);
-    let recipient = BytesN::from_array(&env, &RECIPIENT_ADDRESS);
-
-    let mut bytes_array = Bytes::from_array(&env, &[VERSION]);
-    bytes_array.extend_from_array(&NONCE.to_be_bytes());
-    bytes_array.extend_from_array(&ORIGIN.to_be_bytes());
-    bytes_array.extend_from_array(&SENDER_ARRAY);
-    bytes_array.extend_from_array(&DESTINATION.to_be_bytes());
-    bytes_array.extend_from_array(&RECIPIENT_ADDRESS);
-    bytes_array.append(&body_bytes);
-
-    let message = Message::format_message(
-        env,
-        VERSION,
-        NONCE,
-        ORIGIN,
-        &sender,
-        DESTINATION,
-        &recipient,
-        &body_bytes,
-    );
-
-    assert!(message == bytes_array);
-}
-
-#[test]
 fn version_is_valid() {
     let env = Env::default();
 
     let body_bytes = Bytes::from_slice(&env, BODY.as_bytes());
-    let sender = BytesN::from_array(&env, &SENDER_ARRAY);
-    let recipient = BytesN::from_array(&env, &RECIPIENT_ADDRESS);
 
-    let message = Message::format_message(
-        env,
+    let sender = Address::random(&env);
+    let recipient = Address::random(&env);
+
+    let message = Message::new(
         VERSION,
         NONCE,
         ORIGIN,
@@ -63,7 +27,7 @@ fn version_is_valid() {
         &body_bytes,
     );
 
-    let _version = Message::version(message);
+    let _version = message.version;
 
     assert!(VERSION == _version);
 }
@@ -73,11 +37,10 @@ fn nonce_is_valid() {
     let env = Env::default();
 
     let body_bytes = Bytes::from_slice(&env, BODY.as_bytes());
-    let sender = BytesN::from_array(&env, &SENDER_ARRAY);
-    let recipient = BytesN::from_array(&env, &RECIPIENT_ADDRESS);
+    let sender = Address::random(&env);
+    let recipient = Address::random(&env);
 
-    let message = Message::format_message(
-        env,
+    let message = Message::new(
         VERSION,
         NONCE,
         ORIGIN,
@@ -87,7 +50,7 @@ fn nonce_is_valid() {
         &body_bytes,
     );
 
-    let _nonce = Message::nonce(message);
+    let _nonce = message.nonce;
 
     assert!(NONCE == _nonce);
 }
@@ -97,11 +60,10 @@ fn origin_is_valid() {
     let env = Env::default();
 
     let body_bytes = Bytes::from_slice(&env, BODY.as_bytes());
-    let sender = BytesN::from_array(&env, &SENDER_ARRAY);
-    let recipient = BytesN::from_array(&env, &RECIPIENT_ADDRESS);
+    let sender = Address::random(&env);
+    let recipient = Address::random(&env);
 
-    let message = Message::format_message(
-        env,
+    let message = Message::new(
         VERSION,
         NONCE,
         ORIGIN,
@@ -111,7 +73,7 @@ fn origin_is_valid() {
         &body_bytes,
     );
 
-    let _origin_domain = Message::origin(message);
+    let _origin_domain = message.origin();
 
     assert!(ORIGIN == _origin_domain);
 }
@@ -121,11 +83,10 @@ fn sender_is_valid() {
     let env = Env::default();
 
     let body_bytes = Bytes::from_slice(&env, BODY.as_bytes());
-    let sender = BytesN::from_array(&env, &SENDER_ARRAY);
-    let recipient = BytesN::from_array(&env, &RECIPIENT_ADDRESS);
+    let sender = Address::random(&env);
+    let recipient = Address::random(&env);
 
-    let message = Message::format_message(
-        env,
+    let message = Message::new(
         VERSION,
         NONCE,
         ORIGIN,
@@ -135,7 +96,7 @@ fn sender_is_valid() {
         &body_bytes,
     );
 
-    let _sender = Message::sender(message);
+    let _sender = message.sender();
 
     assert!(sender == _sender);
 }
@@ -144,11 +105,10 @@ fn destination_is_valid() {
     let env = Env::default();
 
     let body_bytes = Bytes::from_slice(&env, BODY.as_bytes());
-    let sender = BytesN::from_array(&env, &SENDER_ARRAY);
-    let recipient = BytesN::from_array(&env, &RECIPIENT_ADDRESS);
+    let sender = Address::random(&env);
+    let recipient = Address::random(&env);
 
-    let message = Message::format_message(
-        env,
+    let message = Message::new(
         VERSION,
         NONCE,
         ORIGIN,
@@ -158,7 +118,7 @@ fn destination_is_valid() {
         &body_bytes,
     );
 
-    let _destination_domain = Message::destination(message);
+    let _destination_domain = message.destination();
 
     assert!(DESTINATION == _destination_domain);
 }
@@ -168,11 +128,10 @@ fn recipient_is_valid() {
     let env = Env::default();
 
     let body_bytes = Bytes::from_slice(&env, BODY.as_bytes());
-    let sender = BytesN::from_array(&env, &SENDER_ARRAY);
-    let recipient = BytesN::from_array(&env, &RECIPIENT_ADDRESS);
+    let sender = Address::random(&env);
+    let recipient = Address::random(&env);
 
-    let message = Message::format_message(
-        env,
+    let message = Message::new(
         VERSION,
         NONCE,
         ORIGIN,
@@ -182,7 +141,7 @@ fn recipient_is_valid() {
         &body_bytes,
     );
 
-    let _recipient = Message::recipient(message);
+    let _recipient = message.recipient();
 
     assert!(recipient == _recipient);
 }
@@ -192,11 +151,10 @@ fn body_is_valid() {
     let env = Env::default();
 
     let body_bytes = Bytes::from_slice(&env, BODY.as_bytes());
-    let sender = BytesN::from_array(&env, &SENDER_ARRAY);
-    let recipient = BytesN::from_array(&env, &RECIPIENT_ADDRESS);
+    let sender = Address::random(&env);
+    let recipient = Address::random(&env);
 
-    let message = Message::format_message(
-        env,
+    let message = Message::new(
         VERSION,
         NONCE,
         ORIGIN,
@@ -206,7 +164,7 @@ fn body_is_valid() {
         &body_bytes,
     );
 
-    let _body = Message::body(message);
+    let _body = message.body();
 
     assert!(body_bytes.eq(&_body));
 }
