@@ -1,3 +1,4 @@
+#![no_std]
 use ownable::Ownable;
 use soroban_sdk::{contract, contractimpl, contracttype, symbol_short, Address, Env, Vec};
 
