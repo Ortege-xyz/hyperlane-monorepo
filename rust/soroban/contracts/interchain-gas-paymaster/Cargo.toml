@@ -1,11 +1,11 @@
 [package]
-name = "indexed"
+name = "interchain_gas-paymaster"
 version = "0.1.0"
 edition = "2021"
 
 [dependencies]
 soroban-sdk = { workspace = true }
-
+storage_gas_oracle = { path = "../storagegasoracle"}
 [dev_dependencies]
 soroban-sdk = { workspace = true, features = ["testutils"] }
 

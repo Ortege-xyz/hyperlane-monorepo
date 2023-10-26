@@ -592,6 +592,14 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "8e04e2fd2b8188ea827b32ef11de88377086d690286ab35747ef7f9bf3ccb590"
 
 [[package]]
+name = "interchain_gas-paymaster"
+version = "0.1.0"
+dependencies = [
+ "soroban-sdk",
+ "storage_gas_oracle",
+]
+
+[[package]]
 name = "itertools"
 version = "0.10.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1266,6 +1274,14 @@ dependencies = [
  "hex",
  "serde",
  "serde_with",
+]
+
+[[package]]
+name = "storage_gas_oracle"
+version = "0.1.0"
+dependencies = [
+ "ownable",
+ "soroban-sdk",
 ]
 
 [[package]]

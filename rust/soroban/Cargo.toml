@@ -1,10 +1,11 @@
 [workspace]
 resolver = "2"
 members = [
+    "contracts/interchain-gas-paymaster",
+    "contracts/storagegasoracle",
     "openzeppelin/ownable",
     "openzeppelin/ecdsa",
     "openzeppelin/enumerableset",
-    "libs/interchain-gas-paymaster",
     "libs/abstractpostdispatchhook",
     "libs/indexed",
     "libs/iinterchain-security-module",
