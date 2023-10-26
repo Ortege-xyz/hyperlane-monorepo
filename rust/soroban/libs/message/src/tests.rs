@@ -5,7 +5,7 @@ const BODY: &str = "hello world";
 
 const ORIGIN: u32 = 10;
 const NONCE: u32 = 0;
-const VERSION: u8 = 1u8;
+const VERSION: u32 = 1;
 const DESTINATION: u32 = 15;
 
 #[test]

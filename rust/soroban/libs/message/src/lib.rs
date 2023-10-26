@@ -1,10 +1,11 @@
 #![no_std]
+use soroban_sdk::xdr::ToXdr;
 use soroban_sdk::{contracttype, Address, Bytes, BytesN, Env};
-use tiny_keccak::{Hasher, Keccak};
 
 #[derive(Clone, Debug, Eq, PartialEq)]
+#[contracttype]
 pub struct Message {
-    version: u8,
+    version: u32,
     nonce: u32,
     origin_domain: u32,
     sender: Address,
@@ -13,10 +14,9 @@ pub struct Message {
     body: Bytes,
 }
 
-
 impl Message {
     pub fn new(
-        _version: u8,
+        _version: u32,
         _nonce: u32,
         _origin_domain: u32,
         _sender: &Address,
@@ -36,20 +36,14 @@ impl Message {
     }
 
     pub fn id(&self, env: Env) -> BytesN<32> {
-        let mut hasher = Keccak::v256();
-        let mut output: [u8; 32] = [0; 32];
+        let message: Message = self.clone();
+        let serialized_message = message.to_xdr(&env);
+        let hashed = env.crypto().keccak256(&serialized_message);
 
-        // let mut slice = [0u8];
-        // let slice = &mut slice[..];
-        // message.copy_into_slice(slice);
-
-        // hasher.update(slice);
-        // hasher.finalize(&mut output);
-
-        return BytesN::from_array(&env, &output);
+        return hashed;
     }
 
-    pub fn version(&self) -> u8 {
+    pub fn version(&self) -> u32 {
         self.version
     }
 
