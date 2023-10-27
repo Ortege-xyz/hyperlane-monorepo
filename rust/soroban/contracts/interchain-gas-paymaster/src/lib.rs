@@ -1,5 +1,7 @@
 #![no_std]
+use alloc::vec::Vec;
 use message::Message;
+use ownable::Ownable;
 use soroban_sdk::{
     contract, contractimpl, contracttype, symbol_short, token, Address, Bytes, BytesN, Env,
     FromVal, String, Symbol, U256,
@@ -39,7 +41,7 @@ struct GasParam {
 
 #[contractimpl]
 impl InterchainGasPaymaster {
-    pub fn initialize(env: Env) {}
+    pub fn initialize(env: Env, _owner: Address) {}
 
     pub fn claim(env: Env) -> u32 {
         return env
@@ -47,6 +49,12 @@ impl InterchainGasPaymaster {
             .persistent()
             .get(&DataKey::Beneficiary)
             .unwrap_or(0);
+    }
+
+    pub fn set_beneficiary(env: Env, _beneficiary: Address, _caller: Address) {
+        _caller.require_auth();
+        Ownable::only_owner(env.clone(), _caller);
+        Self::_set_beneficiary(env.clone(), _beneficiary);
     }
 
     /**
