@@ -1,10 +1,9 @@
 #![no_std]
-use alloc::vec::Vec;
 use message::Message;
 use ownable::Ownable;
 use soroban_sdk::{
     contract, contractimpl, contracttype, symbol_short, token, Address, Bytes, BytesN, Env,
-    FromVal, String, Symbol, U256,
+    FromVal, String, Symbol, U256, Vec,
 };
 use standardhookmetadata::StandardHookMetadata;
 use storage_gas_oracle::StorageGasOracleClient;
@@ -34,7 +33,10 @@ struct DomainGasConfig {
     gas_oracle: Address,
     gas_overhead: u128,
 }
-struct GasParam {
+
+#[contracttype]
+#[derive(Clone)]
+pub struct GasParam {
     remote_domain: u32,
     config: DomainGasConfig,
 }
@@ -49,6 +51,23 @@ impl InterchainGasPaymaster {
             .persistent()
             .get(&DataKey::Beneficiary)
             .unwrap_or(0);
+    }
+
+    pub fn set_destination_gas_config(env: Env, _configs: Vec<GasParam>, _caller: Address) {
+        _caller.require_auth();
+        Ownable::only_owner(env.clone(), _caller);
+
+        let _len = _configs.len() as u32;
+
+        for i in 0.._len {
+            let _config: GasParam = _configs.get(i).expect("IGP: Error to get config");
+            Self::_set_destination_gas_config(
+                env.clone(),
+                _config.remote_domain,
+                _config.config.gas_oracle,
+                _config.config.gas_overhead,
+            );
+        }
     }
 
     pub fn set_beneficiary(env: Env, _beneficiary: Address, _caller: Address) {
