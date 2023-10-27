@@ -4,6 +4,7 @@ use soroban_sdk::{
     contract, contractimpl, contracttype, symbol_short, token, Address, Bytes, BytesN, Env,
     FromVal, String, Symbol, U256,
 };
+use standardhookmetadata::StandardHookMetadata;
 use storage_gas_oracle::StorageGasOracleClient;
 
 const BENEFICIARY: Symbol = symbol_short!("BENEFICIA");
@@ -13,6 +14,7 @@ const PAYMENT: Symbol = symbol_short!("PAYMENT");
 const SET: Symbol = symbol_short!("SET");
 
 const TOKEN_EXCHANGE_RATE_SCALE: u128 = 10000000000; //1e10
+const DEFAULT_GAS_USAGE: u32 = 50000;
 
 #[contract]
 pub struct InterchainGasPaymaster;
@@ -225,8 +227,19 @@ impl InterchainGasPaymaster {
     }
 
     fn _quote_dispatch(env: Env, metadata: Bytes, message: Bytes) -> U256 {
-        todo!();
-        return Self::quote_gas_payment(env, Message::destination(message));
+        return Self::quote_gas_payment(
+            env.clone(),
+            Message::destination(message.clone()),
+            Self::destination_gas_limit(
+                env.clone(),
+                Message::destination(message.clone()),
+                StandardHookMetadata::gas_limit(
+                    env.clone(),
+                    metadata,
+                    U256::from_u32(&env, DEFAULT_GAS_USAGE),
+                ),
+            ),
+        );
     }
 
     /**
