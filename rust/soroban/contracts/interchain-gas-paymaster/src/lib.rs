@@ -3,7 +3,7 @@ use message::Message;
 use ownable::Ownable;
 use soroban_sdk::{
     contract, contractimpl, contracttype, symbol_short, token, Address, Bytes, BytesN, Env,
-    FromVal, String, Symbol, U256, Vec,
+    FromVal, String, Symbol, Vec, U256,
 };
 use standardhookmetadata::StandardHookMetadata;
 use storage_gas_oracle::StorageGasOracleClient;
@@ -45,12 +45,25 @@ pub struct GasParam {
 impl InterchainGasPaymaster {
     pub fn initialize(env: Env, _owner: Address) {}
 
-    pub fn claim(env: Env) -> u32 {
-        return env
+    pub fn claim(env: Env) {
+        // TODO:fix this code
+        let xlm_address = String::from_slice(
+            &env,
+            &"CB64D3G7SM2RTH6JSGG34DDTFTQ5CFDKVDZJZSODMCX4NJ2HV2KN7OHT",
+        ); // future net /address
+        let xlm = token::Client::new(&env, &Address::from_val(&env, &xlm_address.to_val()));
+
+        let current_address = env.current_contract_address();
+
+        let balance = xlm.balance(&current_address);
+
+        let beneficiary: Address = env
             .storage()
-            .persistent()
+            .instance()
             .get(&DataKey::Beneficiary)
-            .unwrap_or(0);
+            .unwrap_or(current_address.clone());
+
+        xlm.transfer(&current_address, &beneficiary, &balance);
     }
 
     pub fn set_destination_gas_config(env: Env, _configs: Vec<GasParam>, _caller: Address) {
