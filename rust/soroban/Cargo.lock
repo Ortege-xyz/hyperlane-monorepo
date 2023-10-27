@@ -619,6 +619,7 @@ version = "0.1.0"
 dependencies = [
  "message",
  "soroban-sdk",
+ "standardhookmetadata",
  "storage_gas_oracle",
 ]
 

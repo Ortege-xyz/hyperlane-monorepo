@@ -226,6 +226,37 @@ impl InterchainGasPaymaster {
         ));
     }
 
+    fn _post_dispatch(
+        env: Env,
+        metadata: Bytes,
+        message: Bytes,
+        _msg_value: U256,
+        _caller: Address,
+    ) {
+        let _destination_domain = Message::destination(message.clone());
+        Self::pay_for_gas(
+            env.clone(),
+            Message::id(env.clone(), message.clone()),
+            _destination_domain,
+            Self::destination_gas_limit(
+                env.clone(),
+                _destination_domain,
+                StandardHookMetadata::gas_limit(
+                    env.clone(),
+                    metadata.clone(),
+                    U256::from_u32(&env, DEFAULT_GAS_USAGE),
+                ),
+            ),
+            StandardHookMetadata::refund_address(
+                env.clone(),
+                metadata.clone(),
+                Message::sender_address(message.clone()),
+            ),
+            _msg_value,
+            _caller,
+        )
+    }
+
     fn _quote_dispatch(env: Env, metadata: Bytes, message: Bytes) -> U256 {
         return Self::quote_gas_payment(
             env.clone(),
