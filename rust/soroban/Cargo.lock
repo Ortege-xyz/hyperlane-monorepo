@@ -617,8 +617,9 @@ dependencies = [
 name = "interchain_gas-paymaster"
 version = "0.1.0"
 dependencies = [
+ "initializable",
  "message",
- "ownable",
+ "ownable-upgradeable",
  "soroban-sdk",
  "standardhookmetadata",
  "storage_gas_oracle",

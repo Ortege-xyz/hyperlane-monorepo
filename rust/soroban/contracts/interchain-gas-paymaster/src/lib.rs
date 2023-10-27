@@ -1,6 +1,7 @@
 #![no_std]
 use message::Message;
-use ownable::Ownable;
+use initializable::Initializable;
+use ownable_upgradeable::OwnableUpgradeable;
 use soroban_sdk::{
     contract, contractimpl, contracttype, symbol_short, token, Address, Bytes, BytesN, Env,
     FromVal, String, Symbol, Vec, U256,
@@ -43,7 +44,13 @@ pub struct GasParam {
 
 #[contractimpl]
 impl InterchainGasPaymaster {
-    pub fn initialize(env: Env, _owner: Address) {}
+    pub fn initialize(env: Env, _owner: Address, _beneficiary: Address) {
+        let mut initializable = Initializable::new();
+        initializable.initializer(env.clone());
+        OwnableUpgradeable::init(env.clone(), _owner, initializable.clone());
+        Self::_set_beneficiary(env.clone(), _beneficiary);
+        initializable.after_initializer(env.clone());
+    }
 
     pub fn claim(env: Env) {
         // TODO:fix this code
@@ -68,7 +75,7 @@ impl InterchainGasPaymaster {
 
     pub fn set_destination_gas_config(env: Env, _configs: Vec<GasParam>, _caller: Address) {
         _caller.require_auth();
-        Ownable::only_owner(env.clone(), _caller);
+        OwnableUpgradeable::only_owner(env.clone(), _caller);
 
         let _len = _configs.len() as u32;
 
@@ -85,7 +92,7 @@ impl InterchainGasPaymaster {
 
     pub fn set_beneficiary(env: Env, _beneficiary: Address, _caller: Address) {
         _caller.require_auth();
-        Ownable::only_owner(env.clone(), _caller);
+        OwnableUpgradeable::only_owner(env.clone(), _caller);
         Self::_set_beneficiary(env.clone(), _beneficiary);
     }
 

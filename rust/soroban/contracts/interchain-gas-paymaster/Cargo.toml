@@ -5,8 +5,9 @@ edition = "2021"
 
 [dependencies]
 soroban-sdk = { workspace = true }
+initializable = { path = "../../openzeppelin/initializable"}
 message = { path = "../../libs/message" }
-ownable = { path = "../../openzeppelin/ownable"}
+ownable-upgradeable = { path = "../../openzeppelin/ownableupgradeable"}
 standardhookmetadata = { path = "../../libs/standardhookmetadata"}
 storage_gas_oracle = { path = "../storagegasoracle"}
 
