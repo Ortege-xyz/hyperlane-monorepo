@@ -20,6 +20,14 @@ dependencies = [
 ]
 
 [[package]]
+name = "address-lib"
+version = "0.1.0"
+dependencies = [
+ "initializable",
+ "soroban-sdk",
+]
+
+[[package]]
 name = "adler"
 version = "1.0.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -557,6 +565,13 @@ dependencies = [
 ]
 
 [[package]]
+name = "imessage_recipient"
+version = "0.1.0"
+dependencies = [
+ "soroban-sdk",
+]
+
+[[package]]
 name = "indexed"
 version = "0.1.0"
 dependencies = [
@@ -590,6 +605,13 @@ name = "indexmap-nostd"
 version = "0.4.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "8e04e2fd2b8188ea827b32ef11de88377086d690286ab35747ef7f9bf3ccb590"
+
+[[package]]
+name = "initializable"
+version = "0.1.0"
+dependencies = [
+ "soroban-sdk",
+]
 
 [[package]]
 name = "interchain_gas-paymaster"
@@ -797,6 +819,14 @@ checksum = "dd8b5dd2ae5ed71462c540258bedcb51965123ad7e7ccf4b9a8cafaa4a63576d"
 name = "ownable"
 version = "0.1.0"
 dependencies = [
+ "soroban-sdk",
+]
+
+[[package]]
+name = "ownable-upgradeable"
+version = "0.1.0"
+dependencies = [
+ "initializable",
  "soroban-sdk",
 ]
 
