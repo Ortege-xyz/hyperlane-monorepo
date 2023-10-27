@@ -5,7 +5,9 @@ edition = "2021"
 
 [dependencies]
 soroban-sdk = { workspace = true }
+message = { path = "../../libs/message" }
 storage_gas_oracle = { path = "../storagegasoracle"}
+
 [dev_dependencies]
 soroban-sdk = { workspace = true, features = ["testutils"] }
 

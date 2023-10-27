@@ -1,11 +1,15 @@
 #![no_std]
 use soroban_sdk::{
-    contract, contractimpl, contracttype, symbol_short, Address, Bytes, Env, FromVal, Symbol, U256,
+    contract, contractimpl, contracttype, symbol_short, token, Address, Bytes, BytesN,
+    Env, FromVal, String, Symbol, U256,
 };
+use message::Message;
 use storage_gas_oracle::StorageGasOracleClient;
 
 const BENEFICIARY: Symbol = symbol_short!("BENEFICIA");
 const GASCONFIG: Symbol = symbol_short!("GASCONFIG");
+const GAS: Symbol = symbol_short!("GAS");
+const PAYMENT: Symbol = symbol_short!("PAYMENT");
 const SET: Symbol = symbol_short!("SET");
 
 const TOKEN_EXCHANGE_RATE_SCALE: u128 = 10000000000; //1e10
@@ -40,12 +44,115 @@ impl InterchainGasPaymaster {
     }
 
     /**
+     * @notice Deposits msg.value as a payment for the relaying of a message
+     * to its destination chain.
+     * @dev Overpayment will result in a refund of native tokens to the _refundAddress.
+     * Callers should be aware that this may present reentrancy issues.
+     * @param _messageId The ID of the message to pay for.
+     * @param _destinationDomain The domain of the message's destination chain.
+     * @param _gasLimit The amount of destination gas to pay for.
+     * @param _refundAddress The address to refund any overpayment to.
+     */
+    pub fn pay_for_gas(
+        env: Env,
+        _message_id: BytesN<32>,
+        _destination_domain: u32,
+        _gas_limit: U256,
+        _refund_address: Address,
+        _msg_value: U256,
+        _caller: Address,
+    ) {
+        let _required_payment =
+            Self::quote_gas_payment(env.clone(), _destination_domain.clone(), _gas_limit.clone());
+
+        assert!(
+            _msg_value >= _required_payment,
+            "IGP: insufficient interchain gas payment"
+        );
+
+        // TODO:fix this code after the pr below go live
+        let xlm_address = String::from_slice(
+            &env,
+            &"CB64D3G7SM2RTH6JSGG34DDTFTQ5CFDKVDZJZSODMCX4NJ2HV2KN7OHT",
+        ); // future net /address
+        let xlm = token::Client::new(&env, &Address::from_val(&env, &xlm_address.to_val()));
+
+        let mut _over_payment = _msg_value.sub(&_required_payment);
+
+        let current_address = env.current_contract_address();
+
+        if _over_payment > U256::from_u32(&env, 0) {
+            // TODO ADD the ASSERT after this pr go to live https://github.com/stellar/rs-soroban-sdk/pull/1112
+            //assert!(_refund_address != ZERO_ADD)
+            let mut continue_transfer = true;
+            while continue_transfer {
+                let amount: i128 = {
+                    let mut amount = 0i128;
+                    let max = i128::MAX;
+                    if _over_payment
+                        > U256::from_be_bytes(&env, &Bytes::from_array(&env, &max.to_be_bytes()))
+                    {
+                        _over_payment = _over_payment.sub(&U256::from_be_bytes(
+                            &env,
+                            &Bytes::from_array(&env, &max.to_be_bytes()),
+                        ));
+                        amount = max;
+                    } else {
+                        let mut slice = [0u8; 16];
+                        _over_payment.to_be_bytes().copy_into_slice(&mut slice);
+                        amount = i128::from_be_bytes(slice);
+                        continue_transfer = false;
+                    }
+                    amount
+                };
+
+                xlm.transfer(&current_address, &_caller, &amount);
+            }
+        }
+
+        let mut continue_transfer = true;
+        while continue_transfer {
+            let amount: i128 = {
+                let mut amount = 0i128;
+                let max = i128::MAX;
+                if _over_payment
+                    > U256::from_be_bytes(&env, &Bytes::from_array(&env, &max.to_be_bytes()))
+                {
+                    _over_payment = _over_payment.sub(&U256::from_be_bytes(
+                        &env,
+                        &Bytes::from_array(&env, &max.to_be_bytes()),
+                    ));
+                    amount = max;
+                } else {
+                    let mut slice = [0u8; 16];
+                    _over_payment.to_be_bytes().copy_into_slice(&mut slice);
+                    amount = i128::from_be_bytes(slice);
+                    continue_transfer = false;
+                }
+                amount
+            };
+
+            xlm.transfer_from(&current_address, &_caller, &current_address, &amount)
+        }
+
+        env.events().publish(
+            (GAS, PAYMENT),
+            (
+                _message_id,
+                _destination_domain,
+                _gas_limit,
+                _required_payment,
+            ),
+        );
+    }
+
+    /**
      * @notice Quotes the amount of native tokens to pay for interchain gas.
      * @param _destinationDomain The domain of the message's destination chain.
      * @param _gasLimit The amount of destination gas to pay for.
      * @return The amount of native tokens required to pay for interchain gas.
      */
-    pub fn quote_gas_payment(env: Env, _destination_domain: u32, _gas_limit: U256) -> U256{
+    pub fn quote_gas_payment(env: Env, _destination_domain: u32, _gas_limit: U256) -> U256 {
         // Get the gas data for the destination domain.
         let (_token_exchangerate, _gas_price) =
             Self::get_exchangerate_and_gasprice(env.clone(), _destination_domain);
@@ -89,13 +196,30 @@ impl InterchainGasPaymaster {
         return storage_client.get_exchangerate_and_gasprice(&_destination_domain);
     }
 
-    fn _quote_dispatch(metadata: Bytes, message: Bytes) {}
+     /**
+     * @notice Returns the stored destinationGasOverhead added to the _gasLimit.
+     * @dev If there is no stored destinationGasOverhead, 0 is used. This is useful in the case
+     *      the ISM deployer wants to subsidize the overhead gas cost. Then, can specify the gas oracle
+     *      they want to use with the destination domain, but set the overhead to 0.
+     * @param _destinationDomain The domain of the message's destination chain.
+     * @param _gasLimit The amount of destination gas to pay for. This is only for application gas usage as
+     *      the gas usage for the mailbox and the ISM is already accounted in the DomainGasConfig.gasOverhead
+     */
+    pub fn destination_gas_limit(env: Env,_destination_domain: u32, _gas_limit: U256){
+        todo!();
+
+    }
+
+    fn _quote_dispatch(env: Env, metadata: Bytes, message: Bytes) -> U256{
+        todo!();
+        return Self::quote_gas_payment(env, Message::destination(message), );
+    }
 
     /**
      * @notice Sets the beneficiary.
      * @param _beneficiary The new beneficiary.
      */
-    fn _setBeneficiary(env: Env, _beneficiary: Address) {
+    fn _set_beneficiary(env: Env, _beneficiary: Address) {
         env.storage()
             .instance()
             .set(&DataKey::Beneficiary, &_beneficiary);
