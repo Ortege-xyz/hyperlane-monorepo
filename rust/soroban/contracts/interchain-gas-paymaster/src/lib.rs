@@ -1,9 +1,9 @@
 #![no_std]
-use soroban_sdk::{
-    contract, contractimpl, contracttype, symbol_short, token, Address, Bytes, BytesN,
-    Env, FromVal, String, Symbol, U256,
-};
 use message::Message;
+use soroban_sdk::{
+    contract, contractimpl, contracttype, symbol_short, token, Address, Bytes, BytesN, Env,
+    FromVal, String, Symbol, U256,
+};
 use storage_gas_oracle::StorageGasOracleClient;
 
 const BENEFICIARY: Symbol = symbol_short!("BENEFICIA");
@@ -29,6 +29,10 @@ enum DataKey {
 struct DomainGasConfig {
     gas_oracle: Address,
     gas_overhead: u128,
+}
+struct GasParam {
+    remote_domain: u32,
+    config: DomainGasConfig,
 }
 
 #[contractimpl]
@@ -196,7 +200,7 @@ impl InterchainGasPaymaster {
         return storage_client.get_exchangerate_and_gasprice(&_destination_domain);
     }
 
-     /**
+    /**
      * @notice Returns the stored destinationGasOverhead added to the _gasLimit.
      * @dev If there is no stored destinationGasOverhead, 0 is used. This is useful in the case
      *      the ISM deployer wants to subsidize the overhead gas cost. Then, can specify the gas oracle
@@ -205,14 +209,24 @@ impl InterchainGasPaymaster {
      * @param _gasLimit The amount of destination gas to pay for. This is only for application gas usage as
      *      the gas usage for the mailbox and the ISM is already accounted in the DomainGasConfig.gasOverhead
      */
-    pub fn destination_gas_limit(env: Env,_destination_domain: u32, _gas_limit: U256){
-        todo!();
+    pub fn destination_gas_limit(env: Env, _destination_domain: u32, _gas_limit: U256) -> U256 {
+        let _destination_gas_config: DomainGasConfig = env
+            .storage()
+            .persistent()
+            .get(&DataKey::DestinationGasConfigs(_destination_domain))
+            .expect("Configured IGP doesn't support domain ");
 
+        let gas_overhead = _destination_gas_config.gas_overhead;
+
+        return _gas_limit.add(&U256::from_be_bytes(
+            &env,
+            &Bytes::from_array(&env, &gas_overhead.to_be_bytes()),
+        ));
     }
 
-    fn _quote_dispatch(env: Env, metadata: Bytes, message: Bytes) -> U256{
+    fn _quote_dispatch(env: Env, metadata: Bytes, message: Bytes) -> U256 {
         todo!();
-        return Self::quote_gas_payment(env, Message::destination(message), );
+        return Self::quote_gas_payment(env, Message::destination(message));
     }
 
     /**
