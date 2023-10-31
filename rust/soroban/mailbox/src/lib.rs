@@ -1,6 +1,6 @@
 #![no_std]
 use address_lib::AddressLib;
-use iinterchain_security_module::IInterchainSecurityModule;
+use iinterchain_security_module::iinterchain_security_stub;
 use imessage_recipient::IMessageRecipient;
 use merkletree::MerkleTree;
 use message::Message;
@@ -38,19 +38,10 @@ impl Mailbox {
         });
     }
 
-    fn address_to_bytes32(address: Address) -> BytesN<32> {
-        // Create a new BytesN<32> with all elements initialized to zero
-        let mut bytes32 = BytesN::<32>::default();
-
-        // Copy the address bytes into the lower 20 bytes of the BytesN<32>
-        bytes32[..20].copy_from_slice(&address.0);
-
-        bytes32
-    }
-
     pub fn initialize(env: Env, owner: Address, default_ism: Address) {
-        // Ownable::init(env.clone(), owner);
-        Self::get_tree(env);
+        Ownable::init(env.clone(), owner.clone());
+        Ownable::transfer_owner_ship(env.clone(), owner.clone(), owner.clone());
+        Self::get_tree(env.clone());
         env.storage().instance().set(&PAUSED, &false);
         env.storage().instance().set(&DEFAULT_ISM, &default_ism);
         Self::set_default_ism(env, default_ism);
@@ -62,21 +53,24 @@ impl Mailbox {
      * @param _module The new default ISM. Must be a contract.
      */
     pub fn set_default_ism(env: Env, module: Address) {
-        Ownable::only_owner(env.clone(), module);
+        Ownable::only_owner(env.clone(), module.clone());
 
-        assert!(AddressLib::is_contract(module).unwrap(), "!contract");
-        default_ism = IInterchainSecurityModule::From(module);
+        assert!(
+            AddressLib::is_contract(module.clone()).unwrap(),
+            "!contract"
+        );
+        // default_ism = IInterchainSecurityModule::From(module); //TODO
         env.storage().instance().set(&DEFAULT_ISM, &module);
 
         env.events()
-            .publish::<(Symbol,), Address>((symbol_short!("ISM").into(),), module);
+            .publish((symbol_short!("EVENTS"), symbol_short!("ISM")), module);
     }
 
     pub fn dispatch(
         env: Env,
         destination_domain: u32,
         sender_address: Address,
-        recipient_address: BytesN<32>,
+        recipient_address: Address,
         message_body: Bytes,
     ) -> BytesN<32> {
         sender_address.require_auth();
@@ -88,85 +82,83 @@ impl Mailbox {
 
         let mut tree = Self::get_tree(env.clone());
 
-        let sender_byte_n32: BytesN<32> = Self::address_to_bytes32(sender_address);
-
         let message = Message::new(
             Versioned::VERSION,
             tree.count,
             env.storage().instance().get(&LOCAL_DOMAIN).unwrap_or(0),
-            &sender_byte_n32,
+            &sender_address,
             destination_domain,
             &recipient_address,
             &message_body,
         );
 
-        let id = message.id(env);
-        tree.insert(env, id);
+        let id = message.id(env.clone());
+        tree.insert(env.clone(), id.clone());
 
-        env.events()
-            .publish::<(Symbol,), (Address, u32, BytesN<32>, Bytes)>(
-                (symbol_short!("DISPATCH").into(),),
-                (
-                    sender_address,
-                    destination_domain,
-                    recipient_address,
-                    message,
-                ),
-            );
+        env.events().publish(
+            (symbol_short!("EVENTS"), symbol_short!("DISID")),
+            (
+                sender_address,
+                destination_domain,
+                recipient_address,
+                message,
+            ),
+        );
 
-        env.events()
-            .publish::<(Symbol,), BytesN<32>>((symbol_short!("DISID").into(),), id);
+        env.events().publish(
+            (symbol_short!("EVENTS"), symbol_short!("DISID")),
+            id.clone(),
+        );
 
         id
     }
 
-    pub fn process(env: Env, metadata: Bytes, message: Message) {
-        // Check that the message was intended for this mailbox.
-        assert!(
-            message.version() == Versioned::VERSION,
-            "Invalid message version"
-        );
-        assert!(
-            message.destination() == env.storage().instance().get(&LOCAL_DOMAIN).unwrap_or(0),
-            "Invalid message destination"
-        );
+    // pub fn process(env: Env, metadata: Bytes, message: Message) {
+    //     // Check that the message was intended for this mailbox.
+    //     assert!(
+    //         message.version() == Versioned::VERSION,
+    //         "Invalid message version"
+    //     );
+    //     assert!(
+    //         message.destination() == env.storage().instance().get(&LOCAL_DOMAIN).unwrap_or(0),
+    //         "Invalid message destination"
+    //     );
 
-        // Check that the message hasn't already been delivered.
-        let id = message.id(env);
+    //     // Check that the message hasn't already been delivered.
+    //     let id = message.id(env.clone());
 
-        // contract up well for adding other types of data to be stored.
-        let key = DataKey::Delivered(id.clone());
+    //     // contract up well for adding other types of data to be stored.
+    //     let key = DataKey::Delivered(id.clone());
 
-        // Get the current value for the key.
-        let mut check: bool = env.storage().persistent().get(&key).unwrap_or(false);
+    //     // Get the current value for the key.
+    //     let mut check: bool = env.storage().persistent().get(&key).unwrap_or(false);
 
-        // Assert that the message has not been delivered yet.
-        assert!(!check, "Message has already been delivered");
+    //     // Assert that the message has not been delivered yet.
+    //     assert!(!check, "Message has already been delivered");
 
-        if !check {
-            // Save the value.
-            env.storage().persistent().set(&key, &true);
-        }
+    //     if !check {
+    //         // Save the value.
+    //         env.storage().persistent().set(&key, &true);
+    //     }
 
-        // Verify the message via the ISM.
-        let ism: dyn IInterchainSecurityModule = Self::recipientIsm(env, message.recipient());
-        assert!(ism.verify(metadata, message), "ISM verification failed");
+    //     // Verify the message via the ISM.
+    //     //let ism: dyn IInterchainSecurityModule = Self::recipientIsm(env, message.recipient());
 
-        // Deliver the message to the recipient.
-        let origin = message.origin();
-        let sender = message.sender();
-        let recipient = message.recipient();
-        IMessageRecipient::handle(origin, sender, message.body())?;
+    //     iinterchain_security_stub::DummyClient::try_verify(&self, &metadata, &message)?;
 
-        env.events()
-            .publish::<(Symbol,), (u32, BytesN<32>, Address)>(
-                (symbol_short!("PROCESS").into(),),
-                (origin, sender, recipient),
-            );
+    //     // assert!(, "ISM verification failed");
 
-        env.events()
-            .publish::<(Symbol,), BytesN<32>>((symbol_short!("PROCESSID").into(),), id);
-    }
+    //     // Deliver the message to the recipient.
+    //     let origin = message.origin();
+    //     let sender = message.sender();
+    //     let recipient = message.recipient();
+    //     IMessageRecipient::handle(origin, sender, message.body())?;
+
+    //     env.events()
+    //         .publish((symbol_short!("EVENTS"), symbol_short!("PROCESS")), (origin, sender, recipient));
+
+    //     env.events().publish((symbol_short!("EVENTS"), symbol_short!("PROCESSID")), id);
+    // }
 
     pub fn root(env: Env) -> BytesN<32> {
         let tree = Self::get_tree(env.clone());
@@ -180,11 +172,11 @@ impl Mailbox {
     }
 
     pub fn latest_checkpoint(env: Env) -> (BytesN<32>, u32) {
-        (Self::root(env), Self::count(env) - 1)
+        (Self::root(env.clone()), Self::count(env.clone()) - 1)
     }
 
-    //Returns the ISM to use for the recipient, defaulting to the default ISM if none is specified.
-    pub fn recipientIsm(env: Env, recipient: Address) -> IInterchainSecurityModule {
+    // //Returns the ISM to use for the recipient, defaulting to the default ISM if none is specified.
+    pub fn recipient_ism(env: Env, recipient: Address) -> Address {
         let zero_address = Address::from_contract_id(&BytesN::from_array(&env, &[0; 32]));
 
         // If a specified ISM exists, return it; otherwise, return the default ISM

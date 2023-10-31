@@ -146,7 +146,7 @@ impl LegacyMultisigIsm {
 
     pub fn verify(env: Env, _metadata: Bytes, _message: Message) -> bool {
         assert!(
-            Self::_verify_merkle_proof(env.clone(), _metadata.clone(), _message),
+            Self::_verify_merkle_proof(env.clone(), _metadata.clone(), _message.clone()),
             "mismatch merkle"
         );
         assert!(

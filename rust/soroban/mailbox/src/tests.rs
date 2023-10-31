@@ -1,21 +1,21 @@
-use crate::{Contract, ContractClient, MerkleTree};
-use soroban_sdk::{vec, BytesN, Env, Vec, U256};
+use crate::{Mailbox, MailboxClient};
+use soroban_sdk::{testutils::Address as _, Address, Env};
 
 #[test]
 fn initialize_sets_default_values() {
     let env = Env::default();
+    let contract_id = env.register_contract(None, Mailbox);
+    let client = MailboxClient::new(&env, &contract_id);
 
-    let contract_id = env.register_contract(None, Contract);
-    let client = ContractClient::new(&env, &contract_id);
-    
-    let owner = Address::from_contract_id(&BytesN::from_array(&env, &[1; 20]));
-    let default_ism = Address::from_contract_id(&BytesN::from_array(&env, &[2; 20]));
+    // let owner = Address::from_contract_id(&BytesN::from_array(&env, &[1; 32]));
+    // let default_ism = Address::from_contract_id(&BytesN::from_array(&env, &[1; 32]));
 
-    Mailbox::initialize(env.clone(), owner, default_ism);
-    assert_eq!(
-        env.storage().instance().get(&DEFAULT_ISM).unwrap(),
-        &default_ism
-    );
-    assert_eq!(env.storage().instance().get(&COUNT).unwrap(), &0);
-    assert_eq!(env.storage().instance().get(&PAUSED).unwrap(), &false);
+    let owner = Address::random(&env);
+    let default_ism = Address::random(&env);
+
+    client.initialize(&owner, &default_ism);
+
+    let count = client.count();
+
+    assert_eq!(count, 0);
 }

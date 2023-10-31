@@ -4,5 +4,5 @@
 pub struct Versioned;
 
 impl Versioned {
-    pub const VERSION: u8 = 0;
+    pub const VERSION: u32 = 0;
 }

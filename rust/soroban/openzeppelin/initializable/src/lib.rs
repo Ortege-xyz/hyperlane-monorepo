@@ -57,7 +57,7 @@ impl Initializable {
     }
 
     // A protected initializer function that can be invoked at most once.
-    pub fn initializer(&mut self, env: Env) -> Result<(), ContractError> {
+    pub fn initializer(&mut self, _env: Env) -> Result<(), ContractError> {
         let is_top_level_call = !self.storage.initializing;
         let initialized = self.storage.initialized;
 
